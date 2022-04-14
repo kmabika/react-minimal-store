@@ -1,10 +1,14 @@
-import { PureComponent } from "react";
-import Header from "Component/Header";
+import React, { PureComponent } from "react";
+import Router from "Component/Router";
+import GlobalStyle from "Style/GlobalStyle/globalStyles";
 
 export class App extends PureComponent {
   render() {
     return(
-      <Header />
+      <React.Fragment>
+        <GlobalStyle/>
+      <Router />
+      </React.Fragment>
     )
   }
 }

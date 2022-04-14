@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 export const HeaderContainer = styled.header`
   max-width: 100%;
   background-color: #fff;
-  padding: 0rem 10rem;
   position: sticky;
   top: 0;
   left: 0;
