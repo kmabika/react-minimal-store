@@ -45,7 +45,7 @@ export const ProductCartButton = styled.button`
   border: none;
   border-radius: 50%;
 
-  background-color: #5ece7b;
+  background-color:  ${({ theme }) => theme.colors.emerald};
 
   cursor: pointer;
 
@@ -53,8 +53,3 @@ export const ProductCartButton = styled.button`
     display: flex;
   }
 `
-
-// .item:hover,
-// .item:focus {
-//   box-shadow: 0px 4px 35px 0px rgba(168, 172, 176, 0.19);
-// }

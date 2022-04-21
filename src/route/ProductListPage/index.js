@@ -1,1 +1,1 @@
-export {default } from './ProductListPage.component'
+export {default } from './ProductListPage.container'

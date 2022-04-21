@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.header`
   max-width: 100%;
-  background-color: #fff;
+  background-color:  ${({ theme }) => theme.colors.white};;
   position: sticky;
   top: 0;
   left: 0;

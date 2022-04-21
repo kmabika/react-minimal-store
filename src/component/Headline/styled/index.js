@@ -33,7 +33,7 @@ const sizeHeadline = (type) => {
       ? '140%'
       : '150%'};
   font-size: ${(props) =>
-    props.fontSize ? `${props.fontSize}px` : `${sizeHeadline(props.typeHeadline).size}em`};
+    props.fontSize ? `${props.fontSize}em` : `${sizeHeadline(props.typeHeadline).size}em`};
   font-weight: ${(props) =>
     props.fontWeight ? props.fontWeight : sizeHeadline(props.typeHeadline).weight};
   `

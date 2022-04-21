@@ -16,7 +16,7 @@ export class ProductCard extends PureComponent {
         return (
             <ProductCardWrapper>
                 <ProductLink>
-                    <ProductThumb>
+                    <ProductThumb>                  
                         <ProductImage
                             src="https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087"
                             alt="Product Image"

@@ -1,14 +1,28 @@
 import React, { PureComponent } from "react";
+import { Provider } from 'react-redux'
 import Router from "Component/Router";
-import GlobalStyle from "Style/GlobalStyle/globalStyles";
+
+import { store } from "Store/";
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+} from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000',
+  cache: new InMemoryCache()
+});
 
 export class App extends PureComponent {
   render() {
-    return(
-      <React.Fragment>
-        <GlobalStyle/>
-      <Router />
-      </React.Fragment>
+    return (
+      <ApolloProvider client={client}>
+        <Provider store={store}>
+          <Router />
+        </Provider>
+      </ApolloProvider>
     )
   }
 }
