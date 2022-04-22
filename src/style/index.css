@@ -1,0 +1,16 @@
+.rightArrow {
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .leftArrow {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    font-size: 2rem;
+    color: white;
+  }
+  

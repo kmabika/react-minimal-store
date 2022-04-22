@@ -2,8 +2,6 @@ import React, { PureComponent } from "react";
 import { Provider } from 'react-redux'
 import Router from "Component/Router";
 
-import { store } from "Store/";
-
 import {
   ApolloClient,
   InMemoryCache,
@@ -18,10 +16,8 @@ const client = new ApolloClient({
 export class App extends PureComponent {
   render() {
     return (
-      <ApolloProvider client={client}>
-        <Provider store={store}>
+      <ApolloProvider client={client}>      
           <Router />
-        </Provider>
       </ApolloProvider>
     )
   }
