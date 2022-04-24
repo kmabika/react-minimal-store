@@ -2,7 +2,7 @@ import { PureComponent } from "react";
 import { CategoryHeaderWrapper, ProductListWrapper } from "./styled";
 import Headline from "Component/Headline";
 import CategoryProductList from "Component/CategoryProductList";
-import { HeaderWrap } from "Component/Header/styled";
+
 
 export class ProductListPage extends PureComponent {
     render() {
@@ -10,9 +10,9 @@ export class ProductListPage extends PureComponent {
         <main>
             <ProductListWrapper>
                 <CategoryHeaderWrapper>
-                <Headline typeHeadline="h1" fontWeight={400}>Category</Headline>
+                <Headline typeHeadline="h1" fontWeight={400}>{this.props.categoryName}</Headline>
                 </CategoryHeaderWrapper>
-                <CategoryProductList category={this.props.category}/>
+                <CategoryProductList products={this.props.products}/>
             </ProductListWrapper>
         </main>
         )

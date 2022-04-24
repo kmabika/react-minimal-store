@@ -3,11 +3,24 @@ import {CategoryProductListWrapper} from './styled'
 import ProductCard from 'Component/ProductCard'
 
 
+
+
 export class CategoryProductList extends PureComponent {
+
+    renderProducts(){
+        return(
+            this.props.products.map((product,index) => (
+                <ProductCard key={index}/>
+            ))
+        )
+    }
+
     render(){
         return(
             <CategoryProductListWrapper>
-                <ProductCard/>
+                {this.props.products.map(product => (
+                    <ProductCard product={product} />
+                ))}
             </CategoryProductListWrapper>
         )
     }

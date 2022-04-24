@@ -1,25 +1,22 @@
 import { PureComponent } from "react";
-import { CategoryWrap, CategoryItemWrap } from "./styled";
+import { CategoryWrap, StyledLink} from "./styled";
 
 class Category extends PureComponent {
+
+    renderNavbar() {
+        return (this.props.categories.map((title,index) => (
+          <li key={index}>
+                <StyledLink to={title.name} exact>
+                    {title.name}
+                </StyledLink>
+          </li>)
+      ))
+    }
+
     render() {
         return (
             <CategoryWrap>
-                <CategoryItemWrap>
-                    <a href="/">
-                        All
-                    </a>
-                </CategoryItemWrap>
-                <CategoryItemWrap>
-                    <a href="/">
-                        Women
-                    </a>
-                </CategoryItemWrap>
-                <CategoryItemWrap>
-                    <a href="/">
-                        Men
-                    </a>
-                </CategoryItemWrap>
+            {this.renderNavbar()}
             </CategoryWrap>
         )
     }

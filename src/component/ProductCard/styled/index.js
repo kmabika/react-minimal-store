@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const ProductCardWrapper = styled.li`
     position: relative;
-    flex-basis: calc(100% / 3 - 40px);
+    flex-basis: calc(100% / 3 - 100px);
     margin-left: 40px;
     margin-top: 103px;
     padding: 11px 14px 0px 16px;
@@ -20,8 +20,8 @@ export const ProductThumb = styled.div`
 `;
 
 export const ProductImage = styled.img`
-  width: 100%;
   height: 100%;
+  width: 100%;
   object-file: cover;
   object-position: top;
 `;

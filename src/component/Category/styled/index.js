@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {NavLink} from 'react-router-dom'
 
 export const CategoryWrap = styled.ul`
   min-width: 13rem;
@@ -6,12 +7,24 @@ export const CategoryWrap = styled.ul`
   align-items: center;
   justify-content: space-between;
   list-style-type: none;
-
-  @media screen and (max-width: 992px) {
-    min-width: 22.8125rem;
+  
+  .current {
+    li {
+      border-bottom: 2px solid black;
+    }
   }
 `;
 
 export const CategoryItemWrap = styled.li`
   text-transform: uppercase;
+`;
+
+export const StyledLink = styled(NavLink)`
+  text-transform: uppercase;
+  color:  ${({ theme }) => theme.colors.bunker};
+  padding: 32px 16px;
+  &.active {
+    color:  ${({ theme }) => theme.colors.emerald};
+    border-bottom: 2px solid  ${({ theme }) => theme.colors.emerald};
+  }
 `;
