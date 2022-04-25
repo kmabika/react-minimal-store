@@ -14,9 +14,9 @@ import CartSvg from "Images/CartSvg"
 export class ProductCard extends PureComponent {
     render() {
         return (
-            <ProductCardWrapper>
+            <ProductCardWrapper inStock={this.props.inStock}>
                 <ProductLink>
-                    <ProductThumb>                  
+                    <ProductThumb>
                         <ProductImage
                             src={this.props.image}
                             alt="Product Image"
@@ -26,15 +26,15 @@ export class ProductCard extends PureComponent {
                     </ProductThumb>
                     <ProductContent>
                         <Headline typeHeadline="h5" fontWeight={300}>{this.props.name}</Headline>
-                        <Paragraph fontWeight={500}>$50.00</Paragraph>
+                        <Paragraph fontWeight={500} children={`${this.props.price.currency.symbol} ${this.props.price.amount}`} />
                     </ProductContent>
                 </ProductLink>
-                <ProductCartButton
+                {this.props.inStock &&
+                 <ProductCartButton
                     title="Add to art"
-                    alt="add to cart"
-                >
-                    <CartSvg />
-                </ProductCartButton>
+                    alt="add to cart">
+                    <CartSvg/>
+                </ProductCartButton>}
             </ProductCardWrapper>
         )
     }

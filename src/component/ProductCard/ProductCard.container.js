@@ -1,9 +1,12 @@
-import {PureComponent} from 'react';
+import MainContext from 'Context/MainContext';
+import { PureComponent } from 'react';
 import ProductCard from './ProductCard.component';
 
-export class ProductCardContainer extends PureComponent{
+export class ProductCardContainer extends PureComponent {
+
+    static contextType = MainContext;
     
-    containerProps(){
+    containerProps() {
         const {
             name,
             id,
@@ -11,16 +14,22 @@ export class ProductCardContainer extends PureComponent{
             gallery,
             inStock
         } = this.props.product;
+
+        const { selectedCurrency } = this.context;
+        const filtredPrice = prices.filter(
+            (price) => price.currency.symbol === selectedCurrency,
+        )[0]
         return {
             name,
             id,
             image: gallery[0],
-            prices,
-            inStock
+            price: filtredPrice,
+            inStock,
+            selectedCurrency,
         }
     }
-    render(){
-        return(<ProductCard {...this.containerProps()}/>)
+    render() {
+        return (<ProductCard {...this.containerProps()} />)
     }
 }
 

@@ -9,8 +9,8 @@ export class CategoryProductList extends PureComponent {
 
     renderProducts(){
         return(
-            this.props.products.map((product,index) => (
-                <ProductCard key={index}/>
+            this.props.products.map((product) => (
+                <ProductCard key={product.id} product={product}/>
             ))
         )
     }
@@ -18,9 +18,7 @@ export class CategoryProductList extends PureComponent {
     render(){
         return(
             <CategoryProductListWrapper>
-                {this.props.products.map(product => (
-                    <ProductCard key={product.id} product={product} />
-                ))}
+                {this.renderProducts()}
             </CategoryProductListWrapper>
         )
     }

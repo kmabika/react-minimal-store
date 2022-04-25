@@ -6,6 +6,7 @@ export const ProductCardWrapper = styled.li`
     margin-left: 40px;
     margin-top: 103px;
     padding: 11px 14px 0px 16px;
+    opacity: ${props => props.inStock ? "100%" : "50%"};
     &:hover {
       box-shadow: 0px 4px 35px 0px rgba(168, 172, 176, 0.19);
     }

@@ -10,8 +10,8 @@ export const CurrencySwitcherBtn = styled.button`
 width: 38px;
 padding: 0px 10px 0px 0px;
 border: none;
-background-color: #fff;
-color: #1d1f22;
+background-color:  ${({ theme }) => theme.colors.white};
+color:  ${({ theme }) => theme.colors.bunker};
 font-size: 18px;
 font-weight: 500;
 cursor: pointer;
@@ -25,7 +25,7 @@ position: absolute;
 top: 100%;
 left: 0;
 z-index: 1;
-background-color: #fff;
+background-color: ${({ theme }) => theme.colors.white};
 width: 114px;
 margin-top: 7px;
 border: none;
@@ -37,5 +37,9 @@ cursor: pointer;
 padding: 20px 15px;
 font-weight: 500;
 font-size: 18px;
+&:hover{
+    background-color:  ${({ theme }) => theme.colors.darkGray};
+    color:  ${({ theme }) => theme.colors.white};
+}
 `;
 
