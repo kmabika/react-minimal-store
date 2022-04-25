@@ -24,7 +24,7 @@ export class ProductListPageContainer extends PureComponent{
     }
 
     containerProps(){
-        this._handleProductsQuery();
+
         return {
             categoryName: this.state.categoryName,
             products: this.state.products
@@ -32,6 +32,7 @@ export class ProductListPageContainer extends PureComponent{
     }
 
     render(){
+        this._handleProductsQuery();
         return(
             <ProductListPage 
             {...this.containerProps()}/>

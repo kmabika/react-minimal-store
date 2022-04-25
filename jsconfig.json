@@ -29,6 +29,9 @@
             ],
             "Images/*": [
                 "src/assets/images/*"
+            ],
+            "Context/*": [
+                "src/context/*"
             ]
         }
     },

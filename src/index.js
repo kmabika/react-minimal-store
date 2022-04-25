@@ -4,7 +4,7 @@ import GlobalStyle from "Style/GlobalStyle/globalStyles";
 import FontStyles from 'Style/FontStyle/fontStyles';
 import { ThemeProvider } from "styled-components";
 import { theme } from 'Style/Theme/theme';
-import { ApolloProvider} from '@apollo/client/react'
+import { ApolloProvider } from '@apollo/client'
 import client from 'Query/client';
 import App from "Component/App"
 
@@ -17,7 +17,7 @@ root.render(
         <ThemeProvider theme={theme}>
             <FontStyles />
             <GlobalStyle />
-            <App tab="home" />
+            <App/>
         </ThemeProvider>
         </ApolloProvider>
     </React.Fragment>

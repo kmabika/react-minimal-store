@@ -10,6 +10,7 @@ export class CategoryContainer extends PureComponent {
             links: [],
         }
     }
+    
     componentDidMount() {
         GET_CATEGORIES.then(res => this.setState({links: res.data.categories}));
     }

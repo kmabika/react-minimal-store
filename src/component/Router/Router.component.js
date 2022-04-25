@@ -1,13 +1,12 @@
 import {
     PureComponent
 } from 'react';
-import { BrowserRouter, Route, Switch, generate } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ProductListPage from 'Route/ProductListPage';
 import Header from 'Component/Header';
 import ProductDescriptionPage from 'Route/ProductDescriptionPage';
 import CartPage from 'Route/CartPage';
 import { Redirect } from 'react-router-dom';
-import { generatePath } from 'react-router-dom';
 
 export class Router extends PureComponent {
     render() {

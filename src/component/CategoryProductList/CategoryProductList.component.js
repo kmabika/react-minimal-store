@@ -19,7 +19,7 @@ export class CategoryProductList extends PureComponent {
         return(
             <CategoryProductListWrapper>
                 {this.props.products.map(product => (
-                    <ProductCard product={product} />
+                    <ProductCard key={product.id} product={product} />
                 ))}
             </CategoryProductListWrapper>
         )
