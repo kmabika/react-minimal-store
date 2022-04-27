@@ -12,7 +12,8 @@ export class ProductCardContainer extends PureComponent {
             id,
             prices,
             gallery,
-            inStock
+            inStock,
+            attributes,
         } = this.props.product;
 
         const { selectedCurrency } = this.context;
@@ -26,6 +27,7 @@ export class ProductCardContainer extends PureComponent {
             price: filtredPrice,
             inStock,
             selectedCurrency,
+            attributes,
         }
     }
     render() {

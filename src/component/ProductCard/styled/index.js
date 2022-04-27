@@ -36,21 +36,49 @@ export const ProductCartButton = styled.button`
   position: absolute;
   bottom: 64px;
   right: 30px;
-
   display: none;
   justify-content: center;
   align-items: center;
-
   width: 52px;
   height: 52px;
   border: none;
   border-radius: 50%;
-
   background-color:  ${({ theme }) => theme.colors.emerald};
-
   cursor: pointer;
-
   ${ProductCardWrapper}:hover & {
     display: flex;
   }
 `
+
+export const ProductSwatchColor = styled.button`
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  margin-right: 12px;
+  border-radius: 50%;
+  background-color:  ${({ theme }) => theme.colors.emerald};
+  cursor: pointer;
+`;
+
+export const ProductAttributeText = styled.span`
+  border-style: solid;
+  border-width: 1px;
+  min-width: 30px;
+  font-weight: 400;
+  display:none;
+  width: auto;
+  cursor: pointer;
+  text-align: center;
+  margin-right: 10px;
+`
+
+export const ProductAttributesWrapper = styled.div`
+  display: none;
+  padding-top: 3px;
+  ${ProductCardWrapper}:hover & {
+    display: flex;
+  }
+`;

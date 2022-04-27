@@ -28,9 +28,13 @@ const GET_PRODUCTS_QUERY = (cat) => {
             gallery
             category
             attributes {
+              id
               name
+              type
               items {
+                id
                 displayValue
+                value
               }
             }
             prices {
