@@ -3,11 +3,22 @@ import {
     ProductTextAttribute, 
     ProductColorAttribute, 
     ProductAttributeWrapper, 
-    ProductAttributeToolTipWrapper
+    ToolTip,
+    ToolTipText,
 } from './styled';
 
 
 export class ProductAttribute extends PureComponent{
+
+    state = {
+        textSelected: false,
+        colorSelected: false,
+    }
+
+    toggle = (buttonName,item) => () => {
+        this.setState(prev =>({[buttonName]: !prev[buttonName]}))
+        console.log(`button: ${item}`)
+    };
 
     renderAttributeByType() {
         const {type} = this.props
@@ -16,33 +27,43 @@ export class ProductAttribute extends PureComponent{
                 return this.renderTextAttribute();
             case 'swatch':
                 return this.renderColorAttribute();
-            case 'capacity':
-                return this.renderTextAttribute();
             default:
                 return this.renderPlaceHolder();
         }
     }
 
     renderTextAttribute() {
-        const {displayValue} = this.props
-
+        const {displayValue,value} = this.props
+        const {name} = this.props
+        const {textSelected} = this.state
         return (
-                <ProductTextAttribute>{displayValue}</ProductTextAttribute>
+            <ToolTip>
+                 <ProductTextAttribute isSelected={textSelected} onClick={this.toggle('textSelected',value)}>{displayValue}</ProductTextAttribute>
+                 <ToolTipText>{name}</ToolTipText>
+            </ToolTip>
+               
         )
     };
 
     renderColorAttribute() {
         const {displayValue,value} = this.props
+        const {colorSelected} = this.state
         return (
             <>
-            <ProductColorAttribute color={value}></ProductColorAttribute>
-            <ProductAttributeToolTipWrapper>{displayValue}</ProductAttributeToolTipWrapper>
+            <ToolTip>
+            <ProductColorAttribute 
+            isSelected={colorSelected} 
+            color={value} 
+            onClick={this.toggle('colorSelected',value)}/>
+                <ToolTipText>{displayValue}</ToolTipText>
+            </ToolTip>
             </>
         )
     };
 
     renderPlaceHolder(){
         return(
+            
                 <p>Place Holder</p>
      )
     }

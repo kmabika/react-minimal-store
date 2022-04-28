@@ -4,10 +4,11 @@ export class ProductAttributeContainer extends PureComponent{
 
     containerProps(){
         const {displayValue,value} = this.props.item
-        const {type} = this.props
+        const {type, name } = this.props.attributeData
         return{
             displayValue,
             value,
+            name,
             type
         }
     }

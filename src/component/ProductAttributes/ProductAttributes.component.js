@@ -6,14 +6,14 @@ import ProductAttribute from 'Component/ProductAttribute'
 export class ProductAttributes extends PureComponent{
 
 
-    renderProductAttribute(item,type){
+    renderProductAttribute(item, attributeData){
         const {inStock } = this.props;
         return(
             <ProductAttribute
             key={item.id}
             item={item}
+            attributeData={attributeData}
             isAvailable={inStock}
-            type={type}
             />
         )
     }
@@ -25,8 +25,12 @@ export class ProductAttributes extends PureComponent{
             const {
                 id,
                 items,
+                name,
                 type
             } = attribute;
+            const attributeData = {
+                name: name, type: type
+            }
 
             if (!inStock){
                 return null;
@@ -34,9 +38,9 @@ export class ProductAttributes extends PureComponent{
             return (
                 <div key={id} style={{ display: 'flex', width : '50%' }}>
                     {items.map((item) => (
-                        this.renderProductAttribute(item,type)
+                        this.renderProductAttribute(item,attributeData)
                     ))}
-                </div>
+                </div>                        
             )
         })
     };
