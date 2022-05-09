@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import {NavLink} from 'react-router-dom';
 
 export const ProductCardWrapper = styled.li`
     position: relative;
     flex-basis: calc(100% / 3 - 100px);
-    margin-left: 40px;
     margin-top: 103px;
     padding: 11px 14px 0px 16px;
     opacity: ${props => props.inStock ? "100%" : "50%"};
@@ -12,9 +12,11 @@ export const ProductCardWrapper = styled.li`
     }
 `;
 
-export const ProductLink = styled.a`
+export const ProductLink = styled(NavLink)`
     color: inherit;
-`
+    cursor: pointer;
+`;
+
 export const ProductThumb = styled.div`
   position: relative;
   height: 338px;
@@ -25,6 +27,20 @@ export const ProductImage = styled.img`
   width: 100%;
   object-file: cover;
   object-position: top;
+`;
+
+export const ProductImageOutOfStockText = styled.h1`
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #8D8F9A;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: fit-content;
+  margin: auto;
 `;
 
 export const ProductContent = styled.div`
@@ -47,6 +63,10 @@ export const ProductCartButton = styled.button`
   cursor: pointer;
   ${ProductCardWrapper}:hover & {
     display: flex;
+  }
+  &:hover {
+    background-color: #237337;
+    transition: all 0.5s;
   }
 `
 

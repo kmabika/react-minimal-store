@@ -11,7 +11,7 @@ import {
 import Category from 'Component/Category';
 import Logo  from 'Component/Logo'
 import CurrencySwitcher from 'Component/CurrencySwitcher';
-import CartIcon from 'Component/CartIcon';
+import CartOverlay from 'Component/CartOverlay';
 
 export class Header extends PureComponent {
     render() {
@@ -27,7 +27,7 @@ export class Header extends PureComponent {
                     <TopRightNavBarWrap>
                         <CurrencySwitcher/>
                         <Cart aria-label="Open your cart menu">
-                            <CartIcon/>
+                            <CartOverlay/>
                         </Cart>
                     </TopRightNavBarWrap>
                 </HeaderWrap>

@@ -3,9 +3,8 @@ import {
 } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ProductListPage from 'Route/ProductListPage';
-import Header from 'Component/Header';
 import ProductDescriptionPage from 'Route/ProductDescriptionPage';
-import CartPage from 'Route/CartPage';
+import Header from 'Component/Header';
 import { Redirect } from 'react-router-dom';
 
 export class Router extends PureComponent {
@@ -20,11 +19,8 @@ export class Router extends PureComponent {
                         )
                     }}
                     />
-                    <Route path="/:category" component={ProductListPage}/> 
-                    {/* <Route path="/all" element={<ProductListPage categoryName={"all"} />} />
-                    <Route path="/:category" component={<ProductListPage/>}/>
-                    <Route path="/products/product" element={<ProductDescriptionPage />} />
-                    <Route path="/cart" element={<CartPage />} /> */}
+                    <Route exact path="/:category" component={ProductListPage}/> 
+                    <Route exact path="/:category/:productid" component={ProductDescriptionPage}/>
                 </Switch>
             </BrowserRouter>
         )

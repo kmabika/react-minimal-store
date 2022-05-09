@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom';
 
 export const CategoryWrap = styled.ul`
   min-width: 13rem;
@@ -7,7 +7,6 @@ export const CategoryWrap = styled.ul`
   align-items: center;
   justify-content: space-between;
   list-style-type: none;
-  
   .current {
     li {
       border-bottom: 2px solid black;

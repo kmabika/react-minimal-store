@@ -1,25 +1,34 @@
+import PropTypes from 'prop-types';
 import { PureComponent } from "react";
-import { GET_CATEGORIES } from "Query/queries";
+import { connect } from 'react-redux';
 import Category from "./Category.component";
+
+export const mapStateToProps = (state) => ({
+    availableCategories: state.CategoryReducer.categories,
+});
 
 export class CategoryContainer extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = {
-            links: [],
-        }
-    }
-    
-    componentDidMount() {
-        GET_CATEGORIES.then(res => this.setState({links: res.data.categories}));
+        this.state = { category: true };
+    };
+
+    static propTypes = {
+        availableCategories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     }
 
-    render(){
-        return(
-            <Category categories={this.state.links}/>
+    containerProps() {
+        const { availableCategories } = this.props;
+        return {
+            categories: availableCategories,
+        }
+    }
+    render() {
+        return (
+            <Category {...this.containerProps()} />
         )
     }
 }
 
-export default CategoryContainer;
+export default connect(mapStateToProps)(CategoryContainer);

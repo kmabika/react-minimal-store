@@ -28,14 +28,16 @@ export class ProductDescriptionPage extends PureComponent {
                         <ProductImage src='https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087' />
                         <ProductImage src='https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087' />
                         <ProductImage src='https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087' />
+                        <ProductImage src='https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087' />
+                        <ProductImage src='https://images-na.ssl-images-amazon.com/images/I/51HCjA3rqYL._SL1230_.jpg' />
                     </ProductImagesWrapper>
                 </ProductImageCarouselWrapper>
                 <ProductImageCoverWrapper>
                     <ProductCoverImage src='https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087' />
                 </ProductImageCoverWrapper>
                 <ProductInfoWrapper>
-                    <Headline type="h1" fontSize="2" fontWeight={600}>Product Name</Headline>
-                    <Headline type="h1" fontSize="2" fontWeight={400}>Product Brand</Headline>
+                    <Headline typeHeadline="h1" fontSize={2} fontWeight={600}>Product Name</Headline>
+                    <Headline typeHeadline="h1" fontSize={2} fontWeight={400}>Product Brand</Headline>
                     <ProductAttributeWrapper>
                         <ProductPriceHeaderWrapper>
                         <Paragraph children={"size:"} fontWeight={700}/>

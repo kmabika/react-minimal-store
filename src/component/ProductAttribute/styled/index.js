@@ -1,20 +1,43 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ProductTextAttribute = styled.span`
- border: 1px solid ${props => (props.isSelected ? 'red': '#1D1F22')};
- color: ${props => (props.isSelected ? 'red': '#1D1F22')};
- padding: 5px;
+ border: 1px solid ${({ theme }) => theme.colors.bunker};
+ color: ${({ theme }) => theme.colors.bunker};
+ background-color: ${({ theme }) => theme.colors.white};
+ padding: 10px;
  cursor: pointer;
+ ${({ isSelected, theme }) => {
+    return (
+      isSelected &&
+      css`
+      border: 1px solid ${theme.colors.white};
+      background-color: ${theme.colors.bunker};
+      color: ${theme.colors.white};
+    `
+    );
+  }};
 `;
 
 export const ProductColorAttribute = styled.span`
  border-radius: 50%;
- height: 20px;
+ height: 24px;
+ width: 24px;
  display: inline-block;
- border: 2px solid ${props => (props.isSelected ? 'red': '#1D1F22')};
+ border: 1px solid ${({ theme }) => theme.colors.bunker};
  cursor: pointer;
- width: 20px;
- background-color: ${props => props.color ? props.color : "#fff"};
+ background-color: ${props => props.color ? props.color : `${({ theme }) => theme.colors.white}`};
+ ${({ isSelected, theme }) => {
+    return (
+      isSelected &&
+      css`
+      border: 3px solid ${theme.colors.white};
+      box-shadow: 0 0 5px ${theme.colors.bunker};
+    `
+    );
+  }};
+ svg {
+   margin-left: 2px;
+ }
 `
 
 export const ProductAttributeWrapper = styled.span`
@@ -26,49 +49,49 @@ padding-top: 30px;
   }
 `;
 
-export const ToolTipText = styled("span")({
-  visibility: "hidden",
-  width: "120px",
-  backgroundColor: "#000",
-  color: "#fff",
-  textAlign: "center",
-  borderRadius: "6px",
-  padding: "5px 0",
-  position: "absolute",
-  zIndex: 1,
-  bottom: "150%",
-  left: "50%",
-  marginLeft: "-60px",
-  ":after": {
-    content: '""',
-    position: "absolute",
-    top: "100%",
-    left: "50%",
-    marginLeft: "-5px",
-    borderWidth: "5px",
-    borderStyle: "solid",
-    borderColor: "black transparent transparent transparent"
-  }
-});
+export const ToolTipText = styled.span`
+visibility: hidden;
+width: 120px;
+background-color:  ${({ theme }) => theme.colors.bunker};
+color:  ${({ theme }) => theme.colors.white};
+text-align: center;
+border-radius: 6px;
+padding: 5px 0;
+position: absolute;
+z-index: 1;
+bottom: 150%;
+left: 50%;
+margin-left: -60px;
+&:after: {
+  content: "''";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+`;
 
-export const ToolTip = styled("div")({
-  position: "relative",
-  display: "inline-block",
-  ":hover span": {
-    visibility: "visible"
-  }
-});
+export const ToolTip = styled.div`
+position: relative;
+display: inline-block;
+&:hover ${ToolTipText} {
+  visibility: visible;
+}
+`
+
 
 export const ProductAttributeToolTipWrapper = styled.span`
 visibility: hidden;
 width: 120px;
-background-color: black;
-color: #fff;
+background-color: ${({ theme }) => theme.colors.bunker};
+color: ${({ theme }) => theme.colors.white};
 text-align: center;
 border-radius: 6px;
 padding: 5px 0;
 
-/* Position the tooltip */
 position: absolute;
 z-index: 1;
 bottom: 10%;

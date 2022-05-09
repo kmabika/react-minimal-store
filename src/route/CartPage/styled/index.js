@@ -27,7 +27,7 @@ border: 1px solid #1d1f22;
 
 background-color:  ${({ theme }) => theme.colors.white};
 
-font-family: Source Sans Pro, sans-serif;
+font-family: font-family: ${({ theme }) => theme.fonts.sourceSans}, sans-serif;
 font-weight: 400;
 line-height: 1.125px;
 

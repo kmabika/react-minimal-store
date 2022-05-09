@@ -10,7 +10,6 @@ import {
     ProductCounterBtn,
     ProductQuantityWrapper,
     ProductCartImgSlideWrapper,
-    ProductCartImg
 } from './styled';
 import Headline from 'Component/Headline';
 import Slider from 'Component/Slider';

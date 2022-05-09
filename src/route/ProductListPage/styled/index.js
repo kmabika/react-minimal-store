@@ -8,4 +8,4 @@ export const ProductListWrapper = styled.section`
 export const CategoryHeaderWrapper = styled.div`
     margin-bottom: 60px;
     margin-top: 60px;
-`
+`;

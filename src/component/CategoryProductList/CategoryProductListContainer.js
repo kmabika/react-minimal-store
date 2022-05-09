@@ -1,19 +1,25 @@
-import {PureComponent} from 'react'
+import { PureComponent } from 'react'
+import { ProductsListType } from 'Type/ProductList.type';
 import CategoryProductList from './CategoryProductList.component'
 
 
+export class CategoryProductListContainer extends PureComponent {
 
-export class CategoryProductListContainer extends PureComponent{
+    static propTypes = {
+        products: ProductsListType.isRequired,
+    };
 
-    _containerProps(){
-        return{
-            products: this.props.products
+    containerProps() {
+        const { products } = this.props;
+        return {
+            products: products,
         }
-    }
-    render(){
-        return(
-            <CategoryProductList 
-            {...this._containerProps()}
+    };
+
+    render() {
+        return (
+            <CategoryProductList
+                {...this.containerProps()}
             />
         )
     }

@@ -1,32 +1,19 @@
 import { PureComponent } from 'react';
-import { MainProvider } from 'Context/MainContext';
-import { GET_SELECTED_CURRENCY } from 'Query/queries';
+import "react-toastify/dist/ReactToastify.css";
 import App from './App.component';
+import {Provider} from 'react-redux';
+import { ToastContainer } from "react-toastify";
+
+import { store } from 'Store/';
 
 export class AppContainer extends PureComponent {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedCurrency: "",
-        }
-    };
-
-    setSelectedCurrency = (currency) => {
-        this.setState({selectedCurrency: currency})
-    }
-
-    _retrieveSelectedCurrency(){
-        GET_SELECTED_CURRENCY.then(res =>  this.setState({selectedCurrency: res.data.selectedCurrency}))
-
-    }
-
     render() {
-        // this._retrieveSelectedCurrency();
         return (
-            <MainProvider>
+            <Provider  store={store}>
+                <ToastContainer />
                 <App />
-            </MainProvider>
+            </Provider>
         )
     }
 }

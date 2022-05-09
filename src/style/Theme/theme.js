@@ -1,10 +1,11 @@
 export const theme = {
     colors: {
-        emerald: "#5ECE7B",
-        bunker: "#1D1F22",
-        nero: "#292929",
-        white: "#FFFFFF",
-        darkGray: "#A6A6A6",
+        emerald: "hsl(136, 53%, 59%)",
+        bunker: "hsl(216, 8%, 12%)",
+        nero: "hsl(0, 0%, 16%)",
+        white: "hsl(0, 0%, 100%)",
+        darkGray: "hsl(0, 0%, 65%)",
+        lightGray: "hsl(0, 0%, 93%)",
     },
     fonts: {
         raleway: "Raleway",

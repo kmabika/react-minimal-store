@@ -1,5 +1,5 @@
 // globalStyles.js
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -59,6 +59,10 @@ img {
 a {
   text-decoration: none;
 }
+`;
+
+export const Main = styled.main`
+  min-height: 100vh;
 `;
 
 export default GlobalStyle;

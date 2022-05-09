@@ -1,11 +1,21 @@
-import { PureComponent } from "react";
-import { 
+import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import {
     CurrencySwitcherWrapper,
-    CurrencySwitcherBtn, 
+    CurrencySwitcherBtn,
     CurrencyDropdown,
-    CurrencyItem} from "./styled";
+    CurrencyItem
+} from "./styled";
+
+import { CurrencyItemType, CurrenciesType } from 'Type/Currency.type';
 
 export class CurrencySwitcher extends PureComponent {
+
+    static propTypes = {
+        availableCurrencies: CurrenciesType.isRequired,
+        selectedCurrency: CurrencyItemType.isRequired,
+        updateSelectedCurrency: PropTypes.func.isRequired,
+    }
 
     constructor(props) {
         super(props);
@@ -23,20 +33,28 @@ export class CurrencySwitcher extends PureComponent {
     };
 
     render() {
-        const {selectedCurrency, setSelectedCurrency} = this.props
+        const { availableCurrencies, updateSelectedCurrency, selectedCurrency} = this.props;
         return (
             <CurrencySwitcherWrapper>
-                <CurrencySwitcherBtn 
-                 onClick={this._handleButtonClick}
-                 isOpen={this.state.open}>
-                    {selectedCurrency}
+                <CurrencySwitcherBtn
+                    onClick={this._handleButtonClick}
+                    isOpen={this.state.open}>
+                    {selectedCurrency.symbol}
                 </CurrencySwitcherBtn>
                 {this.state.open && (
                     <CurrencyDropdown>
-                        {this.props.currencies.map((currency,index) => 
-                        <CurrencyItem key={index} onClick={() => {setSelectedCurrency(currency.symbol)}} data-id={index}>
+                        {availableCurrencies.map((currency, index) =>
+                        (<CurrencyItem key={index}
+                            onClick={() => {
+                                updateSelectedCurrency(currency);
+                                this._handleButtonClick()
+                            }}
+                            data-id={index}
+                        >
+
                             {currency.symbol} {currency.label}
-                        </CurrencyItem>)}
+                        </CurrencyItem>)
+                        )}
                     </CurrencyDropdown>
                 )}
             </CurrencySwitcherWrapper>
