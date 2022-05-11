@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import { PureComponent } from "react";
 import ProductAttribute from 'Component/ProductAttribute';
 import { AttributesType } from 'Type/ProductList.type';
+import { ProductPriceHeaderWrapper } from 'Route/ProductDescriptionPage/styled';
+import Paragraph from 'Component/Paragraph';
 
 export class ProductAttributes extends PureComponent {
     static propTypes = {
@@ -10,6 +12,7 @@ export class ProductAttributes extends PureComponent {
     };
 
     renderProductAttribute(item, attributeData) {
+        const { selectedProduct } = this.props;
         const attributeItem = {
             ...item,
         }
@@ -19,6 +22,7 @@ export class ProductAttributes extends PureComponent {
         return (
             <ProductAttribute
                 key={item.id}
+                selectedProduct={selectedProduct}
                 item={attributeItem}
                 attributeData={attributeData}
             />
@@ -26,7 +30,8 @@ export class ProductAttributes extends PureComponent {
     };
 
     renderAttributes() {
-        const { attributes, inStock } = this.props;
+        const { attributes, selectedProduct } = this.props;
+
         return Object.values(attributes).map((attribute) => {
             const {
                 id,
@@ -38,16 +43,20 @@ export class ProductAttributes extends PureComponent {
             const attributeData = {
                 name: name, type: type
             };
-
-            if (!inStock){
-                return null;
-            };
             return (
-                <div key={id} style={{ display: 'flex', width: '50%' }}>
-                    {items.map((item) => (
-                        this.renderProductAttribute(item, attributeData)
-                    ))}
-                </div>
+                <>
+                    {selectedProduct && (
+                        <ProductPriceHeaderWrapper>
+                            <Paragraph lineHeight={1.125} children={`${name}:`} fontSize={1.125} fontWeight={700} />
+                        </ProductPriceHeaderWrapper>
+                    )}
+
+                    <div key={id} style={{ display: 'flex', width: '50%' }}>
+                        {items.map((item) => (
+                            this.renderProductAttribute(item, attributeData)
+                        ))}
+                    </div>
+                </>
             )
         })
     };

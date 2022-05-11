@@ -1,7 +1,6 @@
 import { Query, Field } from '@tilework/opus';
 
 export class ProductsQuery {
-
   getProductsListQuery(categoryName) {
     return new Query('category', true)
       .addArgument('input', 'CategoryInput!', { title: categoryName })
@@ -18,6 +17,21 @@ export class ProductsQuery {
           .addField(new Field('currency', true)
             .addFieldList(['label', 'symbol']))));
   };
+
+  getProductQuery(id) {
+    return new Query('product', true)
+    .addFieldList(['id', 'name', 'category', 'inStock', 'brand', 'description'])
+    .addField(new Field('gallery', true))
+    .addField(new Field('attributes', true)
+      .addFieldList(['name', 'type','id'])
+      .addField(new Field('items', true)
+        .addFieldList(['id', 'value','displayValue'])))
+    .addField(new Field('prices', true)
+      .addField('amount')
+      .addField(new Field('currency', true)
+        .addFieldList(['label', 'symbol'])))
+    .addArgument('id', 'String!', id);
+  }
 }
 
 export default new ProductsQuery();

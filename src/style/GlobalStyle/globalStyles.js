@@ -29,7 +29,6 @@ body {
   font-family: ${({ theme }) => theme.fonts.raleway};
   font-size: 18px;
   line-height: 1.6;
-
   color: ${({ theme }) => theme.colors.bunker};
 }
 
@@ -61,8 +60,5 @@ a {
 }
 `;
 
-export const Main = styled.main`
-  min-height: 100vh;
-`;
 
 export default GlobalStyle;

@@ -13,17 +13,22 @@ export class CartOverlay extends PureComponent {
         products: CartItemsType.isRequired,
         selectedCurrency: CurrencyItemType.isRequired,
         totalCount: PropTypes.number.isRequired
-    }
+    };
 
     render() {
         const { toggleCart, isOpened, products, totalCount, selectedCurrency } = this.props;
         return (
-            <CartOverlayWrapper >
+            <CartOverlayWrapper>
                 <CartIconWrapper onClick={() => { toggleCart() }} >
                     <CartIcon totalProducts={totalCount} />
                 </CartIconWrapper>
                 {isOpened && (
-                    <CartPreview isOpened={isOpened} totalCount={totalCount} selectedCurrency={selectedCurrency} products={products} />
+                    <CartPreview 
+                    isOpened={isOpened}
+                    totalCount={totalCount} 
+                    selectedCurrency={selectedCurrency} 
+                    products={products}
+                    toggleCart={toggleCart} />
                 )}
                 {isOpened && <OverlayContainer />}
             </CartOverlayWrapper>

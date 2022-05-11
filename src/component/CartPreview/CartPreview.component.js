@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from "react";
+import { NavLink } from 'react-router-dom';
 import {
   CartContainer,
   CartWrap,
@@ -39,7 +40,7 @@ export class CartPreview extends PureComponent {
   }
 
   render() {
-    const { products, totalCount, selectedCurrency, totalAmount } = this.props;
+    const { products, totalCount, selectedCurrency, totalAmount, toggleCart } = this.props;
     return (
       <>
         <CartContainer>
@@ -70,10 +71,10 @@ export class CartPreview extends PureComponent {
               </CartAmount>
             </CheckoutTotalItem>
             <CartButtonWrap>
-              <ViewBagBtn>
+              <ViewBagBtn to="/cart" onClick={() => {toggleCart()}} exact> 
                 View Bag
               </ViewBagBtn>
-              <CheckOutBtn>
+              <CheckOutBtn to="#" onClick={() => {toggleCart()}} exact>
                 Check Out
               </CheckOutBtn>
             </CartButtonWrap>

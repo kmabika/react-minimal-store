@@ -8,7 +8,9 @@ export const ProductCardWrapper = styled.li`
     padding: 11px 14px 0px 16px;
     opacity: ${props => props.inStock ? "100%" : "50%"};
     &:hover {
-      box-shadow: 0px 4px 35px 0px rgba(168, 172, 176, 0.19);
+      box-shadow: 0px 100px 105px 0px rgba(168, 172, 176, 0.19);
+      transition: 0.3s ease-in-out;
+      transform: scale(1.01, 1.01);
     }
 `;
 
@@ -50,8 +52,8 @@ export const ProductContent = styled.div`
 
 export const ProductCartButton = styled.button`
   position: absolute;
-  bottom: 64px;
-  right: 30px;
+  bottom: -25px;
+  right: 10px;
   display: none;
   justify-content: center;
   align-items: center;

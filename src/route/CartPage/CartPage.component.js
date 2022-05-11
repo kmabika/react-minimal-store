@@ -12,23 +12,20 @@ import {
     ProductCartImgSlideWrapper,
 } from './styled';
 import Headline from 'Component/Headline';
+import ProductAttributes from 'Component/ProductAttributes';
 import Slider from 'Component/Slider';
 
 export class CartPage extends PureComponent {
-    render() {
+
+    renderCartItems() {
         return (
-            <CartPageWrapper>
-                <CartPageHeader>
-                    <Headline type="h1" fontWeight={700} fontSize={1.5}>Cart</Headline>
-                </CartPageHeader>
+            this.props.cartItems.map(cartItem => (
                 <CartProductItemWrapper>
                     <ProductInfoWrapper>
-                        <Headline fontSize={2} fontWeight={600}>Product Name</Headline>
-                        <Headline fontSize={1.5} fontWeight={400}>Product Brand</Headline>
+                        <Headline typeHeadline="h1" fontSize={2} fontWeight={600}>{cartItem.name}</Headline>
+                        <Headline fontSize={1.5} fontWeight={400}>{cartItem.brand}</Headline>
                         <Headline fontWeight={700} fontSize={1}>$50.00</Headline>
-                        <ProductAttributeButton>
-                            M
-                        </ProductAttributeButton>
+                        <ProductAttributes attributes={cartItem.attributes} inStock={cartItem.inStock} />
                     </ProductInfoWrapper>
                     <ProductCounterWrapper>
                         <ProductCounterBtnWrapper>
@@ -44,7 +41,18 @@ export class CartPage extends PureComponent {
                             <Slider />
                         </ProductCartImgSlideWrapper>
                     </ProductCounterWrapper>
-                </CartProductItemWrapper>    
+                </CartProductItemWrapper>
+            ))
+        )
+    }
+
+    render() {
+        return (
+            <CartPageWrapper>
+                <CartPageHeader>
+                    <Headline type="h1" fontWeight={700} fontSize={1.5}>Cart</Headline>
+                </CartPageHeader>
+                {this.renderCartItems()}
             </CartPageWrapper>
         )
     }

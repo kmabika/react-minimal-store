@@ -1,11 +1,17 @@
 import styled, { css } from 'styled-components';
 
-export const ProductTextAttribute = styled.span`
- border: 1px solid ${({ theme }) => theme.colors.bunker};
- color: ${({ theme }) => theme.colors.bunker};
- background-color: ${({ theme }) => theme.colors.white};
- padding: 10px;
- cursor: pointer;
+export const ProductTextAttribute = styled.button`
+min-width: 63px;
+height: 45px;
+padding: 13px;
+border: 1px solid ${({ theme }) => theme.colors.bunker};
+color: ${({ theme }) => theme.colors.nero};
+background-color: ${({ theme }) => theme.colors.white};
+font-family: ${({ theme }) => theme.fonts.sourceSans};
+font-weight: 400;
+opacity: 1;
+transition: opacity 250ms linear;
+cursor: pointer;
  ${({ isSelected, theme }) => {
     return (
       isSelected &&
@@ -41,7 +47,7 @@ export const ProductColorAttribute = styled.span`
 `
 
 export const ProductAttributeWrapper = styled.span`
-padding-top: 30px;
+padding-top: 10px;
 > * {
     &:first-child {
        margin-right: 10px;
@@ -59,11 +65,11 @@ border-radius: 6px;
 padding: 5px 0;
 position: absolute;
 z-index: 1;
-bottom: 150%;
+bottom: 100%;
 left: 50%;
 margin-left: -60px;
-&:after: {
-  content: "''";
+&:after {
+  content: '';
   position: absolute;
   top: 100%;
   left: 50%;
@@ -78,26 +84,6 @@ export const ToolTip = styled.div`
 position: relative;
 display: inline-block;
 &:hover ${ToolTipText} {
-  visibility: visible;
-}
-`
-
-
-export const ProductAttributeToolTipWrapper = styled.span`
-visibility: hidden;
-width: 120px;
-background-color: ${({ theme }) => theme.colors.bunker};
-color: ${({ theme }) => theme.colors.white};
-text-align: center;
-border-radius: 6px;
-padding: 5px 0;
-
-position: absolute;
-z-index: 1;
-bottom: 10%;
-left: 10%;
-margin-left: -60px;
-${ProductColorAttribute}:hover & {
   visibility: visible;
 }
 `

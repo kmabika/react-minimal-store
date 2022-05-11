@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from 'react-router-dom';
 
 export const CartContainer = styled.section`
   width: 20.3125rem;
@@ -100,44 +101,35 @@ export const CartButtonWrap = styled.div`
   align-items: center;
 `;
 
-export const ViewBagBtn = styled.button`
+export const ViewBagBtn = styled(NavLink)`
   width: 140px;
   padding: 13px;
-
   font-size: 14px;
+  margin-right: 12px;
   font-weight: 600;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
-
   cursor: pointer;
-
   opacity: 1;
   transition: opacity 250ms linear;
-
   border: 1px solid ${({ theme }) => theme.colors.bunker};
-
   color: ${({ theme }) => theme.colors.bunker};
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const CheckOutBtn = styled.button`
+export const CheckOutBtn = styled(NavLink)`
 width: 140px;
 padding: 13px;
-
 font-size: 14px;
 font-weight: 600;
 line-height: 1.2;
 text-transform: uppercase;
 text-align: center;
-
 cursor: pointer;
-
 opacity: 1;
 transition: opacity 250ms linear;
-
 border: 1px solid transparent;
-
 color: ${({ theme }) => theme.colors.white};
 background-color: ${({ theme }) => theme.colors.emerald};
 }

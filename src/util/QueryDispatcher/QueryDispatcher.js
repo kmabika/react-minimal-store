@@ -23,6 +23,17 @@ export class QueryDispatcher {
     return data;
   }
 
+  static async handleFetchProductData(dispatch,id) {
+    const queries = [ProductsQuery.getProductQuery(id)];
+
+    const data = await this.handleFetchRequest(queries);
+    if (!data.product) {
+      return false;
+    };
+    ProductDispatcher.setActiveProduct(dispatch,data.product);
+    return data;
+  }
+
   static async handleFetchProductsData(dispatch, categoryName) {
     if (!categoryName) return false;
     const queries = [ProductsQuery.getProductsListQuery(categoryName.toLowerCase())];

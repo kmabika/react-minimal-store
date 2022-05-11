@@ -72,7 +72,7 @@ export class ProductCardContainer extends PureComponent {
             id,
             brand,
             category,
-            image: gallery[0],
+            gallery,
             price: filtredPrice,
             prices: prices,
             inStock,

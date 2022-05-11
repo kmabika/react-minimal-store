@@ -1,4 +1,4 @@
-import { PureComponent } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import CartOverlay from "./CartOverlay.component";
 import { CartItemsType } from 'Type/Cart.type';
@@ -7,9 +7,9 @@ import { CurrencyItemType } from 'Type/Currency.type';
 export const mapStateToProps = (state) => ({
     cartItems: state.CartReducer.cartItems,
     selectedCurrency: state.CurrencyReducer.selectedCurrency,
-  });
+});
 
-export class CartOverlayContainer extends PureComponent{
+export class CartOverlayContainer extends PureComponent {
 
     static propTypes = {
         cartItems: CartItemsType.isRequired,
@@ -18,7 +18,7 @@ export class CartOverlayContainer extends PureComponent{
 
     constructor(props) {
         super(props);
-        this.state = {open: false}
+        this.state = { open: false }
         this.handleButtonClick = this.handleButtonClick.bind(this);
     }
 
@@ -38,14 +38,15 @@ export class CartOverlayContainer extends PureComponent{
             isOpened: this.state.open,
             totalCount: totalCount,
             products: this.props.cartItems,
+            innerRef: this.wrapperRef,
             selectedCurrency: this.props.selectedCurrency,
             toggleCart: this.handleButtonClick,
         }
     }
 
-    render(){
-        return(
-            <CartOverlay {...this.containerProps()}/>
+    render() {
+        return (
+            <CartOverlay {...this.containerProps()} />
         )
     }
 }

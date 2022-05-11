@@ -17,7 +17,7 @@ export class CartPreviewContainer extends PureComponent {
     }
 
     containerProps() {
-        const { products, selectedCurrency } = this.props;
+        const { products, selectedCurrency, toggleCart } = this.props;
         const total = products.reduce((accumulator, item) => {
             const filteredPrice = item.prices.filter(
                 (price) => price.currency.label === selectedCurrency.label,
@@ -26,6 +26,7 @@ export class CartPreviewContainer extends PureComponent {
         }, 0).toFixed(2)
         return {
             products: products,
+            toggleCart,
             selectedCurrency: selectedCurrency,
             totalCount: this.props.totalCount,
             totalAmount: total,

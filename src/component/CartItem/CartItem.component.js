@@ -62,7 +62,7 @@ export class CartItem extends PureComponent {
     }
 
     render() {
-        const { product, price, updateProductAmount } = this.props;
+        const { product, price, updateProductAmount, image } = this.props;
         return (
             <CartItemWrapper>
                 <CartItemContentWrapper>
@@ -84,7 +84,7 @@ export class CartItem extends PureComponent {
                     </CartItemCounterDown>
                 </CartItemCountersWrapper>
                 <CartItemImageWrapper>
-                    <CartItemImage src={`${product.image}`} alt={product.name} />
+                    <CartItemImage src={`${image}`} alt={product.name} />
                 </CartItemImageWrapper>
 
             </CartItemWrapper>

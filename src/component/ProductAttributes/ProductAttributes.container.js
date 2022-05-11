@@ -1,19 +1,25 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from "react";
-import { AttributesType } from 'Type/ProductList.type';
+import { AttributesType, ProductType } from 'Type/ProductList.type';
 import ProductAttributes from "./ProductAttributes.component";
 
 export class ProductAttributesContainer extends PureComponent {
     static propTypes = {
+        selectedProduct: ProductType,
         attributes: AttributesType.isRequired,
         inStock: PropTypes.bool.isRequired,
     };
 
     containerProps() {
-        const { attributes, inStock } = this.props;
+        const { attributes,selectedProduct } = this.props;
+        if ( selectedProduct === undefined) {
+            return {
+                attributes,
+            };
+        };
         return {
+            selectedProduct,
             attributes,
-            inStock
         }
     }
 
