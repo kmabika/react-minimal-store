@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { toastAction } from "Util/";
 import { ProductType } from 'Type/ProductList.type';
 import { CurrencyItemType } from 'Type/Currency.type';
+import { ProductDispatcher } from 'Store/Product/Product.dispatcher';
 
 export const mapStateToProps = (state) => ({
     selectedCurrency: state.CurrencyReducer.selectedCurrency,
@@ -14,6 +15,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
     addProductToCart: (product) => CartDispatcher.addProductToCart(dispatch, product),
+    resetProductsAttributes: () => ProductDispatcher.resetProductsAttributes(dispatch)
 });
 
 export class ProductCardContainer extends PureComponent {
@@ -31,24 +33,25 @@ export class ProductCardContainer extends PureComponent {
 
     async handleAddToCart(product) {
         const { attributes } = product;
-        const { addProductToCart } = this.props;
+        const { addProductToCart, resetProductsAttributes} = this.props;
         let attributesSelected = '';
 
-        if (attributes.length){
+        if (attributes.length) {
             attributes?.map((attribute) => {
                 attributesSelected = attribute.items.some((item) => item.isSelected === true);
                 return attribute;
             });
-        }else {
+        } else {
             attributesSelected = true;
         }
 
         if (!attributesSelected) {
             toast.error(`Select some attributes`, toastAction)
-        } else { 
+        } else {
             addProductToCart(product);
-            toast.success(`${product.name} added to cart`, toastAction) 
-        } 
+            resetProductsAttributes();
+            toast.success(`${product.name} added to cart`, toastAction)
+        }
     }
 
     containerProps() {

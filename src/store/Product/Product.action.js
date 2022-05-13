@@ -1,6 +1,9 @@
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const SELECT_ATTRIBUTE = 'SELECT_ATTRIBUTE';
 export const UPDATE_ACTIVE_PRODUCT = 'UPDATE_ACTIVE_PRODUCT';
+export const RESET_PRODUCT_ATTRIBUTES = 'RESET_PRODUCT_ATTRIBUTES';
+export const RESET_PRODUCTS_ATTRIBUTES = 'RESET_PRODUCTS_ATTRIBUTES';
+
 export const getProductsList = (products) => ({
   type: GET_PRODUCTS,
   products,
@@ -14,4 +17,13 @@ export const updateActiveProduct = (product) => ({
   type: UPDATE_ACTIVE_PRODUCT,
   product,
 });
+
+export const resetProductAttributes = (product) => ({
+  type: RESET_PRODUCT_ATTRIBUTES,
+  product,
+});
+
+export const resetProductsAttributes = () => ({
+  type: RESET_PRODUCTS_ATTRIBUTES
+})
 

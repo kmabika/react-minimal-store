@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { toastAction } from "Util/";
 import NotFoundPage from "Route/NotFoundPage/NotFoundPage.component";
 import { updateActiveCategory } from "Store/Category/Category.action";
+import { ProductDispatcher } from "Store/Product/Product.dispatcher";
 
 export const mapStateToProps = (state) => ({
   selectedProduct: state.ProductReducer.selectedProduct,
@@ -18,7 +19,8 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   handleFetchProductData: (productid) => QueryDispatcher.handleFetchProductData(dispatch, productid),
   addProductToCart: (product) => CartDispatcher.addProductToCart(dispatch, product),
-  updateActiveCategory: (category) => CategoryDispatcher.updateActiveCategory(dispatch,category),
+  updateActiveCategory: (category) => CategoryDispatcher.updateActiveCategory(dispatch, category),
+  resetProductAttributes: (product) => ProductDispatcher.resetProductAttributes(dispatch,product),
 });
 
 
@@ -29,11 +31,10 @@ export class ProductDescriptionPageContainer extends PureComponent {
     this.handleAddToCart = this.handleAddToCart.bind(this);
   };
 
-
   handleAddToCart() {
-    const { addProductToCart, selectedProduct } = this.props;
-    const { attributes,name, id, prices, gallery, brand } = selectedProduct;
-    const productCartInfo = { id: id, name: name, brand,image: gallery[0], images:gallery, prices: prices, attributes: attributes };
+    const { addProductToCart, selectedProduct, resetProductAttributes } = this.props;
+    const { attributes, name, id, prices, gallery, brand } = selectedProduct;
+    const productCartInfo = { id: id, name: name, brand, image: gallery[0], images: gallery, prices: prices, attributes: attributes };
     let attributesSelected = '';
 
     if (attributes.length) {
@@ -49,6 +50,7 @@ export class ProductDescriptionPageContainer extends PureComponent {
       toast.error(`Select some attributes`, toastAction)
     } else {
       addProductToCart(productCartInfo);
+      resetProductAttributes(selectedProduct);
       toast.success(`${selectedProduct.name} added to cart`, toastAction)
     }
   }
@@ -57,7 +59,7 @@ export class ProductDescriptionPageContainer extends PureComponent {
     const productId = this.props.match.params.id;
     const category = this.props.match.category
     const { handleFetchProductData } = this.props;
-    const validProduct = await handleFetchProductData(productId).finally(() => {updateActiveCategory(category)});
+    const validProduct = await handleFetchProductData(productId).finally(() => { updateActiveCategory(category) });
 
     if (validProduct) {
       this.setState({ hasError: false, isLoading: false });
@@ -67,9 +69,6 @@ export class ProductDescriptionPageContainer extends PureComponent {
   containerProps() {
     const { isLoading, hasError } = this.state;
     const { selectedProduct, activeCurrency } = this.props;
-    // const filtredPrice = selectedProduct.prices.filter(
-    //   (price) => price.currency.symbol === activeCurrency.symbol,
-    // )[0];
     return {
       isLoading,
       hasError,
@@ -81,10 +80,10 @@ export class ProductDescriptionPageContainer extends PureComponent {
 
   render() {
     const { hasError } = this.state;
-    const {selectedProduct} = this.props;
-    
-    if(hasError){
-      return (<NotFoundPage/>)
+    const { selectedProduct } = this.props;
+
+    if (hasError) {
+      return (<NotFoundPage />)
     };
 
     return (

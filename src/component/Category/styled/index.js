@@ -22,9 +22,9 @@ export const StyledLink = styled(NavLink)`
   text-transform: uppercase;
   color:  ${({ theme }) => theme.colors.bunker};
   padding: 32px 16px;
-  ${({ isSelected, theme }) => {
+  ${({ isselected, theme }) => {
     return (
-      isSelected &&
+      isselected === 'true' &&
       css`
       color: ${theme.colors.emerald};
       border-bottom: 2px solid ${theme.colors.emerald};    

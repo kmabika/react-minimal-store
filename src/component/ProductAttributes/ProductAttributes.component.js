@@ -38,7 +38,7 @@ export class ProductAttributes extends PureComponent {
                 name: name, type: type
             };
             return (
-                <>
+                <div key={id}>
                     {selectedProduct && (
                         <ProductPriceHeaderWrapper>
                             <Paragraph lineHeight={1.125} children={`${name}:`} fontSize={1.125} fontWeight={700} />
@@ -50,7 +50,7 @@ export class ProductAttributes extends PureComponent {
                             this.renderProductAttribute(item, attributeData)
                         ))}
                     </div>
-                </>
+                </div>
             )
         })
     };

@@ -52,16 +52,15 @@ export const Cart = styled.div`
   overflow-y: scroll;
   scrollbar-width: thin !important;
   scrollbar-color:  ${({ theme }) => theme.colors.emerald} ${({ theme }) => theme.colors.white};
-
   &::-webkit-scrollbar {
+    width: 2px;
+    height: 1px;
     width: thin;
   }
-
   &::-webkit-scrollbar-track {
     border-radius:  0.5rem;
     box-shadow: inset 0 0 10px ${({ theme }) => theme.colors.bunker};
   }
-
   &::-webkit-scrollbar-thumb {
     border-radius:  0.5rem;
     background-color: ${({ theme }) => theme.colors.emerald};

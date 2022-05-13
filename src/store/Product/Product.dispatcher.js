@@ -1,4 +1,4 @@
-import { getProductsList, selectAttribute, updateActiveProduct } from './Product.action';
+import { getProductsList, selectAttribute, updateActiveProduct, resetProductAttributes, resetProductsAttributes } from './Product.action';
 
 export class ProductDispatcher {
   static async updateProductsData(dispatch, products) {
@@ -12,6 +12,14 @@ export class ProductDispatcher {
   static setActiveProduct(dispatch,product){
     dispatch(updateActiveProduct(product));
   };
+
+  static resetProductAttributes(dispatch,product){
+    dispatch(resetProductAttributes(product))
+  }
+
+  static resetProductsAttributes(dispatch) {
+    dispatch(resetProductsAttributes());
+  }
 }
 
 export default new ProductDispatcher();

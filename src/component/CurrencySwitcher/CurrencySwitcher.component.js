@@ -15,54 +15,28 @@ export class CurrencySwitcher extends PureComponent {
         availableCurrencies: CurrenciesType.isRequired,
         selectedCurrency: CurrencyItemType.isRequired,
         updateSelectedCurrency: PropTypes.func.isRequired,
-    }
-
-    constructor(props) {
-        super(props);
-    
-        this.menuRef = React.createRef();
-        this.buttonRef = React.createRef();
-        this.handleClickOutside = this.handleClickOutside.bind(this);
-      }
-    
-      componentDidMount() {
-        document.addEventListener('mousedown', this.handleClickOutside);
-      }
-    
-      componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleClickOutside);
-      }
-    
-      handleClickOutside(event) {
-        const { setMenuVisible } = this.props;
-        if (this.menuRef.current && this.buttonRef.current) {
-          if (!this.menuRef.current.contains(event.target)
-          && !this.buttonRef.current.contains(event.target)) {
-            setMenuVisible(false);
-          }
-        }
-      }
+    };
 
     render() {
-        const { availableCurrencies,isMenuOpen, updateSelectedCurrency, selectedCurrency, setMenuVisible} = this.props;
+        const { availableCurrencies,isMenuOpen, updateSelectedCurrency, selectedCurrency, buttonRef,menuRef,toggleMenu} = this.props;
         return (
             <CurrencySwitcherWrapper >
                 <CurrencySwitcherBtn
-                    ref={this.buttonRef}
+                    ref={buttonRef}
                     onClick={() => {
-                        setMenuVisible(!isMenuOpen);
+                        toggleMenu(!isMenuOpen);
                     }}
                     aria-label="change currency"
                     isOpen={isMenuOpen}>
                     {selectedCurrency.symbol}
                 </CurrencySwitcherBtn>
                 {isMenuOpen && (
-                    <CurrencyDropdown ref={this.menuRef}>
+                    <CurrencyDropdown ref={menuRef}>
                         {availableCurrencies && availableCurrencies?.map((currency, index) =>
                         (<CurrencyItem key={index}
                             onClick={() => {
                                 updateSelectedCurrency(currency);
-                                setMenuVisible(false)
+                                toggleMenu(false)
                             }}
                             data-id={index}
                         >

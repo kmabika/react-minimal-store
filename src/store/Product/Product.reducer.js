@@ -1,7 +1,9 @@
 import {
   GET_PRODUCTS,
   SELECT_ATTRIBUTE,
-  UPDATE_ACTIVE_PRODUCT
+  UPDATE_ACTIVE_PRODUCT,
+  RESET_PRODUCT_ATTRIBUTES,
+  RESET_PRODUCTS_ATTRIBUTES,
 } from './Product.action';
 
 export const getInitialState = () => ({
@@ -23,7 +25,6 @@ export const getProductsList = (action, state) => {
         })),
       })),
     })),
-
   }
 };
 
@@ -101,6 +102,24 @@ const ProductReducer = (state = getInitialState(), action) => {
     }
     case SELECT_ATTRIBUTE: {
       return selectAttribute(action, state)
+    }
+    case RESET_PRODUCT_ATTRIBUTES: {
+     return updateActiveProduct(action,state);
+    }
+    case RESET_PRODUCTS_ATTRIBUTES: {
+      return {
+        ...state,
+        products: state.products?.map((product) => ({
+          ...product,
+          attributes: product.attributes?.map((attribute) => ({
+            ...attribute,
+            items: attribute.items?.map((item) => ({
+              ...item,
+              isSelected: false,
+            })),
+          })),
+        })),
+      }
     }
     default:
       return state;

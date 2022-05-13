@@ -28,7 +28,7 @@ class Category extends PureComponent {
                 id={category} 
                 to={`/${category}`}
                 aria-label={`${category} category`}
-                isSelected={isActive} 
+                isselected={isActive.toString()} 
                 exact
                 >
                     {category}
