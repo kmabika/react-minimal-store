@@ -109,7 +109,7 @@ export class ProductDescriptionPage extends PureComponent {
 
     renderProductContent() {
         const { selectedProduct, activeCurrency } = this.props;
-        const filtredPrice = selectedProduct.prices.filter(
+        const filteredPrice = selectedProduct.prices.filter(
             (price) => price.currency.symbol === activeCurrency.symbol,
         )[0];
         return (
@@ -126,7 +126,7 @@ export class ProductDescriptionPage extends PureComponent {
                     <ProductPriceHeaderWrapper>
                         <Paragraph fontSize={1.125} fontWeight={700} children={"Price:"} />
                     </ProductPriceHeaderWrapper>
-                    <Paragraph lineHeight={1.125} fontSize={1.125} children={`${filtredPrice.currency.symbol}${filtredPrice.amount}`} fontWeight={700} />
+                    <Paragraph lineHeight={1.125} fontSize={1.125} children={`${filteredPrice.currency.symbol}${filteredPrice.amount}`} fontWeight={700} />
                 </ProductPriceWrapper>
                 {this.renderAddToCart()}
                 <ProductInfoDescriptionWrapper>

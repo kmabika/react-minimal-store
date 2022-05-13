@@ -6,9 +6,9 @@ export class ProductsQuery {
       .addArgument('input', 'CategoryInput!', { title: categoryName })
       .addField('name')
       .addField(new Field('products', true)
-        .addFieldList(['id', 'name', 'brand', 'category', 'inStock'])
+        .addFieldList(['id', 'category', 'name', 'brand', 'inStock'])
         .addField(new Field('attributes', true)
-          .addFieldList(['id', 'name', 'type'])
+          .addFieldList(['id', 'type', 'name'])
           .addField(new Field('items', true)
             .addFieldList(['id', 'value', 'displayValue'])))
         .addField(new Field('gallery', true))
@@ -20,16 +20,16 @@ export class ProductsQuery {
 
   getProductQuery(id) {
     return new Query('product', true)
-    .addFieldList(['id', 'name', 'category', 'inStock', 'brand', 'description'])
+    .addFieldList(['id', 'category', 'name', 'brand', 'description', 'inStock'])
     .addField(new Field('gallery', true))
     .addField(new Field('attributes', true)
-      .addFieldList(['name', 'type','id'])
+      .addFieldList(['id', 'name','type'])
       .addField(new Field('items', true)
-        .addFieldList(['id', 'value','displayValue'])))
+        .addFieldList(['id', 'displayValue','value'])))
     .addField(new Field('prices', true)
       .addField('amount')
       .addField(new Field('currency', true)
-        .addFieldList(['label', 'symbol'])))
+        .addFieldList(['symbol', 'label'])))
     .addArgument('id', 'String!', id);
   }
 }

@@ -6,23 +6,16 @@ export const getInitialState = () => ({
   activeCategory: '',
 });
 
-const validateCategory = (newCategory, allCategories) => {
-  if (!newCategory) return true;
-  const normalizedCategory = newCategory.toLowerCase();
-  return allCategories.includes(normalizedCategory);
-};
-
-
-export const updateActiveCategory = (action,state) => {
-  let newCategory = action.category;
-  const validCategory = validateCategory(newCategory, state.categories);
-  if (newCategory === undefined) {
-    newCategory = state.categories[0];
+export const updateSelectedCategory = (action,state) => {
+  let selectedCategory = action.category;
+  const isValidCategory = state.categories?.includes(selectedCategory.toLowerCase());
+  if (selectedCategory === undefined) {
+    selectedCategory = state.categories[0];
   }
-  if (validCategory) {
+  if (isValidCategory) {
     return {
       ...state,
-      activeCategory: newCategory,
+      activeCategory: selectedCategory,
     };
   }
   return {
@@ -40,7 +33,7 @@ const CategoryReducer = (state = getInitialState(), action) => {
         categories: action.categories?.map((category) => category.name),
       };
     case UPDATE_ACTIVE_CATEGORY:
-      return updateActiveCategory(action,state);
+      return updateSelectedCategory(action,state);
     default:
       return state;
   }

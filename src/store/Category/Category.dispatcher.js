@@ -1,12 +1,12 @@
-import { getCategories, updateActiveCategory } from './Category.action';
+import { getCategories, updateSelectedCategory } from './Category.action';
 
 export class CategoryDispatcher {
   static async updateCategoriesData(dispatch, categories) {
     dispatch(getCategories(categories));
   };
 
-  static async updateActiveCategory(dispatch, category) {
-    dispatch(updateActiveCategory(category));
+  static async updateSelectedCategory(dispatch, category) {
+    dispatch(updateSelectedCategory(category));
   }
 }
 

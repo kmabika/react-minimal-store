@@ -8,7 +8,7 @@ import { CategoryDispatcher } from "Store/Category/Category.dispatcher";
 import { toast } from "react-toastify";
 import { toastAction } from "Util/";
 import NotFoundPage from "Route/NotFoundPage/NotFoundPage.component";
-import { updateActiveCategory } from "Store/Category/Category.action";
+import { updateSelectedCategory } from "Store/Category/Category.action";
 import { ProductDispatcher } from "Store/Product/Product.dispatcher";
 
 export const mapStateToProps = (state) => ({
@@ -19,7 +19,7 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   handleFetchProductData: (productid) => QueryDispatcher.handleFetchProductData(dispatch, productid),
   addProductToCart: (product) => CartDispatcher.addProductToCart(dispatch, product),
-  updateActiveCategory: (category) => CategoryDispatcher.updateActiveCategory(dispatch, category),
+  updateSelectedCategory: (category) => CategoryDispatcher.updateSelectedCategory(dispatch, category),
   resetProductAttributes: (product) => ProductDispatcher.resetProductAttributes(dispatch,product),
 });
 
@@ -59,7 +59,7 @@ export class ProductDescriptionPageContainer extends PureComponent {
     const productId = this.props.match.params.id;
     const category = this.props.match.category
     const { handleFetchProductData } = this.props;
-    const validProduct = await handleFetchProductData(productId).finally(() => { updateActiveCategory(category) });
+    const validProduct = await handleFetchProductData(productId).finally(() => { updateSelectedCategory(category) });
 
     if (validProduct) {
       this.setState({ hasError: false, isLoading: false });

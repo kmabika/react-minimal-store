@@ -10,7 +10,7 @@ import NotFoundPage from 'Route/NotFoundPage/NotFoundPage.component';
 
 export const mapDispatchToProps = (dispatch) => ({
     handleFetchProductsData: (category) => QueryDispatcher.handleFetchProductsData(dispatch, category),
-    updateActiveCategory: (category) => CategoryDispatcher.updateActiveCategory(dispatch,category),
+    updateSelectedCategory: (category) => CategoryDispatcher.updateSelectedCategory(dispatch,category),
 });
 
 export const mapStateToProps = (state) => ({
@@ -46,8 +46,8 @@ export class ProductListPageContainer extends PureComponent {
 
     async handleFetchProducts() {
         const categoryName = this.props.match.params.category
-        const { handleFetchProductsData, updateActiveCategory } = this.props;
-        const validProducts = await handleFetchProductsData(categoryName).finally(() => {updateActiveCategory(categoryName)});
+        const { handleFetchProductsData, updateSelectedCategory } = this.props;
+        const validProducts = await handleFetchProductsData(categoryName).finally(() => {updateSelectedCategory(categoryName)});
         if (validProducts) {
             this.setState({ hasError: false, isLoading: false });
         } else { this.setState({ hasError: true, isLoading: false }); }

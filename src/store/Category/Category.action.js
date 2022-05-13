@@ -5,7 +5,7 @@ export const getCategories = (categories) => ({
   categories,
 });
 
-export const updateActiveCategory = (category) => ({
+export const updateSelectedCategory = (category) => ({
   type: UPDATE_ACTIVE_CATEGORY,
   category,
 })

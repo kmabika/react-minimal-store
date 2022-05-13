@@ -26,7 +26,7 @@ export class CartItemContainer extends PureComponent {
     containerProps() {
         const { selectedCurrency, updateProductAmount, product } = this.props;
         const { prices, images} = product;
-        const filtredPrice = prices.filter(
+        const filteredPrice = prices.filter(
             (price) => price.currency.symbol === this.props.selectedCurrency.symbol,
         )[0];
         return {
@@ -34,7 +34,7 @@ export class CartItemContainer extends PureComponent {
             image: images[0],
             selectedCurrency: selectedCurrency,
             updateProductAmount: updateProductAmount,
-            price: filtredPrice,
+            price: filteredPrice,
         };
     };
 
