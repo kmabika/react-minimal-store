@@ -7,7 +7,7 @@ export class ProductAttributesContainer extends PureComponent {
     static propTypes = {
         selectedProduct: ProductType,
         attributes: AttributesType.isRequired,
-        inStock: PropTypes.bool.isRequired,
+        inStock: PropTypes.bool,
     };
 
     containerProps() {

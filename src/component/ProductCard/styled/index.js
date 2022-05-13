@@ -27,7 +27,7 @@ export const ProductThumb = styled.div`
 export const ProductImage = styled.img`
   height: 100%;
   width: 100%;
-  object-file: cover;
+  object-fit: cover;
   object-position: top;
 `;
 

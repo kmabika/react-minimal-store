@@ -6,6 +6,7 @@ import { QueryDispatcher } from "Util/QueryDispatcher/QueryDispatcher";
 import { CartDispatcher } from "Store/Cart/Cart.dispatcher";
 import { toast } from "react-toastify";
 import { toastAction } from "Util/";
+import NotFoundPage from "Route/NotFoundPage/NotFoundPage.component";
 
 export const mapStateToProps = (state) => ({
   selectedProduct: state.ProductReducer.selectedProduct,
@@ -21,14 +22,14 @@ export const mapDispatchToProps = (dispatch) => ({
 export class ProductDescriptionPageContainer extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = { loadingState: true, loadingError: false };
+    this.state = { loadingState: true, hasError: false };
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   handleAddToCart() {
     const { addProductToCart, selectedProduct } = this.props;
-    const { attributes,name, id, prices, gallery } = selectedProduct;
-    const productCartInfo = { id: id, name: name, image: gallery[0], prices: prices, attributes: attributes };
+    const { attributes,name, id, prices, gallery, brand } = selectedProduct;
+    const productCartInfo = { id: id, name: name, brand,image: gallery[0], images:gallery, prices: prices, attributes: attributes };
     let attributesSelected = '';
 
     if (attributes.length) {
@@ -54,19 +55,19 @@ export class ProductDescriptionPageContainer extends PureComponent {
     const validProduct = await handleFetchProductData(productId);
 
     if (validProduct) {
-      this.setState({ loadingError: false, loadingState: false });
-    } else { this.setState({ loadingError: true, loadingState: false }); }
+      this.setState({ hasError: false, loadingState: false });
+    } else { this.setState({ hasError: true, loadingState: false }); }
   }
 
   containerProps() {
-    const { loadingState, loadingError } = this.state;
+    const { loadingState, hasError } = this.state;
     const { selectedProduct, activeCurrency } = this.props;
     const filtredPrice = selectedProduct.prices.filter(
       (price) => price.currency.symbol === activeCurrency.symbol,
     )[0];
     return {
       loadingState,
-      loadingError,
+      hasError,
       filtredPrice,
       handleAddToCart: this.handleAddToCart,
       selectedProduct,
@@ -75,7 +76,10 @@ export class ProductDescriptionPageContainer extends PureComponent {
   }
 
   render() {
-    const { loadingState } = this.state;
+    const { loadingState, hasError } = this.state;
+    if(hasError){
+      return (<NotFoundPage/>)
+    }
     return (
       <>
         {!loadingState && (

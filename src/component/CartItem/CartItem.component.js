@@ -66,7 +66,7 @@ export class CartItem extends PureComponent {
         return (
             <CartItemWrapper>
                 <CartItemContentWrapper>
-                    <Paragraph fontSize={1} fontWeight={300} children={`${product.name}`} />
+                    <Paragraph fontSize={1} fontWeight={300} children={`${product.brand} ${product.name}`} />
                     <Paragraph fontSize={1} fontWeight={500} children={`${price.currency.symbol}${price.amount}`} />
                     <CartItemAttributesWrapper>
                         {this.renderAttributes()}

@@ -1,4 +1,4 @@
-import { PureComponent } from "react";
+import React,{ PureComponent } from "react";
 import { connect } from 'react-redux';
 import CartPreview from "./CartPreview.component";
 import { CartDispatcher } from "Store/Cart/Cart.dispatcher";
@@ -17,7 +17,7 @@ export class CartPreviewContainer extends PureComponent {
     }
 
     containerProps() {
-        const { products, selectedCurrency, toggleCart } = this.props;
+        const { products, selectedCurrency, toggleCart, innerRef} = this.props;
         const total = products.reduce((accumulator, item) => {
             const filteredPrice = item.prices.filter(
                 (price) => price.currency.label === selectedCurrency.label,
@@ -27,6 +27,7 @@ export class CartPreviewContainer extends PureComponent {
         return {
             products: products,
             toggleCart,
+            innerRef,
             selectedCurrency: selectedCurrency,
             totalCount: this.props.totalCount,
             totalAmount: total,

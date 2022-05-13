@@ -34,17 +34,17 @@ export class ProductCard extends PureComponent {
     };
 
     renderProductCardImage() {
-        const { inStock, gallery, id , category} = this.props;
+        const { inStock, id, image, category } = this.props;
         return (
             <ProductThumb>
                 <ProductLink to={`/${category}/${id}`}>
-                <ProductImage
-                    src={gallery[0]}
-                    alt={id}
-                    width={354}
-                    height={330}
-                />
-                {!inStock && <ProductImageOutOfStockText>OUT OF STOCK</ProductImageOutOfStockText>}
+                    <ProductImage
+                        src={image}
+                        alt={id}
+                        width={354}
+                        height={330}
+                    />
+                    {!inStock && <ProductImageOutOfStockText>OUT OF STOCK</ProductImageOutOfStockText>}
                 </ProductLink>
                 {inStock && this.renderAddToCart()}
             </ProductThumb>
@@ -52,27 +52,27 @@ export class ProductCard extends PureComponent {
     };
 
     renderProductContent() {
-        const { name,category,price, attributes, inStock, brand } = this.props;
+        const { name, category, price, attributes, inStock, brand } = this.props;
 
         return (
             <ProductContent>
                 {this.renderProductCardImage()}
-            <ProductLink to={`/${category}/${this.props.id}`}>
+                <ProductLink to={`/${category}/${this.props.id}`}>
                     <Headline typeHeadline="h5" marginTop={1.5} marginBottom={0.5} fontWeight={300}>{`${brand} ${name}`}</Headline>
-            </ProductLink>
+                </ProductLink>
                 <Paragraph fontWeight={500} children={`${price.currency.symbol} ${price.amount}`} />
                 {inStock && (
                     <ProductAttributesWrapper>
-                    <ProductAttributes attributes={attributes}/>
+                        <ProductAttributes attributes={attributes} />
                     </ProductAttributesWrapper>
-                )}  
+                )}
             </ProductContent>
         )
     };
 
     renderAddToCart() {
-        const { handleAddToCart, id, name,prices,gallery, attributes, brand } = this.props;
-        const productCartInfo = { id: id, name: name, images: gallery, prices: prices, attributes: attributes, brand: brand};
+        const { handleAddToCart, id, name, prices, gallery, image, attributes, brand } = this.props;
+        const productCartInfo = { id: id, name: name, image, images: gallery, prices: prices, attributes: attributes, brand: brand };
         return (
             <ProductCartButton onClick={() => handleAddToCart(productCartInfo)}>
                 <CartSvg />

@@ -8,22 +8,19 @@ import Paragraph from 'Component/Paragraph';
 export class ProductAttributes extends PureComponent {
     static propTypes = {
         attributes: AttributesType.isRequired,
-        inStock: PropTypes.bool.isRequired,
+        inStock: PropTypes.bool,
     };
 
     renderProductAttribute(item, attributeData) {
         const { selectedProduct } = this.props;
-        const attributeItem = {
-            ...item,
-        }
         if (item.id === 'undefined') {
             return null;
-        }
+        };
         return (
             <ProductAttribute
                 key={item.id}
                 selectedProduct={selectedProduct}
-                item={attributeItem}
+                item={item}
                 attributeData={attributeData}
             />
         )

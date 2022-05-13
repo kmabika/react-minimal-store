@@ -5,7 +5,7 @@ export const ParagraphWrapper = styled.div`
     line-height: ${(props) => (props.lineHeight ? `${props.lineHeight}rem`: '150%')};
     font-size: ${(props) => (props.fontSize ? `${props.fontSize}rem`: '1rem')};
     font-family: ${(props) => (props.fontFamily ? `${props.fontFamily}`: 'Raleway')};
-    margin-bottom: ${(props) => (props.marginBottom ? `${props.marginBottom}rem`: '0.50rem')};
+    margin-bottom: ${(props) => (props.marginBottom ? `${props.marginBottom}rem`: '0.5rem')};
     width: 100%;
     font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}`: '400')};
     h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {

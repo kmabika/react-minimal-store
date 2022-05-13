@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { PureComponent } from "react";
+import React,{ PureComponent } from "react";
 import { CartOverlayWrapper, OverlayContainer, CartIconWrapper } from "./styled";
 import CartIcon from "Component/CartIcon";
 import CartPreview from "Component/CartPreview";
@@ -16,15 +16,20 @@ export class CartOverlay extends PureComponent {
     };
 
     render() {
-        const { toggleCart, isOpened, products, totalCount, selectedCurrency } = this.props;
+        const { toggleCart, 
+            isOpened, 
+            products,
+            totalCount,
+            selectedCurrency, innerRef, buttonRef } = this.props;
         return (
-            <CartOverlayWrapper>
-                <CartIconWrapper onClick={() => { toggleCart() }} >
+            <CartOverlayWrapper > 
+                <CartIconWrapper ref={buttonRef} onClick={() => { toggleCart() }} >
                     <CartIcon totalProducts={totalCount} />
                 </CartIconWrapper>
                 {isOpened && (
-                    <CartPreview 
+                    <CartPreview
                     isOpened={isOpened}
+                    innerRef={innerRef}
                     totalCount={totalCount} 
                     selectedCurrency={selectedCurrency} 
                     products={products}

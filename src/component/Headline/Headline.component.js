@@ -6,7 +6,7 @@ export class Headline extends PureComponent {
 
     static propTypes = {
         color: PropTypes.string,
-        children: PropTypes.string.isRequired,
+        children: PropTypes.string,
         fontSize: PropTypes.number,
         fontWeight: PropTypes.number,
         typeHeadline: PropTypes.string.isRequired,

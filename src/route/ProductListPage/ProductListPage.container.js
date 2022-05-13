@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types'
-import { PureComponent } from 'react'
-import ProductListPage from './ProductListPage.component'
+import PropTypes from 'prop-types';
+import { PureComponent } from 'react';
+import ProductListPage from './ProductListPage.component';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { QueryDispatcher } from 'Util/QueryDispatcher/QueryDispatcher';
 import { ProductsListType } from 'Type/ProductList.type';
+import NotFoundPage from 'Route/NotFoundPage/NotFoundPage.component';
 
 export const mapDispatchToProps = (dispatch) => ({
     handleFetchProductsData: (category) => QueryDispatcher.handleFetchProductsData(dispatch, category)
@@ -27,7 +28,7 @@ export class ProductListPageContainer extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = { isLoading: true };
+        this.state = { isLoading: true, hasError: false };
         this.handleFetchProducts = this.handleFetchProducts.bind(this);
     };
 
@@ -38,37 +39,45 @@ export class ProductListPageContainer extends PureComponent {
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.category !== this.props.match.params.category) {
             this.handleFetchProducts();
+            
         }
     }
 
     async handleFetchProducts() {
         const categoryName = this.props.match.params.category
         const { handleFetchProductsData } = this.props;
-        await handleFetchProductsData(categoryName || 'all');
-        this.setState({ isLoading: false });
+        const validProducts = await handleFetchProductsData(categoryName);
+        if (validProducts) {
+            this.setState({ hasError: false, isLoading: false });
+        } else { this.setState({ hasError: true, isLoading: false }); }
     }
 
     componentDidMount() {
         this.handleFetchProducts()
-    }
+    };
 
     containerProps() {
         const { products } = this.props;
-        const { isLoading } = this.state;
+        const { isLoading, hasError } = this.state;
         const categoryName = this.props.match.params.category
         const category = this._capitalize(categoryName);
         return {
             categoryName: category,
+            hasError,
             isLoading: isLoading,
             products: products,
         }
     }
-
     render() {
-
+        if(this.state.hasError){
+            return (<NotFoundPage/>)
+          }
         return (
-            <ProductListPage
-                {...this.containerProps()} />
+            <>
+                {this.props.products !== undefined && (
+                    <ProductListPage {...this.containerProps()} />
+                )}
+            </>
         )
     };
 };

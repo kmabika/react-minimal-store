@@ -9,7 +9,6 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { Helmet } from "react-helmet";
 import { ProductsListType } from 'Type/ProductList.type';
 
-
 export class ProductListPage extends PureComponent {
 
     static propTypes = {
@@ -17,6 +16,16 @@ export class ProductListPage extends PureComponent {
         isLoading: PropTypes.bool.isRequired,
         products: ProductsListType.isRequired,
     };
+
+    componentDidMount(){
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
+    };
+
+    componentDidUpdate(prevProps) {
+        if (this.props.categoryName!== prevProps.categoryName) {
+            window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
+        };
+    }
 
     renderHelmet() {
         const { categoryName } = this.props;
@@ -68,7 +77,6 @@ export class ProductListPage extends PureComponent {
             </>
         );
     };
-
 
     render() {
         const { isLoading, categoryName } = this.props;

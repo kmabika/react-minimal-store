@@ -15,9 +15,10 @@ export class QueryDispatcher {
     const queryList = [CurrenciesQuery.getCurrenciesQuery(), CategoryQuery.getCategoriesListQuery()];
 
     const data = await this.handleFetchRequest(queryList);
+
     if (!data.categories || !data.currencies) {
       return false;
-    }
+    };
     CategoryDispatcher.updateCategoriesData(dispatch, data.categories);
     CurrencyDispatcher.updateCurrenciesData(dispatch, data.currencies);
     return data;
@@ -38,9 +39,10 @@ export class QueryDispatcher {
     if (!categoryName) return false;
     const queries = [ProductsQuery.getProductsListQuery(categoryName.toLowerCase())];
     const data = await this.handleFetchRequest(queries);
-    if (data.category.products) {
-      ProductDispatcher.updateProductsData(dispatch, data.category.products);
+    if(!data.category){
+      return false;
     }
+    ProductDispatcher.updateProductsData(dispatch, data.category.products);
     return data.category.products;
   }
 

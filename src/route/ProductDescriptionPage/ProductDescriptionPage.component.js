@@ -34,6 +34,7 @@ export class ProductDescriptionPage extends PureComponent {
         if (!this.props.loadingState && this.props.selectedProduct.gallery[0] !== undefined) {
             this.setState({ cover: this.props.selectedProduct.gallery[0] })
         };
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
     };
 
     handleCover = event => {
@@ -184,7 +185,7 @@ export class ProductDescriptionPage extends PureComponent {
 
 
     render() {
-        const { loadingState } = this.props;
+        const { loadingState} = this.props;
         return (
             <>
                 {!loadingState ? this.renderProduct() : this.renderProductSkeleton()}

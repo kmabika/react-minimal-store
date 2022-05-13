@@ -35,7 +35,7 @@ export class ProductAttributeContainer extends PureComponent {
         const { selectedProduct } = this.props;
         const { displayValue, value, id, isSelected } = this.props.item;
         const { type, name } = this.props.attributeData;
-        if( selectedProduct === undefined) {
+        if (selectedProduct === undefined) {
             return {
                 displayValue,
                 id,
@@ -44,8 +44,8 @@ export class ProductAttributeContainer extends PureComponent {
                 value,
                 name,
                 type,
-            }
-        }
+            };
+        };
         return {
             selectedProduct,
             displayValue,

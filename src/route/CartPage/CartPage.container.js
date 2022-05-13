@@ -10,15 +10,18 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
     addProductToCart: (product) => CartDispatcher.addProductToCart(dispatch, product),
+    updateProductAmount:
+        (product, amount) => CartDispatcher.updateProductAmount(dispatch, product, amount),
 });
 
 export class CartPageContainer extends PureComponent {
 
     containerProps(){
-        const {cartItems, selectedCurrency} = this.props;
+        const {cartItems, selectedCurrency, updateProductAmount} = this.props;
         return {
             cartItems,
             selectedCurrency,
+            updateProductAmount,
         }
     }
     render() {

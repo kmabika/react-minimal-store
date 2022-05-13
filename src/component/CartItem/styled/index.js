@@ -106,7 +106,8 @@ export const CartItemCounterDown = styled.button`
     &:hover {
         transition: all 0.5s;
         color: ${({ theme }) => theme.colors.white};
-        background-color: ${({ theme }) => theme.colors.white};
+        background-color: ${({ theme }) => theme.colors.bunker};
+    }
 `;
 
 export const CartItemImageWrapper = styled.div`

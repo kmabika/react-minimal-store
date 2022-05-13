@@ -62,7 +62,7 @@ export class ProductCardContainer extends PureComponent {
             attributes,
             brand,
         } = this.props.product;
-
+        const image = gallery[0];
         const filtredPrice = prices.filter(
             (price) => price.currency.symbol === this.props.selectedCurrency.symbol,
         )[0];
@@ -72,6 +72,7 @@ export class ProductCardContainer extends PureComponent {
             id,
             brand,
             category,
+            image,
             gallery,
             price: filtredPrice,
             prices: prices,

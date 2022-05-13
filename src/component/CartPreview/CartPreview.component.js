@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from "react";
-import { NavLink } from 'react-router-dom';
 import {
   CartContainer,
   CartWrap,
@@ -37,14 +36,14 @@ export class CartPreview extends PureComponent {
 
   componentWillUnmount() {
     document.body.style.overflow = 'unset';
-  }
+  };
 
   render() {
-    const { products, totalCount, selectedCurrency, totalAmount, toggleCart } = this.props;
+    const { products, totalCount,selectedCurrency,totalAmount,innerRef,toggleCart } = this.props;
     return (
       <>
-        <CartContainer>
-          <CartWrap>
+        <CartContainer ref={innerRef}>
+          <CartWrap >
             <CartHeader>
               <CartHeading><b>My Bag</b>, {totalCount}
                 {' '}

@@ -1,11 +1,11 @@
-import styled  from 'styled-components';
+import styled from 'styled-components';
 
 export const CartPageWrapper = styled.section`
 padding-top: 80px;
 padding-bottom: 80px;
 `;
 
-export const CartPageHeader = styled.h1`
+export const CartPageHeader = styled.div`
 margin-bottom: 80px;
 text-transform: uppercase;
 `;
@@ -27,7 +27,7 @@ border: 1px solid #1d1f22;
 
 background-color:  ${({ theme }) => theme.colors.white};
 
-font-family: font-family: ${({ theme }) => theme.fonts.sourceSans}, sans-serif;
+font-family: font-family: ${({ theme }) => theme.fonts.sourceSans};
 font-weight: 400;
 line-height: 1.125px;
 
@@ -64,6 +64,11 @@ border: 1px solid  ${({ theme }) => theme.colors.bunker};
 background-color:  ${({ theme }) => theme.colors.white};
 font-size: 25px;
 cursor: pointer;
+&:hover {
+    transition: all 0.5s;
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.bunker};
+}
 `;
 
 export const ProductQuantityWrapper = styled.span`

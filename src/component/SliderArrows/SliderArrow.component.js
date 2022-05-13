@@ -6,8 +6,12 @@ import ArrowRight from 'Images/ArrowRight'
 
 export class SliderArrow extends PureComponent{
     render(){
+        const {handleClick} = this.props;
         return(
-            <ArrowComponent direction={this.props.direction}>
+            <ArrowComponent 
+            direction={this.props.direction} 
+            onClick={() => handleClick()}
+            >
                 {this.props.direction === 'left' ? <ArrowLeft /> : <ArrowRight/>}
             </ArrowComponent>
         )

@@ -20,12 +20,25 @@ export class CurrencySwitcherContainer extends PureComponent {
         selectedCurrency: CurrencyItemType.isRequired,
         availableCurrencies: CurrenciesType.isRequired,
         updateSelectedCurrency: PropTypes.func.isRequired,
+    };
+
+    constructor(props){
+        super(props);
+        this.state = {isMenuOpen: false};
+        this.setMenuVisible = this.setMenuVisible.bind(this);
+    };
+
+    setMenuVisible(state){
+        this.setState({isMenuOpen: state});
     }
 
     containerProps() {
         const { selectedCurrency, availableCurrencies, updateSelectedCurrency } = this.props;
+        const {isMenuOpen} = this.state;
         return {
             availableCurrencies,
+            isMenuOpen,
+            setMenuVisible: this.setMenuVisible,
             selectedCurrency,
             updateSelectedCurrency
         }

@@ -19,35 +19,49 @@ export class CurrencySwitcher extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = {
-            open: false,
+    
+        this.menuRef = React.createRef();
+        this.buttonRef = React.createRef();
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+      }
+    
+      componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutside);
+      }
+    
+      componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutside);
+      }
+    
+      handleClickOutside(event) {
+        const { setMenuVisible } = this.props;
+        if (this.menuRef.current && this.buttonRef.current) {
+          if (!this.menuRef.current.contains(event.target)
+          && !this.buttonRef.current.contains(event.target)) {
+            setMenuVisible(false);
+          }
         }
-    }
-
-    _handleButtonClick = () => {
-        this.setState(state => {
-            return {
-                open: !state.open
-            };
-        });
-    };
+      }
 
     render() {
-        const { availableCurrencies, updateSelectedCurrency, selectedCurrency} = this.props;
+        const { availableCurrencies,isMenuOpen, updateSelectedCurrency, selectedCurrency, setMenuVisible} = this.props;
         return (
-            <CurrencySwitcherWrapper>
+            <CurrencySwitcherWrapper >
                 <CurrencySwitcherBtn
-                    onClick={this._handleButtonClick}
-                    isOpen={this.state.open}>
+                    ref={this.buttonRef}
+                    onClick={() => {
+                        setMenuVisible(!isMenuOpen);
+                    }}
+                    isOpen={isMenuOpen}>
                     {selectedCurrency.symbol}
                 </CurrencySwitcherBtn>
-                {this.state.open && (
-                    <CurrencyDropdown>
+                {isMenuOpen && (
+                    <CurrencyDropdown ref={this.menuRef}>
                         {availableCurrencies.map((currency, index) =>
                         (<CurrencyItem key={index}
                             onClick={() => {
                                 updateSelectedCurrency(currency);
-                                this._handleButtonClick()
+                                setMenuVisible(false)
                             }}
                             data-id={index}
                         >
