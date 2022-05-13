@@ -5,7 +5,7 @@ import {
   CartWrap,
   CartHeader,
   CartHeading,
-  CartRemoveButton,
+  CartClearBtn,
   Cart,
   CartInnerWrap,
   EmptyCart,
@@ -49,12 +49,12 @@ export class CartPreview extends PureComponent {
                 {' '}
                 {totalCount === 1 ? 'item' : 'items'}
               </CartHeading>
-              <CartRemoveButton onClick={() => { this.props.clearCart() }}>
+              <CartClearBtn onClick={() => { this.props.clearCart() }} aria-label="clear cart">
                 Clear Cart
-              </CartRemoveButton>
+              </CartClearBtn>
             </CartHeader>
             <Cart>
-              <CartInnerWrap>
+              <CartInnerWrap aria-label="cart products">
                 {products.length === 0 && (
                   <EmptyCart>Your cart is empty!</EmptyCart>
                 )}
@@ -70,7 +70,11 @@ export class CartPreview extends PureComponent {
               </CartAmount>
             </CheckoutTotalItem>
             <CartButtonWrap>
-              <ViewBagBtn to="/cart" onClick={() => {toggleCart()}} exact> 
+              <ViewBagBtn 
+              to="/cart" 
+              exact
+              onClick={() => {toggleCart()}}
+              > 
                 View Bag
               </ViewBagBtn>
               <CheckOutBtn to="#" onClick={() => {toggleCart()}} exact>

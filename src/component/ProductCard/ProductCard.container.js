@@ -35,7 +35,7 @@ export class ProductCardContainer extends PureComponent {
         let attributesSelected = '';
 
         if (attributes.length){
-            attributes.map((attribute) => {
+            attributes?.map((attribute) => {
                 attributesSelected = attribute.items.some((item) => item.isSelected === true);
                 return attribute;
             });

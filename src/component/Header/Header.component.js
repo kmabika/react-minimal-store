@@ -22,11 +22,11 @@ export class Header extends PureComponent {
                         <Category/>
                     </TopLeftNavBarWrap>
                     <TopMiddleNavBarWrap>
-                        <Logo/>
+                        <Logo aria-label="logo"/>
                     </TopMiddleNavBarWrap>
                     <TopRightNavBarWrap>
                         <CurrencySwitcher/>
-                        <Cart aria-label="Open your cart menu">
+                        <Cart aria-label="cart menu">
                             <CartOverlay/>
                         </Cart>
                     </TopRightNavBarWrap>

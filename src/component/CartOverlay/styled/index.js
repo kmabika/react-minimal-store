@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const CartOverlayWrapper = styled.div`
     display: inline-flex;
     position: relative;
-
     padding-right: 15px;
-
     opacity: 1;
     transition: opacity 250ms linear;
 `;

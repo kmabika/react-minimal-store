@@ -8,11 +8,11 @@ import {
     CartItemAttributesWrapper,
     AttributesItemsWrapper,
     CartItemCountersWrapper,
-    CartItemCounterUp,
+    CartItemCounterUpBtn,
     CartItemCountAmount,
-    CartItemCounterDown,
-    CartItemImageWrapper,
-    CartItemImage
+    CartItemCounterDownBtn,
+    CartItemImgWrapper,
+    CartItemImg
 } from "./styled";
 import { CartItemType } from 'Type/Cart.type';
 import { PriceItemType } from 'Type/Price.type';
@@ -73,19 +73,19 @@ export class CartItem extends PureComponent {
                     </CartItemAttributesWrapper>
                 </CartItemContentWrapper>
                 <CartItemCountersWrapper>
-                    <CartItemCounterUp onClick={() => { updateProductAmount(product, product.amount + 1) }}>
+                    <CartItemCounterUpBtn onClick={() => { updateProductAmount(product, product.amount + 1) }} aria-label="increase quantity">
                         +
-                    </CartItemCounterUp>
+                    </CartItemCounterUpBtn>
                     <CartItemCountAmount>
                         {product.amount}
                     </CartItemCountAmount>
-                    <CartItemCounterDown onClick={() => { updateProductAmount(product, product.amount - 1) }}>
+                    <CartItemCounterDownBtn onClick={() => { updateProductAmount(product, product.amount - 1) }} aria-label="decrease quantity">
                         -
-                    </CartItemCounterDown>
+                    </CartItemCounterDownBtn>
                 </CartItemCountersWrapper>
-                <CartItemImageWrapper>
-                    <CartItemImage src={`${image}`} alt={product.name} />
-                </CartItemImageWrapper>
+                <CartItemImgWrapper>
+                    <CartItemImg src={`${image}`} alt={product.name} width={105} height={137}/>
+                </CartItemImgWrapper>
 
             </CartItemWrapper>
         )

@@ -1,5 +1,5 @@
 import { PureComponent } from "react";
-import { SlideImage, SliderImageComponent, StyledSlider, Slide, SliderContent, SliderElement } from './styled'
+import { StyledSlider, SliderContent, SliderElement } from './styled'
 import SliderArrows from "Component/SliderArrows";
 import SliderImage from "Component/SliderImage/SliderImage.component";
 
@@ -32,7 +32,7 @@ export class Slider extends PureComponent {
     this.setState(state => {
       return {
         activeSlide: state.translate > widthSlide ? state.activeSlide - 1 : 0,
-        translate: state.translate > widthSlide ? state.translate - widthSlide: 0,
+        translate: state.translate > widthSlide ? state.translate - widthSlide : 0,
       };
     });
   }
@@ -44,7 +44,7 @@ export class Slider extends PureComponent {
         <SliderContent cantSlides={images?.length} translate={this.state.translate}>
           {images && images.length > 0 ?
             images?.map((image, i) => (
-              <SliderImage key={image + i} content={image} width={100 / SliderArrows.length} />
+              <SliderImage key={image + i} content={image} width={100 / images.length} />
             )) : 'No images to show'
           }
         </SliderContent>
@@ -53,13 +53,19 @@ export class Slider extends PureComponent {
   }
 
   render() {
+    const { images } = this.props;
     return (
       <StyledSlider>
         <SliderContent>
           {this.renderSlider()}
         </SliderContent>
-        <SliderArrows  direction={"left"} handleClick={this.handleNextSlide} />
-        <SliderArrows  direction={"right"} handleClick={this.handlePrevSlide}/>
+        {images && images.length >= 2 && (
+          <>
+            <SliderArrows direction={"left"} handleClick={this.handleNextSlide} />
+            <SliderArrows direction={"right"} handleClick={this.handlePrevSlide} />
+          </>
+        )}
+
       </StyledSlider>
     )
   }

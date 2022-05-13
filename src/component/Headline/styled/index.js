@@ -10,7 +10,7 @@ const tag = (props) =>
 const sizeHeadline = (type) => {
   switch (type) {
     case 'h1':
-      return { size: 2.5, weight: 700 };
+      return { size: 2.5, weight: 400 };
     case 'h2':
       return { size: 1.5, weight: 400 };
     case 'h3':

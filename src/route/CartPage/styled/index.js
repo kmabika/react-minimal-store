@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const CartPageWrapper = styled.section`
-padding-top: 80px;
-padding-bottom: 80px;
+margin-top: 80px;
+margin-bottom: 80px;
 `;
 
 export const CartPageHeader = styled.div`
@@ -20,24 +20,7 @@ padding-bottom: 20px;
 border-top: 1px solid #e5e5e5;
 `;
 
-export const ProductAttributeButton = styled.button` 
-width: 63px;
-height: 45px;
-border: 1px solid #1d1f22;
 
-background-color:  ${({ theme }) => theme.colors.white};
-
-font-family: font-family: ${({ theme }) => theme.fonts.sourceSans};
-font-weight: 400;
-line-height: 1.125px;
-
-cursor: pointer;
-
-&:hover{
-    opacity: 0.6;
-    transition: opacity 250ms linear;
-}
-`;
 
 export const ProductInfoWrapper = styled.div`
 `;
@@ -86,4 +69,4 @@ width: 100%;
 height: 100%;
 object-fit: contain;
 object-position: center;
-`
+`;

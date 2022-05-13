@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled,{css} from "styled-components";
 import {NavLink} from 'react-router-dom';
 
 export const CategoryWrap = styled.ul`
@@ -22,8 +22,13 @@ export const StyledLink = styled(NavLink)`
   text-transform: uppercase;
   color:  ${({ theme }) => theme.colors.bunker};
   padding: 32px 16px;
-  &.active {
-    color:  ${({ theme }) => theme.colors.emerald};
-    border-bottom: 2px solid  ${({ theme }) => theme.colors.emerald};
-  }
+  ${({ isSelected, theme }) => {
+    return (
+      isSelected &&
+      css`
+      color: ${theme.colors.emerald};
+      border-bottom: 2px solid ${theme.colors.emerald};    
+    `
+    );
+  }};
 `;

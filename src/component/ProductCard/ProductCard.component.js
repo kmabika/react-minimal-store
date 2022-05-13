@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import { PureComponent } from "react";
 import {
     ProductContent,
-    ProductImage,
+    ProductImg,
     ProductLink,
     ProductThumb,
     ProductCardWrapper,
-    ProductCartButton,
+    ProductAddToCartBtn,
     ProductAttributesWrapper,
-    ProductImageOutOfStockText,
+    ProductImgOutOfStockText,
 } from "./styled";
 
 import Headline from "Component/Headline";
@@ -38,13 +38,13 @@ export class ProductCard extends PureComponent {
         return (
             <ProductThumb>
                 <ProductLink to={`/${category}/${id}`}>
-                    <ProductImage
+                    <ProductImg
                         src={image}
                         alt={id}
                         width={354}
                         height={330}
                     />
-                    {!inStock && <ProductImageOutOfStockText>OUT OF STOCK</ProductImageOutOfStockText>}
+                    {!inStock && <ProductImgOutOfStockText>OUT OF STOCK</ProductImgOutOfStockText>}
                 </ProductLink>
                 {inStock && this.renderAddToCart()}
             </ProductThumb>
@@ -74,9 +74,12 @@ export class ProductCard extends PureComponent {
         const { handleAddToCart, id, name, prices, gallery, image, attributes, brand } = this.props;
         const productCartInfo = { id: id, name: name, image, images: gallery, prices: prices, attributes: attributes, brand: brand };
         return (
-            <ProductCartButton onClick={() => handleAddToCart(productCartInfo)}>
+            <ProductAddToCartBtn 
+            onClick={() => handleAddToCart(productCartInfo)}
+            aria-label="add to cart"
+            >
                 <CartSvg />
-            </ProductCartButton>
+            </ProductAddToCartBtn>
         );
     };
 

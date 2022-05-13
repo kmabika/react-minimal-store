@@ -5,8 +5,8 @@ export class SliderContainer extends PureComponent{
     
     containerProps(){
         return {
-            images:this.props.images,
-        }
+            images: this.props.images,
+        };
     }
 
     render(){

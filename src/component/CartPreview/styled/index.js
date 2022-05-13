@@ -31,7 +31,7 @@ export const CartHeading = styled.h3`
       font-weight: 700;
   }
 `;
-export const CartRemoveButton = styled.button`
+export const CartClearBtn = styled.button`
   border: none;
   background-color: transparent;
   font-size: 0.9375rem;

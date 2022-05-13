@@ -24,14 +24,14 @@ export const ProductThumb = styled.div`
   height: 338px;
 `;
 
-export const ProductImage = styled.img`
+export const ProductImg = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
   object-position: top;
 `;
 
-export const ProductImageOutOfStockText = styled.h1`
+export const ProductImgOutOfStockText = styled.h1`
   font-size: 1.5rem;
   font-weight: 400;
   color: #8D8F9A;
@@ -50,7 +50,7 @@ export const ProductContent = styled.div`
  padding-bottom: 16px;
 `;
 
-export const ProductCartButton = styled.button`
+export const ProductAddToCartBtn = styled.button`
   position: absolute;
   bottom: -25px;
   right: 10px;
@@ -72,7 +72,7 @@ export const ProductCartButton = styled.button`
   }
 `
 
-export const ProductSwatchColor = styled.button`
+export const ProductSwatchBtn = styled.button`
   display: none;
   justify-content: center;
   align-items: center;

@@ -12,9 +12,8 @@ export class NotFoundPage extends PureComponent {
                     <SubHeader>page not found !</SubHeader>
                     <Text>
                         Go back to the 
-                        <Link href="/">Homepage</Link>
+                        <Link to="/">Homepage</Link>
                     </Text>
-                    <Text>(Redirects to homepage after 10 seconds)</Text>
                 </Wrap>
             </Container>
         )

@@ -13,7 +13,7 @@ export class CategoryProductList extends PureComponent {
     renderProducts(){
         const {products} = this.props;
         return(
-            products.map((product) => (
+            products?.map((product) => (
                 <ProductCard key={product.id} product={product}/>
             ))
         )

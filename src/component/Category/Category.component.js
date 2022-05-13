@@ -15,13 +15,26 @@ class Category extends PureComponent {
     }
 
     renderNavbar() {
-        const { categories } = this.props;
-        return (categories.map((category, index) => (
-            <StyledLink key={index} id={category} to={`/${category}`} exact>
-                {category}
-            </StyledLink>
-        )
-        ))
+        const { categories, activeCategory } = this.props;
+        return (categories?.map((category, index) => {
+            let isActive = false;
+            const currentCategory = activeCategory;
+            if (currentCategory && category.toLowerCase() === currentCategory.toLowerCase()){
+                isActive = true;
+            }
+            return (
+                <StyledLink 
+                key={index} 
+                id={category} 
+                to={`/${category}`}
+                aria-label={`${category} category`}
+                isSelected={isActive} 
+                exact
+                >
+                    {category}
+                </StyledLink>
+            )
+        }))
     };
 
     render() {

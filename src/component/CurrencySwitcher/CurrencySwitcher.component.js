@@ -52,12 +52,13 @@ export class CurrencySwitcher extends PureComponent {
                     onClick={() => {
                         setMenuVisible(!isMenuOpen);
                     }}
+                    aria-label="change currency"
                     isOpen={isMenuOpen}>
                     {selectedCurrency.symbol}
                 </CurrencySwitcherBtn>
                 {isMenuOpen && (
                     <CurrencyDropdown ref={this.menuRef}>
-                        {availableCurrencies.map((currency, index) =>
+                        {availableCurrencies && availableCurrencies?.map((currency, index) =>
                         (<CurrencyItem key={index}
                             onClick={() => {
                                 updateSelectedCurrency(currency);
@@ -65,7 +66,6 @@ export class CurrencySwitcher extends PureComponent {
                             }}
                             data-id={index}
                         >
-
                             {currency.symbol} {currency.label}
                         </CurrencyItem>)
                         )}

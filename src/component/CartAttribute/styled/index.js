@@ -36,15 +36,15 @@ export const CartItemColorAttribute = styled.span`
  cursor: pointer;
  background-color: ${props => props.color ? props.color : `${({ theme }) => theme.colors.white};`};
  svg {
+   font-size: 0.8rem;
    margin-left: 3px;
-   margin-top: 5px;
+   margin-bottom: 3px;
  }
  ${({ isSelected, theme }) => {
   return (
     isSelected &&
     css`
     border: 3px solid ${theme.colors.white};
-    background-color: ${theme.colors.lightGray};
     box-shadow: 0 0 2px ${theme.colors.bunker};
   `
   );

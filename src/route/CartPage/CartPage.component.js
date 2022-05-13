@@ -4,7 +4,6 @@ import {
     CartPageHeader,
     CartProductItemWrapper,
     ProductInfoWrapper,
-    ProductAttributeButton,
     ProductCounterWrapper,
     ProductCounterBtnWrapper,
     ProductCounterBtn,
@@ -27,8 +26,7 @@ export class CartPage extends PureComponent {
         return (
             <Helmet>
                 <html lang="en" />
-                <title>Cart | Scandiweb Store</title>
-                <meta name="description" content="Basic example" />
+                <title>Cart | Scandiweb x Kudzai</title>
             </Helmet>
         );
     };
@@ -42,10 +40,10 @@ export class CartPage extends PureComponent {
     }
 
     renderCartItems() {
-        const { updateProductAmount, selectedCurrency } = this.props;
+        const { updateProductAmount, selectedCurrency, cartItems } = this.props;
         return (
-            this.props.cartItems.map(cartItem => {
-                const filteredPrice = cartItem.prices.filter(
+           cartItems && cartItems?.map(cartItem => {
+                const filteredPrice = cartItem.prices?.filter(
                     (price) => price.currency.label === selectedCurrency.label,
                 )[0];
                 return (
@@ -60,11 +58,17 @@ export class CartPage extends PureComponent {
                         </ProductInfoWrapper>
                         <ProductCounterWrapper>
                             <ProductCounterBtnWrapper>
-                                <ProductCounterBtn onClick={() => { updateProductAmount(cartItem, cartItem.amount + 1) }}>
+                                <ProductCounterBtn 
+                                onClick={() => { updateProductAmount(cartItem, cartItem.amount + 1) }}
+                                aria-label="increase quantity"
+                                >
                                     +
                                 </ProductCounterBtn>
                                 <ProductQuantityWrapper>{cartItem.amount}</ProductQuantityWrapper>
-                                <ProductCounterBtn onClick={() => { updateProductAmount(cartItem, cartItem.amount - 1) }} >
+                                <ProductCounterBtn 
+                                onClick={() => { updateProductAmount(cartItem, cartItem.amount - 1) }} 
+                                aria-label="decrease quantity"
+                                >
                                     -
                                 </ProductCounterBtn>
                             </ProductCounterBtnWrapper>

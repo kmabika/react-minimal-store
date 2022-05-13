@@ -4,11 +4,13 @@ import ProductListPage from './ProductListPage.component';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { QueryDispatcher } from 'Util/QueryDispatcher/QueryDispatcher';
+import { CategoryDispatcher } from "Store/Category/Category.dispatcher";
 import { ProductsListType } from 'Type/ProductList.type';
 import NotFoundPage from 'Route/NotFoundPage/NotFoundPage.component';
 
 export const mapDispatchToProps = (dispatch) => ({
-    handleFetchProductsData: (category) => QueryDispatcher.handleFetchProductsData(dispatch, category)
+    handleFetchProductsData: (category) => QueryDispatcher.handleFetchProductsData(dispatch, category),
+    updateActiveCategory: (category) => CategoryDispatcher.updateActiveCategory(dispatch,category),
 });
 
 export const mapStateToProps = (state) => ({
@@ -38,15 +40,14 @@ export class ProductListPageContainer extends PureComponent {
 
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.category !== this.props.match.params.category) {
-            this.handleFetchProducts();
-            
-        }
-    }
+            this.handleFetchProducts();  
+        };
+    };
 
     async handleFetchProducts() {
         const categoryName = this.props.match.params.category
-        const { handleFetchProductsData } = this.props;
-        const validProducts = await handleFetchProductsData(categoryName);
+        const { handleFetchProductsData, updateActiveCategory } = this.props;
+        const validProducts = await handleFetchProductsData(categoryName).finally(() => {updateActiveCategory(categoryName)});
         if (validProducts) {
             this.setState({ hasError: false, isLoading: false });
         } else { this.setState({ hasError: true, isLoading: false }); }

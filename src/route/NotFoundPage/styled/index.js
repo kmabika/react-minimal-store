@@ -20,13 +20,13 @@ export const Wrap = styled.div`
 
 export const Header = styled.h1`
   color: ${({ theme }) => theme.colors.emerald};
-  font-size: 5rem;
+  font-size: 10rem;
   line-height: 5rem;
 `;
 export const SubHeader = styled.h2`
   text-transform: uppercase;
-  font-size: 1.5rem;
-  margin: 1rem 0rem;
+  font-size: 2rem;
+  margin-top: 3.5rem;
 `;
 
 export const Text = styled.p`
@@ -34,13 +34,11 @@ export const Text = styled.p`
   justify-content: center;
   flex-wrap: wrap;
   font-size: 0.9rem;
-
   a {
     color: ${({ theme }) => theme.colors.emerald};
     font-weight: 200;
     margin-left: 0.3rem;
     font-size: 0.9rem;
-
     &:hover {
       transition: all 0.5s;
       color: ${({ theme }) => theme.colors.emerald};

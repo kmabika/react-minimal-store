@@ -1,26 +1,26 @@
 import styled, {css} from 'styled-components';
 
 export const ProductDescriptionWrapper = styled.div`
-  padding-top: 80px;
-  padding-bottom: 80px;
+  margin-top: 80px;
+  margin-bottom: 80px;
   display: flex;
 `;
 
-export const ProductImageCarouselWrapper = styled.div`
+export const ProductImgCarouselWrapper = styled.div`
   display: flex;
   height: 511px;
   flex-direction: column;
   overflow-y: scroll;
-  scrollbar-width: thin !important;
+  scrollbar-width: none;
   margin-right: 40px;
 `;
 
-export const ProductImagesWrapper = styled.div`
+export const ProductImgsWrapper = styled.div`
   margin-right; 40px;
 `;
 
 
-export const ProductImage = styled.img`
+export const ProductImg = styled.img`
   border: 2px solid transparent;
   opacity: 1;
   height: 80px;
@@ -34,34 +34,18 @@ export const ProductImage = styled.img`
     opacity: 0.6;
     transition: all 250ms linear;
   };
-  ${({ inStock }) => {
-    return (
-      !inStock &&
-      css`
-      opacity: 50%;
-    `
-    );
-  }};
-`
+`;
 
-export const ProductImageCoverWrapper = styled.div`
+export const ProductImgCoverWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const ProductCoverImage = styled.img`
+export const ProductCoverImg = styled.img`
   width: 610px;
   height: 511px;
   object-fit: contain;
   transform-origin: 65% 75%;
-  transition: transform 1s, filter 0.5s ease-out;
-  ${({ inStock }) => {
-    return (
-      !inStock &&
-      css`
-      opacity: 50%;
-    `
-    );
-  }};
+  transition: transform 5s, filter 0.5s ease-out;
 `;
 
 export const ProductInfoWrapper = styled.aside`
@@ -70,7 +54,7 @@ export const ProductInfoWrapper = styled.aside`
 `;
 
 export const ProductAttributeWrapper = styled.div`
- margin-top: 10px;
+ margin-top: 43px;
  text-transform: uppercase;
 `;
 
@@ -80,7 +64,7 @@ export const ProductPriceHeaderWrapper = styled.div`
   text-transform: uppercase;
 `;
 
-export const ProductAttributeButton = styled.button`
+export const ProductAttributeBtn = styled.button`
   min-width: 63px;
   height: 45px;
   padding: 13px;
@@ -97,7 +81,7 @@ export const ProductAttributeButton = styled.button`
   cursor: pointer;
 `;
 
-export const ProductAttributeButtonWrapper = styled.div`
+export const ProductAttributeBtnWrapper = styled.div`
   margin-bottom: 0.5rem;
 `
 
@@ -106,7 +90,7 @@ export const ProductPriceWrapper = styled.div`
 `;
 
 export const AddToCartBtnWrapper = styled.div`
-  margin-bottom: 1rem;
+  margin-top: 20px;
 `;
 
 export const AddToCartBtn = styled.button`
@@ -137,21 +121,17 @@ export const AddToCartBtn = styled.button`
 `;
 
 export const ShowMoreBtn = styled.button`
-  width: 292px;
-  height: 52px;
-
+  width: 100px;
+  height: 40px;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.emerald};
   border: none;
-
   font-weight: 600;
   line-height: 1.2;
   text-transform: uppercase;
-
   opacity: 1;
   transition: opacity 250ms linear;
   cursor: pointer;
-
   &:hover{
     opacity: 0.6;
     transition: opacity 250ms linear;
@@ -159,6 +139,6 @@ export const ShowMoreBtn = styled.button`
 `;
 
 export const ProductInfoDescriptionWrapper = styled.div`
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   font-family: ${({ theme }) => theme.fonts.roboto};
 `

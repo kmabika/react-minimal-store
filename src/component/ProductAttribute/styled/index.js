@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ProductTextAttribute = styled.button`
+export const ProductTextAttributeBtn = styled.button`
 min-width: 63px;
 height: 45px;
 padding: 13px;
@@ -16,7 +16,7 @@ cursor: pointer;
     return (
       isSelected &&
       css`
-      border: 1px solid ${theme.colors.white};
+      border: 1px solid ${theme.colors.bunker};
       background-color: ${theme.colors.bunker};
       color: ${theme.colors.white};
     `
@@ -86,4 +86,4 @@ display: inline-block;
 &:hover ${ToolTipText} {
   visibility: visible;
 }
-`
+`;

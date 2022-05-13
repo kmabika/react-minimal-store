@@ -4,14 +4,14 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { Helmet } from "react-helmet";
 import {
     ProductDescriptionWrapper,
-    ProductImageCarouselWrapper,
-    ProductImagesWrapper,
-    ProductImage,
-    ProductImageCoverWrapper,
-    ProductCoverImage,
+    ProductImgCarouselWrapper,
+    ProductImgsWrapper,
+    ProductImg,
+    ProductImgCoverWrapper,
+    ProductCoverImg,
     ProductInfoWrapper,
     ProductAttributeWrapper,
-    ProductAttributeButtonWrapper,
+    ProductAttributeBtnWrapper,
     AddToCartBtn,
     ProductPriceWrapper,
     AddToCartBtnWrapper,
@@ -31,10 +31,10 @@ export class ProductDescriptionPage extends PureComponent {
     };
 
     componentDidMount() {
-        if (!this.props.loadingState && this.props.selectedProduct.gallery[0] !== undefined) {
+        if (!this.props.isLoading && this.props.selectedProduct.gallery[0] !== undefined) {
             this.setState({ cover: this.props.selectedProduct.gallery[0] })
         };
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     };
 
     handleCover = event => {
@@ -47,7 +47,19 @@ export class ProductDescriptionPage extends PureComponent {
             <Helmet>
                 <html lang="en" />
                 <title>{selectedProduct.name} - {selectedProduct.brand} | ScandiWeb Store</title>
-                <meta name="description" content="Basic example" />
+                <meta name="description" content={`${selectedProduct.name} - ${selectedProduct.description}`} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content={selectedProduct.gallery[0]} />
+                <meta
+                    name="twitter:title"
+                    content={`${selectedProduct.name} - ${selectedProduct.brand} | ScandiWeb Store`}
+                />
+                <meta name="twitter:creator" content="@kudzi_mb" />
+                <meta name="twitter:site" content="@kudzi_mb" />
+                <meta
+                    name="twitter:description"
+                    content={`${selectedProduct.name} - ${selectedProduct.description}`}
+                />
             </Helmet>
         );
     };
@@ -58,62 +70,63 @@ export class ProductDescriptionPage extends PureComponent {
         return (
             <AddToCartBtnWrapper>
                 {inStock ? (
-                    <AddToCartBtn inStock={inStock} onClick={() => { handleAddToCart(); }}>
+                    <AddToCartBtn inStock={inStock} onClick={() => { handleAddToCart(); }} aria-label="add to cart">
                         add to cart
                     </AddToCartBtn>
-                ) : (<AddToCartBtn inStock={inStock}>out of stock</AddToCartBtn>)}
+                ) : (<AddToCartBtn inStock={inStock} aria-label="out of stock" >out of stock</AddToCartBtn>)}
             </AddToCartBtnWrapper>
         );
     };
 
-    renderProductImageCarousel() {
-        const { gallery, inStock } = this.props.selectedProduct;
+    renderProductImgCarousel() {
+        const { gallery } = this.props.selectedProduct;
         return (
-            <ProductImageCarouselWrapper >
-                <ProductImagesWrapper>
-                    {gallery.map((image, i) => (
-                        <ProductImage key={i} src={image} inStock={inStock} onClick={this.handleCover} />
+            <ProductImgCarouselWrapper >
+                <ProductImgsWrapper>
+                    {gallery && gallery?.map((image, i) => (
+                        <ProductImg key={i} src={image} loading="lazy" onClick={this.handleCover} />
                     ))}
-                </ProductImagesWrapper>
-            </ProductImageCarouselWrapper>
+                     
+                </ProductImgsWrapper>
+            </ProductImgCarouselWrapper>
         );
     };
 
-    renderProductImageCover() {
+    renderProductImgCover() {
         const { cover } = this.state;
         const { selectedProduct } = this.props;
         return (
-            <ProductImageCoverWrapper>
-                <ProductCoverImage
+            <ProductImgCoverWrapper>
+                <ProductCoverImg
                     src={cover || selectedProduct.gallery[0]}
-                    inStock={selectedProduct.inStock}
                     loading="lazy"
                     alt={`${selectedProduct.name} 
                 ${selectedProduct.brand}`}
                 />
-            </ProductImageCoverWrapper>
+            </ProductImgCoverWrapper>
         );
     };
 
     renderProductContent() {
-        const { selectedProduct } = this.props;
+        const { selectedProduct, activeCurrency } = this.props;
+        const filtredPrice = selectedProduct.prices.filter(
+            (price) => price.currency.symbol === activeCurrency.symbol,
+        )[0];
         return (
             <ProductInfoWrapper>
                 <Headline typeHeadline="h1" fontSize={2} fontWeight={600}>{selectedProduct.brand}</Headline>
                 <Headline typeHeadline="h1" fontSize={2} fontWeight={400}>{selectedProduct.name}</Headline>
                 <ProductAttributeWrapper>
-                    <ProductAttributeButtonWrapper>
                         <ProductAttributes
                             selectedProduct={selectedProduct}
                             attributes={selectedProduct.attributes}
                             inStock={selectedProduct.inStock} />
-                    </ProductAttributeButtonWrapper>
                 </ProductAttributeWrapper>
                 <ProductPriceWrapper>
                     <ProductPriceHeaderWrapper>
                         <Paragraph fontSize={1.125} fontWeight={700} children={"Price:"} />
                     </ProductPriceHeaderWrapper>
-                    <Paragraph lineHeight={1.125} fontSize={1.125} children={`${this.props.filtredPrice.currency.symbol}${this.props.filtredPrice.amount}`} fontWeight={700} />
+                    <Paragraph lineHeight={1.125} fontSize={1.125} children={`${filtredPrice.currency.symbol}${filtredPrice.amount}`} fontWeight={700} />
                 </ProductPriceWrapper>
                 {this.renderAddToCart()}
                 <ProductInfoDescriptionWrapper>
@@ -131,9 +144,9 @@ export class ProductDescriptionPage extends PureComponent {
                     <div style={{ marginRight: '40px' }}>
                         <Skeleton width={100} height={511} />
                     </div>
-                    <ProductImageCoverWrapper>
+                    <ProductImgCoverWrapper>
                         <Skeleton width={610} height={511} />
-                    </ProductImageCoverWrapper>
+                    </ProductImgCoverWrapper>
                     <ProductInfoWrapper>
                         <h1><Skeleton width={292} height={30} /></h1>
                         <h1><Skeleton width={146} height={30} /></h1>
@@ -141,14 +154,14 @@ export class ProductDescriptionPage extends PureComponent {
                             <ProductPriceHeaderWrapper>
                                 <h1><Skeleton width={50} height={25} /></h1>
                             </ProductPriceHeaderWrapper>
-                            <ProductAttributeButtonWrapper>
+                            <ProductAttributeBtnWrapper>
                                 <div style={{ display: 'flex', gap: '1rem' }}>
                                     <Skeleton width={63} height={45} />
                                     <Skeleton width={63} height={45} />
                                     <Skeleton width={63} height={45} />
                                     <Skeleton width={63} height={45} />
                                 </div>
-                            </ProductAttributeButtonWrapper>
+                            </ProductAttributeBtnWrapper>
                         </ProductAttributeWrapper>
                         <ProductPriceWrapper>
                             <ProductPriceHeaderWrapper>
@@ -175,8 +188,8 @@ export class ProductDescriptionPage extends PureComponent {
             <>
                 {this.renderHemlet()}
                 <ProductDescriptionWrapper>
-                    {this.renderProductImageCarousel()}
-                    {this.renderProductImageCover()}
+                    {this.renderProductImgCarousel()}
+                    {this.renderProductImgCover()}
                     {this.renderProductContent()}
                 </ProductDescriptionWrapper>
             </>
@@ -185,10 +198,10 @@ export class ProductDescriptionPage extends PureComponent {
 
 
     render() {
-        const { loadingState} = this.props;
+        const { isLoading } = this.props;
         return (
             <>
-                {!loadingState ? this.renderProduct() : this.renderProductSkeleton()}
+                {!isLoading ? this.renderProduct() : this.renderProductSkeleton()}
             </>
         )
     }

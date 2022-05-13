@@ -1,16 +1,15 @@
 // globalStyles.js
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 html {
   scroll-behavior: smooth;
-  scrollbar-color: ${({ theme }) => theme.colors.emerald} ${({ theme }) => theme.colors.white};;
-  scrollbar-width: thin;
+  scrollbar-width: none;
 }
 
 *::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 0px;
+  height: 0px;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -26,7 +25,7 @@ html {
 }
 
 body {
-  font-family: ${({ theme }) => theme.fonts.raleway};
+  font-family: ${({ theme }) => theme.fonts.raleway},sans-serif;
   font-size: 18px;
   line-height: 1.6;
   color: ${({ theme }) => theme.colors.bunker};

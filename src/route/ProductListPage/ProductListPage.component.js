@@ -17,13 +17,13 @@ export class ProductListPage extends PureComponent {
         products: ProductsListType.isRequired,
     };
 
-    componentDidMount(){
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
+    componentDidMount() {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     };
 
     componentDidUpdate(prevProps) {
-        if (this.props.categoryName!== prevProps.categoryName) {
-            window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
+        if (this.props.categoryName !== prevProps.categoryName) {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
         };
     }
 
@@ -32,8 +32,21 @@ export class ProductListPage extends PureComponent {
         return (
             <Helmet>
                 <html lang="en" />
-                <title>{categoryName} - Buy {categoryName} Products Online | Scandiweb</title>
-                <meta name="description" content="Basic example" />
+                <title>{categoryName} - Buy {categoryName} Products Online | Scandiweb x Kudzai</title>
+                <meta name="description" content={`Discover the latest trends when you shop ${categoryName} online. Shop Scandiweb x Kudzai for the freshest ${categoryName} from the best brands.`} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://designcode.io/cloud/v2/twitter.jpg" />
+                <meta
+                    name="twitter:title"
+                    content={`${categoryName} - Buy ${categoryName} Products Online | Scandiweb x Kudzai`}
+                />
+                <meta name="twitter:creator" content="@kudzai_mb" />
+                <meta name="twitter:site" content="@kudzai_mb" />
+                <meta
+                    name="twitter:description"
+                    content={`Discover the latest trends when you shop ${categoryName} online. Shop Scandiweb x Kudzai for the freshest ${categoryName} from the best brands.`}
+                />
+
             </Helmet>
         );
     };
@@ -47,18 +60,18 @@ export class ProductListPage extends PureComponent {
                         <h1><Skeleton width={100} height={30} /></h1>
                     </div>
                     <CategoryProductListWrapper>
-                        {[...Array(rowSekeletonProducts)].map((row,i) => (
-                                            <section key={i} >
-                                            <article>
-                                                <div>
-                                                    <Skeleton width={354} height={330} />
-                                                </div>
-                                                <div>
-                                                    <Skeleton width={354} height={29} />
-                                                    <Skeleton width={200} height={29} />
-                                                </div>
-                                            </article>
-                                        </section>
+                        {[...Array(rowSekeletonProducts)]?.map((row, i) => (
+                            <section key={i} >
+                                <article>
+                                    <div>
+                                        <Skeleton width={354} height={330} />
+                                    </div>
+                                    <div>
+                                        <Skeleton width={354} height={29} />
+                                        <Skeleton width={200} height={29} />
+                                    </div>
+                                </article>
+                            </section>
                         ))}
                     </CategoryProductListWrapper>
                 </ProductListWrapper>
@@ -82,7 +95,7 @@ export class ProductListPage extends PureComponent {
         const { isLoading, categoryName } = this.props;
         return (
             <main>
-                <ProductListWrapper>
+                <ProductListWrapper aria-label="products">
                     {this.renderHelmet()}
                     {!isLoading && categoryName !== undefined ? (
                         this.renderProductListPage()

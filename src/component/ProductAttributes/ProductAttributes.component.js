@@ -13,10 +13,7 @@ export class ProductAttributes extends PureComponent {
 
     renderProductAttribute(item, attributeData) {
         const { selectedProduct } = this.props;
-        if (item.id === 'undefined') {
-            return null;
-        };
-        return (
+        return (item.id &&
             <ProductAttribute
                 key={item.id}
                 selectedProduct={selectedProduct}
@@ -29,7 +26,7 @@ export class ProductAttributes extends PureComponent {
     renderAttributes() {
         const { attributes, selectedProduct } = this.props;
 
-        return Object.values(attributes).map((attribute) => {
+        return Object.values(attributes)?.map((attribute) => {
             const {
                 id,
                 items,
@@ -49,7 +46,7 @@ export class ProductAttributes extends PureComponent {
                     )}
 
                     <div key={id} style={{ display: 'flex', width: '50%' }}>
-                        {items.map((item) => (
+                        {items && items?.map((item) => (
                             this.renderProductAttribute(item, attributeData)
                         ))}
                     </div>

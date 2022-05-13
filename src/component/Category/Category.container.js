@@ -5,6 +5,7 @@ import Category from "./Category.component";
 
 export const mapStateToProps = (state) => ({
     availableCategories: state.CategoryReducer.categories,
+    activeCategory: state.CategoryReducer.activeCategory,
 });
 
 export class CategoryContainer extends PureComponent {
@@ -19,9 +20,10 @@ export class CategoryContainer extends PureComponent {
     }
 
     containerProps() {
-        const { availableCategories } = this.props;
+        const { availableCategories, activeCategory} = this.props;
         return {
             categories: availableCategories,
+            activeCategory,
         }
     }
     render() {

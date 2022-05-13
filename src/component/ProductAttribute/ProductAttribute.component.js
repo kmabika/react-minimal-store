@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react'
 import {
-    ProductTextAttribute,
+    ProductTextAttributeBtn,
     ProductColorAttribute,
     ProductAttributeWrapper,
     ToolTip,
     ToolTipText,
 } from './styled';
-import CheckMarkIcon from 'Images/CheckMark';
 
 export class ProductAttribute extends PureComponent {
     static propTypes = {
@@ -50,13 +49,14 @@ export class ProductAttribute extends PureComponent {
             selectedAttribute = { name, value, id };
         }
         return (
-            <ProductTextAttribute
+            <ProductTextAttributeBtn
                 name={displayValue}
                 isSelected={isSelected}
+                aria-label={`select ${displayValue}`}
                 onClick={() => onSelectAttributeHandler(selectedAttribute)}
             >
                 {value}
-            </ProductTextAttribute>
+            </ProductTextAttributeBtn>
         );
     }
 
@@ -67,16 +67,16 @@ export class ProductAttribute extends PureComponent {
             selectedAttribute = { name, value, id, selectedProduct };
         } else {
             selectedAttribute = { name, value, id };
-        }
+        };
         return (
             <ToolTip key={this.props.id}>
-                <ProductTextAttribute
+                <ProductTextAttributeBtn
                     name={displayValue}
                     isSelected={isSelected}
                     onClick={() => onSelectAttributeHandler(selectedAttribute)}
                 >
                     {value}
-                </ProductTextAttribute>
+                </ProductTextAttributeBtn>
                 <ToolTipText>{name}</ToolTipText>
             </ToolTip>
 
@@ -94,6 +94,12 @@ export class ProductAttribute extends PureComponent {
         }
     };
 
+    rendercheckMarkIcon(color) {
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m4 12l6 6L20 6" /></svg>
+            );
+    };
+
     renderSmallColorAttribute() {
         const { value, name, displayValue, isSelected, onSelectAttributeHandler, id } = this.props;
         return (
@@ -105,12 +111,12 @@ export class ProductAttribute extends PureComponent {
                     onClick={() => onSelectAttributeHandler({ name: name, value: value, id: id })}
                 >
                     {isSelected
-                        && (value === '#000000' ? <CheckMarkIcon color={'#fff'} /> : <CheckMarkIcon color={'#000'} />)}
+                        && (value === '#000000' ? this.rendercheckMarkIcon('#fff') : this.rendercheckMarkIcon('#000'))}
                 </ProductColorAttribute>
                 <ToolTipText>{displayValue}</ToolTipText>
             </ToolTip>
         );
-    }
+    };
 
     renderLargeColorAttribute() {
         const { value, name, displayValue, isSelected, onSelectAttributeHandler, id, selectedProduct } = this.props;
@@ -123,10 +129,10 @@ export class ProductAttribute extends PureComponent {
                 onClick={() => onSelectAttributeHandler(selectedAttribute)}
             >
                 {isSelected
-                    && (value === '#000000' ? <CheckMarkIcon color={'#fff'} /> : <CheckMarkIcon color={'#000'} />)}
+                    && (value === '#000000' ? this.rendercheckMarkIcon('#fff') : this.rendercheckMarkIcon('#000'))}
             </ProductColorAttribute>
         );
-    }
+    };
 
     renderPlaceHolder() {
         return null;

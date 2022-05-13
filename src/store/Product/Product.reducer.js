@@ -13,11 +13,11 @@ export const getProductsList = (action, state) => {
   const availableProducts = action.products;
   return {
     ...state,
-    products: availableProducts.map((product) => ({
+    products: availableProducts?.map((product) => ({
       ...product,
-      attributes: product.attributes.map((attribute) => ({
+      attributes: product.attributes?.map((attribute) => ({
         ...attribute,
-        items: attribute.items.map((item) => ({
+        items: attribute.items?.map((item) => ({
           ...item,
           isSelected: false,
         })),
@@ -33,13 +33,13 @@ export const selectAttribute = (action, state) => {
         ...state,
         selectedProduct: {
           ...state.selectedProduct,
-          attributes: state.selectedProduct.attributes.map((attribute) => {
+          attributes: state.selectedProduct.attributes?.map((attribute) => {
             if (attribute.name !== action.attribute.name) {
               return ({ ...attribute });
             }
             return ({
               ...attribute,
-              items: attribute.items.map((item) => {
+              items: attribute.items?.map((item) => {
                 if (item.value !== action.attribute.value) {
                   return ({ ...item, isSelected: false });
                 }
@@ -52,15 +52,15 @@ export const selectAttribute = (action, state) => {
   } else {
     return {
       ...state,
-      products: state.products.map((product) => ({
+      products: state.products?.map((product) => ({
         ...product,
-        attributes: product.attributes.map((attribute) => {
+        attributes: product.attributes?.map((attribute) => {
           if (attribute.name !== action.attribute.name) {
             return ({ ...attribute });
           }
           return ({
             ...attribute,
-            items: attribute.items.map((item) => {
+            items: attribute.items?.map((item) => {
               if (item.value !== action.attribute.value) {
                 return ({ ...item, isSelected: false });
               }
@@ -79,9 +79,9 @@ export const updateActiveProduct = (action, state) => {
     ...state,
     selectedProduct: {
       ...productToActivate,
-      attributes: productToActivate.attributes.map((attribute) => ({
+      attributes: productToActivate.attributes?.map((attribute) => ({
         ...attribute,
-        items: attribute.items.map((option) => ({
+        items: attribute.items?.map((option) => ({
           ...option,
           isSelected: false,
         })),

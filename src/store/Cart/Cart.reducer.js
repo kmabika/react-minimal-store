@@ -14,7 +14,7 @@ export const addProductToCart = (action,state) => {
   );
 
   if (existingProductFound) {
-    cartItemsList = state.cartItems.map((product) => {
+    cartItemsList = state.cartItems?.map((product) => {
       if (product.cartItemId !== cartItemId) {
         return product;
       }
@@ -38,7 +38,7 @@ export const addProductToCart = (action,state) => {
 export const updateProductAmount = (action,state) => {
   return{
     ...state,
-    cartItems: state.cartItems.map(
+    cartItems: state.cartItems?.map(
       (product) => {
         if (product.cartItemId !== action.product.cartItemId) {
           return product;
