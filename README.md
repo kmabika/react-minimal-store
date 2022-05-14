@@ -16,15 +16,13 @@ A webapp using React.js written as part of the Scandiweb Junior Developer test a
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 ### Built With
 
-* [react.js](https://reactjs.org/)
-* [redux](https://redux.js.org/)
-* [styled-components](https://styled-components.com/docs)
-* [graphql](https://graphql.org/)
-* [opus](https://github.com/tilework/opus)
-
+- [react.js](https://reactjs.org/)
+- [redux](https://redux.js.org/)
+- [styled-components](https://styled-components.com/docs)
+- [graphql](https://graphql.org/)
+- [opus](https://github.com/tilework/opus)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -34,20 +32,21 @@ A webapp using React.js written as part of the Scandiweb Junior Developer test a
 
 Install the server and run the server.
 
-* npm
+- npm
   ```sh
   git clone https://github.com/scandiweb/junior-react-endpoint
   ```
-* yarn 
+- yarn
   ```sh
-  yarn install 
+  yarn install
   ```
-* start server
+- start server
   ```sh
   yarn start
   ```
 
 ### Scandiweb Client
+
 Ensure the server is running and start the client.
 
 1. clone the repo
@@ -67,7 +66,7 @@ Ensure the server is running and start the client.
 
 ## Reflection
 
-This was a 1-month long project. Project goals included building a web app that followed the following specs: 
+This was a 1-month long project. Project goals included building a web app that followed the following specs:
 
 - Ability to add/remove products and change their amounts in cart - on the cart page itself, PLP and PDP should be provided.
 - For products that have various options (attributes) - the options should be selected.
@@ -77,12 +76,12 @@ This was a 1-month long project. Project goals included building a web app that 
 - The descriptions provided in HTML format should be parsed and presented as HTML, not as plain text
 - Ability to change the currency of the store to one of the available currencies.
 
-Whilst making sure the webapp closely resembels the following [designs](https://www.figma.com/file/38MTfcwlMMF3hI1TB8l5yp/Junior-Frontend-Test-Designs-(Public)-(Copy)?node-id=0%3A1)
-
+Whilst making sure the webapp closely resembels the following [designs](<https://www.figma.com/file/38MTfcwlMMF3hI1TB8l5yp/Junior-Frontend-Test-Designs-(Public)-(Copy)?node-id=0%3A1>)
 
 Originally I wanted to build the web application with Apollo and depend on Apollo as a state management solution instead of redux since I'm familiar with Apollo. After some research, I found out that redux offers a more predictable state container, and looking at the ScandiPwa codebase I saw a benefit in using redux. I decided on using react, redux, and opus as my stack.
 
 One of the main challenges I ran into was displaying the attributes on the product list page before a product is selected. This lead me to spend a few days on a research spike into this implementation using Redux, the ScandiPwa demo app gave an idea of how to implement this into the design and it took me some time to figure out how to add this functionality into redux.
 
-I achieved all my goals and met the project specifications.  This was a really interesting assignment, and I enjoyed working on the project.
+I achieved all my goals and met the project specifications. This was a really interesting assignment, and I enjoyed working on the project.
+
 <p align="right">(<a href="#top">back to top</a>)</p>

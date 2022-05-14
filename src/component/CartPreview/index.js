@@ -1,1 +1,1 @@
-export { default } from './CartPreview.container'
+export { default } from './CartPreview.container';

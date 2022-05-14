@@ -5,7 +5,7 @@ export const SliderImageComponent = styled.div`
   width: ${(props) => `${props.width}%`};
 `;
 
-export const  SliderImgWrapper = styled.img`
+export const SliderImgWrapper = styled.img`
   width: 141px;
   height: 181px;
   object-fit: contain;

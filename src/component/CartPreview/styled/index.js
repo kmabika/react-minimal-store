@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const CartContainer = styled.section`
@@ -28,7 +28,7 @@ export const CartHeading = styled.h3`
   font-weight: 500;
   text-align: left;
   b {
-      font-weight: 700;
+    font-weight: 700;
   }
 `;
 export const CartClearBtn = styled.button`
@@ -51,23 +51,24 @@ export const Cart = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   scrollbar-width: thin !important;
-  scrollbar-color:  ${({ theme }) => theme.colors.emerald} ${({ theme }) => theme.colors.white};
+  scrollbar-color: ${({ theme }) => theme.colors.emerald}
+    ${({ theme }) => theme.colors.white};
   &::-webkit-scrollbar {
     width: 2px;
     height: 1px;
     width: thin;
   }
   &::-webkit-scrollbar-track {
-    border-radius:  0.5rem;
+    border-radius: 0.5rem;
     box-shadow: inset 0 0 10px ${({ theme }) => theme.colors.bunker};
   }
   &::-webkit-scrollbar-thumb {
-    border-radius:  0.5rem;
+    border-radius: 0.5rem;
     background-color: ${({ theme }) => theme.colors.emerald};
   }
 `;
 
-export const CartInnerWrap = styled.div``
+export const CartInnerWrap = styled.div``;
 
 export const EmptyCart = styled.div`
   width: 100%;
@@ -89,7 +90,7 @@ export const CartDetail = styled.p`
   font-size: 1rem;
   font-family: ${({ theme }) => theme.fonts.roboto};
   font-weight: 500;
-  line-height: 1.5625rem; 
+  line-height: 1.5625rem;
 `;
 export const CartAmount = styled.p`
   font-weight: 700;
@@ -133,4 +134,3 @@ color: ${({ theme }) => theme.colors.white};
 background-color: ${({ theme }) => theme.colors.emerald};
 }
 `;
-

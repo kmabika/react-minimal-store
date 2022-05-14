@@ -8,7 +8,7 @@ import {
 
 export const getInitialState = () => ({
   products: [],
-  selectedProduct: { },
+  selectedProduct: {},
 });
 
 export const getProductsList = (action, state) => {
@@ -25,31 +25,31 @@ export const getProductsList = (action, state) => {
         })),
       })),
     })),
-  }
+  };
 };
 
 export const selectAttribute = (action, state) => {
   if (action.attribute?.selectedProduct !== undefined) {
-      return {
-        ...state,
-        selectedProduct: {
-          ...state.selectedProduct,
-          attributes: state.selectedProduct.attributes?.map((attribute) => {
-            if (attribute.name !== action.attribute.name) {
-              return ({ ...attribute });
-            }
-            return ({
-              ...attribute,
-              items: attribute.items?.map((item) => {
-                if (item.value !== action.attribute.value) {
-                  return ({ ...item, isSelected: false });
-                }
-                return ({ ...item, isSelected: true });
-              }),
-            });
-          }),
-        },
-      }
+    return {
+      ...state,
+      selectedProduct: {
+        ...state.selectedProduct,
+        attributes: state.selectedProduct.attributes?.map((attribute) => {
+          if (attribute.name !== action.attribute.name) {
+            return { ...attribute };
+          }
+          return {
+            ...attribute,
+            items: attribute.items?.map((item) => {
+              if (item.value !== action.attribute.value) {
+                return { ...item, isSelected: false };
+              }
+              return { ...item, isSelected: true };
+            }),
+          };
+        }),
+      },
+    };
   } else {
     return {
       ...state,
@@ -57,22 +57,22 @@ export const selectAttribute = (action, state) => {
         ...product,
         attributes: product.attributes?.map((attribute) => {
           if (attribute.name !== action.attribute.name) {
-            return ({ ...attribute });
+            return { ...attribute };
           }
-          return ({
+          return {
             ...attribute,
             items: attribute.items?.map((item) => {
               if (item.value !== action.attribute.value) {
-                return ({ ...item, isSelected: false });
+                return { ...item, isSelected: false };
               }
-              return ({ ...item, isSelected: true });
+              return { ...item, isSelected: true };
             }),
-          });
+          };
         }),
       })),
-    }
+    };
   }
-}
+};
 
 export const updateActiveProduct = (action, state) => {
   const productToActivate = action.product;
@@ -91,20 +91,19 @@ export const updateActiveProduct = (action, state) => {
   };
 };
 
-
 const ProductReducer = (state = getInitialState(), action) => {
   switch (action.type) {
     case GET_PRODUCTS: {
       return getProductsList(action, state);
     }
     case UPDATE_ACTIVE_PRODUCT: {
-      return updateActiveProduct(action, state)
+      return updateActiveProduct(action, state);
     }
     case SELECT_ATTRIBUTE: {
-      return selectAttribute(action, state)
+      return selectAttribute(action, state);
     }
     case RESET_PRODUCT_ATTRIBUTES: {
-     return updateActiveProduct(action,state);
+      return updateActiveProduct(action, state);
     }
     case RESET_PRODUCTS_ATTRIBUTES: {
       return {
@@ -119,7 +118,7 @@ const ProductReducer = (state = getInitialState(), action) => {
             })),
           })),
         })),
-      }
+      };
     }
     default:
       return state;

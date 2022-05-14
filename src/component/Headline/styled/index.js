@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const HeadlineElement = styled.div`
-    width: 100%;
+  width: 100%;
 `;
 
 const tag = (props) =>
@@ -29,15 +29,21 @@ const sizeHeadline = (type) => {
 export const HeadlineWrapper = styled(HeadlineElement).attrs(tag)`
   color: ${({ theme }) => theme.colors.bunker};
   line-height: ${(props) =>
-    props.typeHeadline === 'h6' || props.typeHeadline === 'h5' || props.typeHeadline === 'h4'
+    props.typeHeadline === 'h6' ||
+    props.typeHeadline === 'h5' ||
+    props.typeHeadline === 'h4'
       ? '140%'
       : '150%'};
   font-size: ${(props) =>
-    props.fontSize ? `${props.fontSize}em` : `${sizeHeadline(props.typeHeadline).size}em`};
+    props.fontSize
+      ? `${props.fontSize}em`
+      : `${sizeHeadline(props.typeHeadline).size}em`};
   font-weight: ${(props) =>
-    props.fontWeight ? props.fontWeight : sizeHeadline(props.typeHeadline).weight};
+    props.fontWeight
+      ? props.fontWeight
+      : sizeHeadline(props.typeHeadline).weight};
   margin-top: ${(props) =>
-      props.marginTop ? `${props.marginTop}rem` : '0rem'};
+    props.marginTop ? `${props.marginTop}rem` : '0rem'};
   margin-bottom: ${(props) =>
-        props.marginBottom ? `${props.marginBottom}rem` : '0rem'};
-  `
+    props.marginBottom ? `${props.marginBottom}rem` : '0rem'};
+`;

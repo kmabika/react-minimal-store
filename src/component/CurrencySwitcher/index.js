@@ -1,1 +1,1 @@
-export {default } from './CurrencySwitcher.container'
+export { default } from './CurrencySwitcher.container';

@@ -6,9 +6,11 @@ export const getInitialState = () => ({
   activeCategory: '',
 });
 
-export const updateSelectedCategory = (action,state) => {
+export const updateSelectedCategory = (action, state) => {
   let selectedCategory = action.category;
-  const isValidCategory = state.categories?.includes(selectedCategory.toLowerCase());
+  const isValidCategory = state.categories?.includes(
+    selectedCategory.toLowerCase()
+  );
   if (selectedCategory === undefined) {
     selectedCategory = state.categories[0];
   }
@@ -22,8 +24,7 @@ export const updateSelectedCategory = (action,state) => {
     ...state,
     activeCategory: false,
   };
-}
-
+};
 
 const CategoryReducer = (state = getInitialState(), action) => {
   switch (action.type) {
@@ -33,7 +34,7 @@ const CategoryReducer = (state = getInitialState(), action) => {
         categories: action.categories?.map((category) => category.name),
       };
     case UPDATE_ACTIVE_CATEGORY:
-      return updateSelectedCategory(action,state);
+      return updateSelectedCategory(action, state);
     default:
       return state;
   }

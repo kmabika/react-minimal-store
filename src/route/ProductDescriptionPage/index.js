@@ -1,1 +1,1 @@
-export {default} from "./ProductDescriptionPage.container"
+export { default } from './ProductDescriptionPage.container';

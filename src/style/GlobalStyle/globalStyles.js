@@ -59,5 +59,4 @@ a {
 }
 `;
 
-
 export default GlobalStyle;

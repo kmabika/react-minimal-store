@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { PureComponent } from "react";
+import { PureComponent } from 'react';
 import {
   CartContainer,
   CartWrap,
@@ -15,17 +15,16 @@ import {
   CartButtonWrap,
   ViewBagBtn,
   CheckOutBtn,
-} from './styled'
-import CartItem from "Component/CartItem";
+} from './styled';
+import CartItem from 'Component/CartItem';
 import { CartItemsType } from 'Type/Cart.type';
 
 export class CartPreview extends PureComponent {
-
   static propTypes = {
     isOpened: PropTypes.bool.isRequired,
     products: CartItemsType.isRequired,
     totalCount: PropTypes.number.isRequired,
-  }
+  };
 
   componentDidMount() {
     const { isOpened } = this.props;
@@ -36,20 +35,31 @@ export class CartPreview extends PureComponent {
 
   componentWillUnmount() {
     document.body.style.overflow = 'unset';
-  };
+  }
 
   render() {
-    const { products, totalCount,selectedCurrency,totalAmount,innerRef,toggleCart } = this.props;
+    const {
+      products,
+      totalCount,
+      selectedCurrency,
+      totalAmount,
+      innerRef,
+      toggleCart,
+    } = this.props;
     return (
       <>
         <CartContainer ref={innerRef}>
-          <CartWrap >
+          <CartWrap>
             <CartHeader>
-              <CartHeading><b>My Bag</b>, {totalCount}
-                {' '}
+              <CartHeading>
+                <b>My Bag</b>, {totalCount}{' '}
                 {totalCount === 1 ? 'item' : 'items'}
               </CartHeading>
-              <CartClearBtn onClick={() => { this.props.clearCart() }} aria-label="clear cart">
+              <CartClearBtn
+                onClick={() => {
+                  this.props.clearCart();
+                }}
+                aria-label="clear cart">
                 Clear Cart
               </CartClearBtn>
             </CartHeader>
@@ -58,9 +68,16 @@ export class CartPreview extends PureComponent {
                 {products.length === 0 && (
                   <EmptyCart>Your cart is empty!</EmptyCart>
                 )}
-                {products.length > 0 && products?.map((product) => {
-                  return <CartItem key={product.cartItemId} selectedCurrency={this.props.selectedCurrency} product={product} />;
-                })}
+                {products.length > 0 &&
+                  products?.map((product) => {
+                    return (
+                      <CartItem
+                        key={product.cartItemId}
+                        selectedCurrency={this.props.selectedCurrency}
+                        product={product}
+                      />
+                    );
+                  })}
               </CartInnerWrap>
             </Cart>
             <CheckoutTotalItem>
@@ -70,22 +87,28 @@ export class CartPreview extends PureComponent {
               </CartAmount>
             </CheckoutTotalItem>
             <CartButtonWrap>
-              <ViewBagBtn 
-              to="/cart" 
-              exact
-              onClick={() => {toggleCart()}}
-              > 
+              <ViewBagBtn
+                to="/cart"
+                exact
+                onClick={() => {
+                  toggleCart();
+                }}>
                 View Bag
               </ViewBagBtn>
-              <CheckOutBtn to="#" onClick={() => {toggleCart()}} exact>
+              <CheckOutBtn
+                to="#"
+                onClick={() => {
+                  toggleCart();
+                }}
+                exact>
                 Check Out
               </CheckOutBtn>
             </CartButtonWrap>
           </CartWrap>
         </CartContainer>
       </>
-    )
+    );
   }
-};
+}
 
 export default CartPreview;

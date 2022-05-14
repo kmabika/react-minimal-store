@@ -1,5 +1,5 @@
-import styled,{css} from "styled-components";
-import {NavLink} from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const CategoryWrap = styled.ul`
   min-width: 13rem;
@@ -20,15 +20,15 @@ export const CategoryItemWrap = styled.li`
 
 export const StyledLink = styled(NavLink)`
   text-transform: uppercase;
-  color:  ${({ theme }) => theme.colors.bunker};
+  color: ${({ theme }) => theme.colors.bunker};
   padding: 32px 16px;
   ${({ isselected, theme }) => {
     return (
       isselected === 'true' &&
       css`
-      color: ${theme.colors.emerald};
-      border-bottom: 2px solid ${theme.colors.emerald};    
-    `
+        color: ${theme.colors.emerald};
+        border-bottom: 2px solid ${theme.colors.emerald};
+      `
     );
   }};
 `;

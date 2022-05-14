@@ -1,1 +1,1 @@
-export {default} from './ProductAttribute.container'
+export { default } from './ProductAttribute.container';

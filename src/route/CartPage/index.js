@@ -1,1 +1,1 @@
-export { default } from './CartPage.container'
+export { default } from './CartPage.container';

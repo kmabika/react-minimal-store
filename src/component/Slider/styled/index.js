@@ -9,19 +9,19 @@ export const SliderElement = styled.div`
 `;
 
 export const SliderContent = styled.div`
-transform: translateX(-${(props) => props.translate}%);
-transition: all ease-in-out 0.5s;
-height: 100%;
-width: calc(100% * ${(props) => props.cantSlides});
-display: flex;
-flex-direction: row;
+  transform: translateX(-${(props) => props.translate}%);
+  transition: all ease-in-out 0.5s;
+  height: 100%;
+  width: calc(100% * ${(props) => props.cantSlides});
+  display: flex;
+  flex-direction: row;
 `;
 
 export const StyledSlider = styled.div`
-position: relative;
-height: 100vh;
-width: 141px;
-margin: 0 auto;
-overflow: hidden;
-white-space: nowrap;
+  position: relative;
+  height: 100vh;
+  width: 141px;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
 `;

@@ -1,1 +1,1 @@
-export {default} from './SliderArrow.component';
+export { default } from './SliderArrow.component';

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const ArrowComponent = styled.div`
   position: absolute;
   ${(props) => (props.direction === 'left' ? `left: 115px` : `right: 115px`)};
@@ -9,7 +8,7 @@ export const ArrowComponent = styled.div`
   color: black;
   cursor: pointer;
   &:hover {
-    color: #C9D1D9;
+    color: #c9d1d9;
     mix-blend-mode: difference;
     transition: 250ms linear;
     transform: scale(1.4);

@@ -12,34 +12,39 @@ export class QueryDispatcher {
   }
 
   static async handleFetchInitData(dispatch) {
-    const queryList = [CurrenciesQuery.getCurrenciesQuery(), CategoryQuery.getCategoriesListQuery()];
+    const queryList = [
+      CurrenciesQuery.getCurrenciesQuery(),
+      CategoryQuery.getCategoriesListQuery(),
+    ];
 
     const data = await this.handleFetchRequest(queryList);
 
     if (!data.categories || !data.currencies) {
       return false;
-    };
+    }
     CategoryDispatcher.updateCategoriesData(dispatch, data.categories);
     CurrencyDispatcher.updateCurrenciesData(dispatch, data.currencies);
     return data;
   }
 
-  static async handleFetchProductData(dispatch,id) {
+  static async handleFetchProductData(dispatch, id) {
     const queries = [ProductsQuery.getProductQuery(id)];
 
     const data = await this.handleFetchRequest(queries);
     if (!data.product) {
       return false;
-    };
-    ProductDispatcher.setActiveProduct(dispatch,data.product);
+    }
+    ProductDispatcher.setActiveProduct(dispatch, data.product);
     return data;
   }
 
   static async handleFetchProductsData(dispatch, categoryName) {
     if (!categoryName) return false;
-    const queries = [ProductsQuery.getProductsListQuery(categoryName.toLowerCase())];
+    const queries = [
+      ProductsQuery.getProductsListQuery(categoryName.toLowerCase()),
+    ];
     const data = await this.handleFetchRequest(queries);
-    if(!data.category){
+    if (!data.category) {
       return false;
     }
     ProductDispatcher.updateProductsData(dispatch, data.category.products);

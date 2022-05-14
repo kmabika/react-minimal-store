@@ -1,1 +1,1 @@
-export {default} from './Slider.container'
+export { default } from './Slider.container';

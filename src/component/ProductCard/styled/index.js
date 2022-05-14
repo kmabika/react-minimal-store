@@ -1,22 +1,22 @@
 import styled from 'styled-components';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const ProductCardWrapper = styled.li`
-    position: relative;
-    flex-basis: calc(100% / 3 - 100px);
-    margin-top: 103px;
-    padding: 11px 14px 0px 16px;
-    opacity: ${props => props.inStock ? "100%" : "50%"};
-    &:hover {
-      box-shadow: 0px 100px 105px 0px rgba(168, 172, 176, 0.19);
-      transition: 0.3s ease-in-out;
-      transform: scale(1.01, 1.01);
-    }
+  position: relative;
+  flex-basis: calc(100% / 3 - 100px);
+  margin-top: 103px;
+  padding: 11px 14px 0px 16px;
+  opacity: ${(props) => (props.inStock ? '100%' : '50%')};
+  &:hover {
+    box-shadow: 0px 100px 105px 0px rgba(168, 172, 176, 0.19);
+    transition: 0.3s ease-in-out;
+    transform: scale(1.01, 1.01);
+  }
 `;
 
 export const ProductLink = styled(NavLink)`
-    color: inherit;
-    cursor: pointer;
+  color: inherit;
+  cursor: pointer;
 `;
 
 export const ProductThumb = styled.div`
@@ -34,7 +34,7 @@ export const ProductImg = styled.img`
 export const ProductImgOutOfStockText = styled.h1`
   font-size: 1.5rem;
   font-weight: 400;
-  color: #8D8F9A;
+  color: #8d8f9a;
   text-align: center;
   position: absolute;
   top: 0;
@@ -46,8 +46,8 @@ export const ProductImgOutOfStockText = styled.h1`
 `;
 
 export const ProductContent = styled.div`
- padding-top: 16px;
- padding-bottom: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 `;
 
 export const ProductAddToCartBtn = styled.button`
@@ -61,7 +61,7 @@ export const ProductAddToCartBtn = styled.button`
   height: 52px;
   border: none;
   border-radius: 50%;
-  background-color:  ${({ theme }) => theme.colors.emerald};
+  background-color: ${({ theme }) => theme.colors.emerald};
   cursor: pointer;
   ${ProductCardWrapper}:hover & {
     display: flex;
@@ -70,7 +70,7 @@ export const ProductAddToCartBtn = styled.button`
     background-color: #237337;
     transition: all 0.5s;
   }
-`
+`;
 
 export const ProductSwatchBtn = styled.button`
   display: none;
@@ -81,7 +81,7 @@ export const ProductSwatchBtn = styled.button`
   border: none;
   margin-right: 12px;
   border-radius: 50%;
-  background-color:  ${({ theme }) => theme.colors.emerald};
+  background-color: ${({ theme }) => theme.colors.emerald};
   cursor: pointer;
 `;
 
@@ -90,12 +90,12 @@ export const ProductAttributeText = styled.span`
   border-width: 1px;
   min-width: 30px;
   font-weight: 400;
-  display:none;
+  display: none;
   width: auto;
   cursor: pointer;
   text-align: center;
   margin-right: 10px;
-`
+`;
 
 export const ProductAttributesWrapper = styled.div`
   display: none;

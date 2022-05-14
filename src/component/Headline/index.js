@@ -1,1 +1,1 @@
-export {default} from './Headline.component'
+export { default } from './Headline.component';

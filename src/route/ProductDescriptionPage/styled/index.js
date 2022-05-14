@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ProductDescriptionWrapper = styled.div`
   margin-top: 80px;
@@ -19,7 +19,6 @@ export const ProductImgsWrapper = styled.div`
   margin-right; 40px;
 `;
 
-
 export const ProductImg = styled.img`
   border: 2px solid transparent;
   opacity: 1;
@@ -29,11 +28,11 @@ export const ProductImg = styled.img`
   margin-bottom: 1rem;
   object-fit: cover;
   cursor: pointer;
-  &:hover{
+  &:hover {
     border: 2px solid ${({ theme }) => theme.colors.emerald};
     opacity: 0.6;
     transition: all 250ms linear;
-  };
+  }
 `;
 
 export const ProductImgCoverWrapper = styled.div`
@@ -54,8 +53,8 @@ export const ProductInfoWrapper = styled.aside`
 `;
 
 export const ProductAttributeWrapper = styled.div`
- margin-top: 43px;
- text-transform: uppercase;
+  margin-top: 43px;
+  text-transform: uppercase;
 `;
 
 export const ProductPriceHeaderWrapper = styled.div`
@@ -83,7 +82,7 @@ export const ProductAttributeBtn = styled.button`
 
 export const ProductAttributeBtnWrapper = styled.div`
   margin-bottom: 0.5rem;
-`
+`;
 
 export const ProductPriceWrapper = styled.div`
   margin-bottom: 10px;
@@ -105,17 +104,17 @@ export const AddToCartBtn = styled.button`
   opacity: 1;
   transition: opacity 250ms linear;
   cursor: pointer;
-  &:hover{
+  &:hover {
     opacity: 0.6;
     transition: opacity 250ms linear;
-  };
+  }
   ${({ inStock, theme }) => {
     return (
       !inStock &&
       css`
-      color: ${theme.colors.white};
-      background-color: ${theme.colors.darkGray};
-    `
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.darkGray};
+      `
     );
   }};
 `;
@@ -132,7 +131,7 @@ export const ShowMoreBtn = styled.button`
   opacity: 1;
   transition: opacity 250ms linear;
   cursor: pointer;
-  &:hover{
+  &:hover {
     opacity: 0.6;
     transition: opacity 250ms linear;
   }
@@ -141,4 +140,4 @@ export const ShowMoreBtn = styled.button`
 export const ProductInfoDescriptionWrapper = styled.div`
   margin-top: 2.5rem;
   font-family: ${({ theme }) => theme.fonts.roboto};
-`
+`;

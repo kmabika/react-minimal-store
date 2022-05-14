@@ -8,4 +8,4 @@ export const getCategories = (categories) => ({
 export const updateSelectedCategory = (category) => ({
   type: UPDATE_ACTIVE_CATEGORY,
   category,
-})
+});

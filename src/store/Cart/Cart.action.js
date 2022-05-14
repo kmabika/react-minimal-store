@@ -22,4 +22,3 @@ export const updateProductAmount = (product, amount) => ({
 export const clearCart = () => ({
   type: CLEAR_CART,
 });
-

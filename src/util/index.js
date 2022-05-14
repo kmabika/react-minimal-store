@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 export const toastAction = {
   position: toast.POSITION.TOP_LEFT,

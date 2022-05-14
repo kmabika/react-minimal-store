@@ -1,1 +1,1 @@
-export { default } from './CartAttribute.component'
+export { default } from './CartAttribute.component';

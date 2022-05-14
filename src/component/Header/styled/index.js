@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   max-width: 100%;
-  background-color:  ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.white};
   position: relative;
   top: 0;
   left: 0;
@@ -11,36 +11,35 @@ export const HeaderContainer = styled.header`
 `;
 
 export const HeaderWrap = styled.div`
-min-height: 80px;
-position: relative;
-display: -webkit-box;
-display: flex;
--webkit-box-align: center;
-align-items: center;
--webkit-box-pack: justify;
-justify-content: space-between;
+  min-height: 80px;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
 `;
 
 export const TopMiddleNavBarWrap = styled.div`
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translateY(-50%) translateX(-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 `;
 
 export const TopLeftNavBarWrap = styled.nav`
-display: -webkit-box;
-display: flex;
--webkit-box-align: center;
-align-items: center;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
 `;
 
-
 export const TopRightNavBarWrap = styled.div`
-display: -webkit-box;
-display: flex;
--webkit-box-align: center;
-align-items: center;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
 `;
 
 export const Cart = styled.div`

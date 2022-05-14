@@ -24,6 +24,5 @@ export const resetProductAttributes = (product) => ({
 });
 
 export const resetProductsAttributes = () => ({
-  type: RESET_PRODUCTS_ATTRIBUTES
-})
-
+  type: RESET_PRODUCTS_ATTRIBUTES,
+});
