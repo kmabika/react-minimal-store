@@ -36,8 +36,8 @@ export const HeadlineWrapper = styled(HeadlineElement).attrs(tag)`
       : '150%'};
   font-size: ${(props) =>
     props.fontSize
-      ? `${props.fontSize}em`
-      : `${sizeHeadline(props.typeHeadline).size}em`};
+      ? `${props.fontSize}rem`
+      : `${sizeHeadline(props.typeHeadline).size}rem`};
   font-weight: ${(props) =>
     props.fontWeight
       ? props.fontWeight

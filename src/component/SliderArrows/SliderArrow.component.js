@@ -1,7 +1,14 @@
+import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import { ArrowComponent } from './styled';
 
 export class SliderArrow extends PureComponent {
+
+  static propTypes = {
+    handleClick: PropTypes.func.isRequired,
+    direction: PropTypes.string.isRequired,
+  }
+
   renderArrowRight() {
     return (
       <svg

@@ -52,8 +52,9 @@ export class CartPreview extends PureComponent {
           <CartWrap>
             <CartHeader>
               <CartHeading>
-                <b>My Bag</b>, {totalCount}{' '}
-                {totalCount === 1 ? 'item' : 'items'}
+                <b>My Bag,
+                  <p>{totalCount}{' '}{totalCount === 1 ? 'item' : 'items'}</p>
+                </b>
               </CartHeading>
               <CartClearBtn
                 onClick={() => {

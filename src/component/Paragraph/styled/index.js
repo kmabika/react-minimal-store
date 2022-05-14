@@ -8,7 +8,7 @@ export const ParagraphWrapper = styled.div`
   font-family: ${(props) =>
     props.fontFamily ? `${props.fontFamily}` : 'Raleway'};
   margin-bottom: ${(props) =>
-    props.marginBottom ? `${props.marginBottom}rem` : '0.5rem'};
+    props.marginBottom ? `${props.marginBottom}rem` : '0rem'};
   width: 100%;
   font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}` : '400')};
   h1,

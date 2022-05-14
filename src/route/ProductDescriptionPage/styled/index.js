@@ -58,7 +58,7 @@ export const ProductAttributeWrapper = styled.div`
 `;
 
 export const ProductPriceHeaderWrapper = styled.div`
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   font-family: ${({ theme }) => theme.fonts.robotoCondensed};
   text-transform: uppercase;
 `;
@@ -89,7 +89,7 @@ export const ProductPriceWrapper = styled.div`
 `;
 
 export const AddToCartBtnWrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 1.875rem;
 `;
 
 export const AddToCartBtn = styled.button`

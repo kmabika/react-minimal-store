@@ -28,7 +28,12 @@ export const CartHeading = styled.h3`
   font-weight: 500;
   text-align: left;
   b {
+    font-family: ${({theme}) => theme.fonts.raleway};
     font-weight: 700;
+    p {
+      display: inline;
+      font-weight: 500;
+    }
   }
 `;
 export const CartClearBtn = styled.button`

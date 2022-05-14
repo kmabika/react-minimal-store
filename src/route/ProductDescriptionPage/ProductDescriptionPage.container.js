@@ -10,7 +10,6 @@ import { toast } from "react-toastify";
 import { toastAction } from "Util/";
 import NotFoundPage from "Route/NotFoundPage/NotFoundPage.component";
 import { ProductDispatcher } from "Store/Product/Product.dispatcher";
-import { ProductType } from "Type/ProductList.type";
 import { CurrencyItemType } from "Type/Currency.type";
 
 export const mapStateToProps = (state) => ({
@@ -35,7 +34,7 @@ export class ProductDescriptionPageContainer extends PureComponent {
     addProductToCart: PropTypes.func.isRequired,
     updateSelectedCategory: PropTypes.func.isRequired,
     resetProductAttributes: PropTypes.func.isRequired,
-    selectedProduct: ProductType.isRequired,
+    selectedProduct: PropTypes.object.isRequired,
     selectedCurrency: CurrencyItemType,
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -68,12 +67,7 @@ export class ProductDescriptionPageContainer extends PureComponent {
     let attributesSelected = "";
 
     if (attributes.length) {
-      attributes.map((attribute) => {
-        attributesSelected = attribute.items.some(
-          (item) => item.isSelected === true
-        );
-        return attribute;
-      });
+      attributesSelected = attributes.every(attribute => attribute.items.some(item => item.isSelected === true));
     } else {
       attributesSelected = true;
     }
@@ -105,12 +99,10 @@ export class ProductDescriptionPageContainer extends PureComponent {
   }
 
   containerProps() {
-    const { isLoading, hasError } = this.state;
+    const { isLoading } = this.state;
     const { selectedProduct, selectedCurrency } = this.props;
-    console.table(selectedProduct);
     return {
       isLoading,
-      hasError,
       handleAddToCart: this.handleAddToCart,
       selectedProduct,
       selectedCurrency,

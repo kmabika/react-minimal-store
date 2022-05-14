@@ -94,7 +94,7 @@ export class ProductListPage extends PureComponent {
     return (
       <>
         <CategoryHeaderWrapper>
-          <Headline typeHeadline="h1" fontWeight={400}>
+          <Headline typeHeadline="h1" fontSize={2.625} fontWeight={400}>
             {categoryName}
           </Headline>
         </CategoryHeaderWrapper>

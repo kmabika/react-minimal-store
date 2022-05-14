@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import {
   CartPageWrapper,
@@ -17,9 +18,16 @@ import Slider from 'Component/Slider';
 import { Wrap } from 'Route/NotFoundPage/styled';
 
 export class CartPage extends PureComponent {
+
+  static propTypes = {
+    cartItems: PropTypes.array.isRequired,
+    selectedCurrency: PropTypes.object.isRequired,
+    updateProductAmount: PropTypes.func.isRequired,
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
-  }
+  };
 
   renderHemlet() {
     return (

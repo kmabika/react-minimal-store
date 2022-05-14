@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { CartDispatcher } from 'Store/Cart/Cart.dispatcher';
@@ -16,6 +17,14 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export class CartPageContainer extends PureComponent {
+
+  static propTypes = {
+    cartItems: PropTypes.array.isRequired,
+    selectedCurrency: PropTypes.object.isRequired,
+    updateProductAmount: PropTypes.func.isRequired
+  }
+
+
   containerProps() {
     const { cartItems, selectedCurrency, updateProductAmount } = this.props;
     return {

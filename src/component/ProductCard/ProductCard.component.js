@@ -80,11 +80,13 @@ export class ProductCard extends PureComponent {
           <Headline
             typeHeadline="h5"
             marginTop={1.5}
+            fontSize={1.125}
             marginBottom={0.5}
             fontWeight={300}>{`${brand} ${name}`}</Headline>
         </ProductLink>
         <Paragraph
           fontWeight={500}
+          fontSize={1.125}
           children={`${price.currency.symbol} ${price.amount}`}
         />
         {inStock && (

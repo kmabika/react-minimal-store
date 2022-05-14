@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -23,7 +24,17 @@ import {
 import Paragraph from 'Component/Paragraph';
 import Headline from 'Component/Headline';
 import ProductAttributes from 'Component/ProductAttributes';
+import { CurrencyItemType } from 'Type/Currency.type';
 export class ProductDescriptionPage extends PureComponent {
+
+  static propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+    selectedProduct: PropTypes.object.isRequired,
+    selectedCurrency: CurrencyItemType.isRequired,
+    handleAddToCart: PropTypes.func.isRequired,
+
+  }
+
   constructor(props) {
     super(props);
     this.state = { showMore: false, cover: '' };
@@ -135,10 +146,10 @@ export class ProductDescriptionPage extends PureComponent {
     )[0];
     return (
       <ProductInfoWrapper>
-        <Headline typeHeadline="h1" fontSize={2} fontWeight={600}>
+        <Headline typeHeadline="h1" fontSize={1.875} fontWeight={600}>
           {selectedProduct.brand}
         </Headline>
-        <Headline typeHeadline="h1" fontSize={2} fontWeight={400}>
+        <Headline typeHeadline="h1" fontSize={1.875} fontWeight={400}>
           {selectedProduct.name}
         </Headline>
         <ProductAttributeWrapper>
@@ -150,11 +161,11 @@ export class ProductDescriptionPage extends PureComponent {
         </ProductAttributeWrapper>
         <ProductPriceWrapper>
           <ProductPriceHeaderWrapper>
-            <Paragraph fontSize={1.125} fontWeight={700} children={'Price:'} />
+            <Paragraph fontSize={1.125} fontWeight={700} fontFamily="Roboto Condensed" children={'Price:'} />
           </ProductPriceHeaderWrapper>
           <Paragraph
             lineHeight={1.125}
-            fontSize={1.125}
+            fontSize={1.5}
             children={`${filteredPrice.currency.symbol}${filteredPrice.amount}`}
             fontWeight={700}
           />
@@ -164,11 +175,13 @@ export class ProductDescriptionPage extends PureComponent {
           {this.state.showMore ? (
             <Paragraph
               fontWeight={400}
+              fontFamily="Roboto"
               children={selectedProduct.description}
             />
           ) : (
             <Paragraph
               fontWeight={400}
+              fontFamily="Roboto"
               children={selectedProduct.description.substring(0, 250)}
             />
           )}

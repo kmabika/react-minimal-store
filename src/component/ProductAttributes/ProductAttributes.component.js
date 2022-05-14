@@ -41,6 +41,7 @@ export class ProductAttributes extends PureComponent {
             <ProductPriceHeaderWrapper>
               <Paragraph
                 lineHeight={1.125}
+                fontFamily="Roboto Condensed"
                 children={`${name}:`}
                 fontSize={1.125}
                 fontWeight={700}
