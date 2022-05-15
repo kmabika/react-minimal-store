@@ -115,7 +115,7 @@ export class CartPage extends PureComponent {
       <CartPageWrapper>
         {this.renderHemlet()}
         <CartPageHeader>
-          <Headline typeHeadline="h1" fontWeight={700} fontSize={1.5}>
+          <Headline typeHeadline="h1" fontWeight={700} fontSize={2}>
             Cart
           </Headline>
         </CartPageHeader>

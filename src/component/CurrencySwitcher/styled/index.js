@@ -13,6 +13,8 @@ export const CurrencySwitcherBtn = styled.button`
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.bunker};
   font-size: 18px;
+  line-height: 28.5px;
+  font-family: Raleway;
   font-weight: 500;
   cursor: pointer;
   background-image: ${(props) =>

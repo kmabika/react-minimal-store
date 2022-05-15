@@ -98,6 +98,7 @@ export const CartDetail = styled.p`
   line-height: 1.5625rem;
 `;
 export const CartAmount = styled.p`
+  font-size: 1rem;
   font-weight: 700;
 `;
 export const CartButtonWrap = styled.div`

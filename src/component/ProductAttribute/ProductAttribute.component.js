@@ -57,13 +57,26 @@ export class ProductAttribute extends PureComponent {
       selectedAttribute = { name, value, id };
     }
     return (
-      <ProductTextAttributeBtn
-        name={displayValue}
-        isSelected={isSelected}
-        aria-label={`select ${displayValue}`}
-        onClick={() => onSelectAttributeHandler(selectedAttribute)}>
-        {value}
-      </ProductTextAttributeBtn>
+      <>
+        {selectedProduct.inStock ? (
+          <ProductTextAttributeBtn
+            name={displayValue}
+            isSelected={isSelected}
+            inStock={selectedProduct.inStock}
+            aria-label={`select ${displayValue}`}
+            onClick={() => onSelectAttributeHandler(selectedAttribute)}>
+            {value}
+          </ProductTextAttributeBtn>
+        ) : (
+          <ProductTextAttributeBtn
+            name={displayValue}
+            inStock={selectedProduct.inStock}
+            aria-label={`select ${displayValue}`}
+          >
+            {value}
+          </ProductTextAttributeBtn>
+        )}
+      </>
     );
   }
 
@@ -87,6 +100,7 @@ export class ProductAttribute extends PureComponent {
       <ToolTip key={this.props.id}>
         <ProductTextAttributeBtn
           name={displayValue}
+          inStock={true}
           isSelected={isSelected}
           onClick={() => onSelectAttributeHandler(selectedAttribute)}>
           {value}
@@ -142,6 +156,7 @@ export class ProductAttribute extends PureComponent {
           name={displayValue}
           color={value}
           isSelected={isSelected}
+          inStock={true}
           onClick={() =>
             onSelectAttributeHandler({ name: name, value: value, id: id })
           }>
@@ -167,16 +182,28 @@ export class ProductAttribute extends PureComponent {
     } = this.props;
     const selectedAttribute = { name, value, id, selectedProduct };
     return (
-      <ProductColorAttribute
-        name={displayValue}
-        color={value}
-        isSelected={isSelected}
-        onClick={() => onSelectAttributeHandler(selectedAttribute)}>
-        {isSelected &&
-          (value === '#000000'
-            ? this.rendercheckMarkIcon('#fff')
-            : this.rendercheckMarkIcon('#000'))}
-      </ProductColorAttribute>
+      <>
+        {selectedProduct.inStock ? (
+          <ProductColorAttribute
+            name={displayValue}
+            color={value}
+            inStock={selectedProduct.inStock}
+            isSelected={isSelected}
+            onClick={() => onSelectAttributeHandler(selectedAttribute)}>
+            {isSelected &&
+              (value === '#000000'
+                ? this.rendercheckMarkIcon('#fff')
+                : this.rendercheckMarkIcon('#000'))}
+          </ProductColorAttribute>
+        ) : (<ProductColorAttribute
+          name={displayValue}
+          color={value}>
+          {isSelected &&
+            (value === '#000000'
+              ? this.rendercheckMarkIcon('#fff')
+              : this.rendercheckMarkIcon('#000'))}
+        </ProductColorAttribute>)}
+      </>
     );
   }
 

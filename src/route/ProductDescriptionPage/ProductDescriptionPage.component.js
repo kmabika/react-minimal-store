@@ -161,7 +161,7 @@ export class ProductDescriptionPage extends PureComponent {
         </ProductAttributeWrapper>
         <ProductPriceWrapper>
           <ProductPriceHeaderWrapper>
-            <Paragraph fontSize={1.125} fontWeight={700} fontFamily="Roboto Condensed" children={'Price:'} />
+            <Paragraph fontSize={1.125} fontWeight={700} fontFamily="Roboto Condensed" marginBottom={1} children={'Price:'} />
           </ProductPriceHeaderWrapper>
           <Paragraph
             lineHeight={1.125}

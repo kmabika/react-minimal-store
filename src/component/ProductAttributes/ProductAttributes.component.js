@@ -27,7 +27,6 @@ export class ProductAttributes extends PureComponent {
 
   renderAttributes() {
     const { attributes, selectedProduct } = this.props;
-
     return Object.values(attributes)?.map((attribute) => {
       const { id, items, name, type } = attribute;
 

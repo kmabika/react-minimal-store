@@ -84,7 +84,7 @@ export class CartPreview extends PureComponent {
             <CheckoutTotalItem>
               <CartDetail>Total</CartDetail>
               <CartAmount>
-                {selectedCurrency.symbol} {totalAmount}
+                {selectedCurrency.symbol}{totalAmount}
               </CartAmount>
             </CheckoutTotalItem>
             <CartButtonWrap>
