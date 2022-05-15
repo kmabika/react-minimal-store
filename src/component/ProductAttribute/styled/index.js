@@ -17,9 +17,9 @@ export const ProductTextAttributeBtn = styled.button`
     return (
       !inStock &&
       css`
-        border: 1px solid #A6A6A6;
+        border: 1px solid #a6a6a6;
         background-color: ${theme.colors.white};
-        color: #A6A6A6;
+        color: #a6a6a6;
       `
     );
   }};
@@ -40,7 +40,7 @@ export const ProductColorAttribute = styled.span`
   height: 24px;
   width: 24px;
   display: inline-block;
-  opacity: ${(props) => !props.inStock ?  '50%': '100%'};
+  opacity: ${(props) => (!props.inStock ? '50%' : '100%')};
   border: 1px solid ${({ theme }) => theme.colors.bunker};
   cursor: pointer;
   background-color: ${(props) =>

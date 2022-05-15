@@ -3,10 +3,9 @@ import { PureComponent } from 'react';
 import Slider from './Slider.component';
 
 export class SliderContainer extends PureComponent {
-  
   static propTypes = {
     images: PropTypes.arrayOf(PropTypes.string),
-  }
+  };
 
   containerProps() {
     return {

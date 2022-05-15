@@ -17,13 +17,11 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export class CartPageContainer extends PureComponent {
-
   static propTypes = {
     cartItems: PropTypes.array.isRequired,
     selectedCurrency: PropTypes.object.isRequired,
-    updateProductAmount: PropTypes.func.isRequired
-  }
-
+    updateProductAmount: PropTypes.func.isRequired,
+  };
 
   containerProps() {
     const { cartItems, selectedCurrency, updateProductAmount } = this.props;

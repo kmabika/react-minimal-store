@@ -5,11 +5,10 @@ import SliderArrows from 'Component/SliderArrows';
 import SliderImage from 'Component/SliderImage/SliderImage.component';
 
 export class Slider extends PureComponent {
-
   static propTypes = {
     images: PropTypes.arrayOf(PropTypes.string),
-  }
-  
+  };
+
   constructor(props) {
     super(props);
     this.state = {

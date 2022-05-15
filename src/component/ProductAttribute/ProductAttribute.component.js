@@ -71,8 +71,7 @@ export class ProductAttribute extends PureComponent {
           <ProductTextAttributeBtn
             name={displayValue}
             inStock={selectedProduct.inStock}
-            aria-label={`select ${displayValue}`}
-          >
+            aria-label={`select ${displayValue}`}>
             {value}
           </ProductTextAttributeBtn>
         )}
@@ -195,14 +194,14 @@ export class ProductAttribute extends PureComponent {
                 ? this.rendercheckMarkIcon('#fff')
                 : this.rendercheckMarkIcon('#000'))}
           </ProductColorAttribute>
-        ) : (<ProductColorAttribute
-          name={displayValue}
-          color={value}>
-          {isSelected &&
-            (value === '#000000'
-              ? this.rendercheckMarkIcon('#fff')
-              : this.rendercheckMarkIcon('#000'))}
-        </ProductColorAttribute>)}
+        ) : (
+          <ProductColorAttribute name={displayValue} color={value}>
+            {isSelected &&
+              (value === '#000000'
+                ? this.rendercheckMarkIcon('#fff')
+                : this.rendercheckMarkIcon('#000'))}
+          </ProductColorAttribute>
+        )}
       </>
     );
   }

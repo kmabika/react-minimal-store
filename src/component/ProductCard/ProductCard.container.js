@@ -37,19 +37,24 @@ export class ProductCardContainer extends PureComponent {
     const { addProductToCart, resetProductsAttributes } = this.props;
     let attributesSelected = '';
 
-    if(attributes.length) {
-      attributesSelected = attributes.every(attribute => attribute.items.some(item => item.isSelected === true));
-    }else {
+    if (attributes.length) {
+      attributesSelected = attributes.every((attribute) =>
+        attribute.items.some((item) => item.isSelected === true)
+      );
+    } else {
       attributesSelected = true;
-    };
+    }
 
     if (!attributesSelected) {
       toast.error(`Select attributes!`, toastAction);
     } else {
       addProductToCart(product);
       resetProductsAttributes();
-      toast.success(`${product.brand} ${product.name} added to cart`, toastAction);
-    };
+      toast.success(
+        `${product.brand} ${product.name} added to cart`,
+        toastAction
+      );
+    }
   }
 
   containerProps() {

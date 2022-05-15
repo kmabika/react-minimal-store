@@ -26,14 +26,12 @@ import Headline from 'Component/Headline';
 import ProductAttributes from 'Component/ProductAttributes';
 import { CurrencyItemType } from 'Type/Currency.type';
 export class ProductDescriptionPage extends PureComponent {
-
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
     selectedProduct: PropTypes.object.isRequired,
     selectedCurrency: CurrencyItemType.isRequired,
     handleAddToCart: PropTypes.func.isRequired,
-
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -161,7 +159,13 @@ export class ProductDescriptionPage extends PureComponent {
         </ProductAttributeWrapper>
         <ProductPriceWrapper>
           <ProductPriceHeaderWrapper>
-            <Paragraph fontSize={1.125} fontWeight={700} fontFamily="Roboto Condensed" marginBottom={1} children={'Price:'} />
+            <Paragraph
+              fontSize={1.125}
+              fontWeight={700}
+              fontFamily="Roboto Condensed"
+              marginBottom={1}
+              children={'Price:'}
+            />
           </ProductPriceHeaderWrapper>
           <Paragraph
             lineHeight={1.125}

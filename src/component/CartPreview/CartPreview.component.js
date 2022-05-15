@@ -52,8 +52,11 @@ export class CartPreview extends PureComponent {
           <CartWrap>
             <CartHeader>
               <CartHeading>
-                <b>My Bag,
-                  <p>{totalCount}{' '}{totalCount === 1 ? 'item' : 'items'}</p>
+                <b>
+                  My Bag,
+                  <p>
+                    {totalCount} {totalCount === 1 ? 'item' : 'items'}
+                  </p>
                 </b>
               </CartHeading>
               <CartClearBtn
@@ -84,7 +87,8 @@ export class CartPreview extends PureComponent {
             <CheckoutTotalItem>
               <CartDetail>Total</CartDetail>
               <CartAmount>
-                {selectedCurrency.symbol}{totalAmount}
+                {selectedCurrency.symbol}
+                {totalAmount}
               </CartAmount>
             </CheckoutTotalItem>
             <CartButtonWrap>

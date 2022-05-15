@@ -3,11 +3,10 @@ import { PureComponent } from 'react';
 import { SliderImageComponent, SliderImgWrapper } from './styled';
 
 export class SliderImage extends PureComponent {
-
   static propTypes = {
     content: PropTypes.string.isRequired,
     width: PropTypes.number.isRequired,
-  }
+  };
 
   render() {
     const { content, width } = this.props;

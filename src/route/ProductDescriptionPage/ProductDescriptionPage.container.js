@@ -1,16 +1,16 @@
-import PropTypes from "prop-types";
-import { PureComponent } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import ProductDescriptionPage from "./ProductDescriptionPage.component";
-import { QueryDispatcher } from "Util/QueryDispatcher/QueryDispatcher";
-import { CartDispatcher } from "Store/Cart/Cart.dispatcher";
-import { CategoryDispatcher } from "Store/Category/Category.dispatcher";
-import { toast } from "react-toastify";
-import { toastAction } from "Util/";
-import NotFoundPage from "Route/NotFoundPage/NotFoundPage.component";
-import { ProductDispatcher } from "Store/Product/Product.dispatcher";
-import { CurrencyItemType } from "Type/Currency.type";
+import PropTypes from 'prop-types';
+import { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import ProductDescriptionPage from './ProductDescriptionPage.component';
+import { QueryDispatcher } from 'Util/QueryDispatcher/QueryDispatcher';
+import { CartDispatcher } from 'Store/Cart/Cart.dispatcher';
+import { CategoryDispatcher } from 'Store/Category/Category.dispatcher';
+import { toast } from 'react-toastify';
+import { toastAction } from 'Util/';
+import NotFoundPage from 'Route/NotFoundPage/NotFoundPage.component';
+import { ProductDispatcher } from 'Store/Product/Product.dispatcher';
+import { CurrencyItemType } from 'Type/Currency.type';
 
 export const mapStateToProps = (state) => ({
   selectedProduct: state.ProductReducer.selectedProduct,
@@ -53,7 +53,7 @@ export class ProductDescriptionPageContainer extends PureComponent {
   handleAddToCart() {
     const { addProductToCart, selectedProduct, resetProductAttributes } =
       this.props;
-   
+
     const { attributes, name, id, prices, gallery, brand } = selectedProduct;
     const productCartInfo = {
       id: id,
@@ -64,10 +64,12 @@ export class ProductDescriptionPageContainer extends PureComponent {
       prices: prices,
       attributes: attributes,
     };
-    let attributesSelected = "";
+    let attributesSelected = '';
 
     if (attributes.length) {
-      attributesSelected = attributes.every(attribute => attribute.items.some(item => item.isSelected === true));
+      attributesSelected = attributes.every((attribute) =>
+        attribute.items.some((item) => item.isSelected === true)
+      );
     } else {
       attributesSelected = true;
     }
@@ -115,7 +117,7 @@ export class ProductDescriptionPageContainer extends PureComponent {
 
     if (hasError) {
       return <NotFoundPage />;
-    };
+    }
 
     return (
       <>
