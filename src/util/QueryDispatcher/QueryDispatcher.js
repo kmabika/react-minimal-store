@@ -40,9 +40,7 @@ export class QueryDispatcher {
 
   static async handleFetchProductsData(dispatch, categoryName) {
     if (!categoryName) return false;
-    const queries = [
-      ProductsQuery.getProductsListQuery(categoryName.toLowerCase()),
-    ];
+    const queries = [ProductsQuery.getProductsListQuery(categoryName.toLowerCase())];
     const data = await this.handleFetchRequest(queries);
     if (!data.category) {
       return false;

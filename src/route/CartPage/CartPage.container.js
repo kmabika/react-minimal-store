@@ -10,8 +10,7 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  addProductToCart: (product) =>
-    CartDispatcher.addProductToCart(dispatch, product),
+  addProductToCart: (product) => CartDispatcher.addProductToCart(dispatch, product),
   updateProductAmount: (product, amount) =>
     CartDispatcher.updateProductAmount(dispatch, product, amount),
 });

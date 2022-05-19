@@ -1,19 +1,20 @@
+import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import { CategoryWrap, StyledLink } from './styled';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 
 class Category extends PureComponent {
+  static propTypes = {
+    categories: PropTypes.array.isRequired,
+    activeCategory: PropTypes.string.isRequired,
+  };
+
   renderNavBarSkeleton() {
     return (
-      <SkeletonTheme color="#F5F5F5" highlightColor="#ffffff">
-        <li>
-          <Skeleton width={100} height={30} />
-        </li>
-        <li>
-          <Skeleton width={100} height={30} />
-        </li>
-      </SkeletonTheme>
+      <>
+        <div className="block2 pulsate" style={{ marginRight: '10px' }}></div>
+        <div className="block2 pulsate" style={{ marginRight: '10px' }}></div>
+        <div className="block2 pulsate" style={{ marginRight: '10px' }}></div>
+      </>
     );
   }
 
@@ -22,10 +23,7 @@ class Category extends PureComponent {
     return categories?.map((category, index) => {
       let isActive = false;
       const currentCategory = activeCategory;
-      if (
-        currentCategory &&
-        category.toLowerCase() === currentCategory.toLowerCase()
-      ) {
+      if (currentCategory && category.toLowerCase() === currentCategory.toLowerCase()) {
         isActive = true;
       }
       return (
@@ -45,9 +43,7 @@ class Category extends PureComponent {
   render() {
     return (
       <CategoryWrap>
-        {this.props.categories.length > 0
-          ? this.renderNavbar()
-          : this.renderNavBarSkeleton()}
+        {this.props.categories.length > 0 ? this.renderNavbar() : this.renderNavBarSkeleton()}
       </CategoryWrap>
     );
   }

@@ -24,6 +24,14 @@ export class CartPreview extends PureComponent {
     isOpened: PropTypes.bool.isRequired,
     products: CartItemsType.isRequired,
     totalCount: PropTypes.number.isRequired,
+    selectedCurrency: PropTypes.object.isRequired,
+    clearCart: PropTypes.func.isRequired,
+    totalAmount: PropTypes.string.isRequired,
+    toggleCart: PropTypes.func.isRequired,
+    innerRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    ]),
   };
 
   componentDidMount() {
@@ -38,14 +46,8 @@ export class CartPreview extends PureComponent {
   }
 
   render() {
-    const {
-      products,
-      totalCount,
-      selectedCurrency,
-      totalAmount,
-      innerRef,
-      toggleCart,
-    } = this.props;
+    const { products, totalCount, selectedCurrency, totalAmount, innerRef, toggleCart } =
+      this.props;
     return (
       <>
         <CartContainer ref={innerRef}>
@@ -69,9 +71,7 @@ export class CartPreview extends PureComponent {
             </CartHeader>
             <Cart>
               <CartInnerWrap aria-label="cart products">
-                {products.length === 0 && (
-                  <EmptyCart>Your cart is empty!</EmptyCart>
-                )}
+                {products.length === 0 && <EmptyCart>Your cart is empty!</EmptyCart>}
                 {products.length > 0 &&
                   products?.map((product) => {
                     return (

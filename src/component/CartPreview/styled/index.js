@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const CartContainer = styled.section`
   width: 20.3125rem;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: var(--clr-white);
   position: absolute;
   margin-top: 4.2rem;
   top: 0;
@@ -23,12 +23,11 @@ export const CartHeader = styled.div`
   justify-content: space-between;
 `;
 export const CartHeading = styled.h3`
-  font-family: ${({ theme }) => theme.fonts.roboto};
   font-size: 16px;
+  line-height: 25.6px;
   font-weight: 500;
   text-align: left;
   b {
-    font-family: ${({ theme }) => theme.fonts.raleway};
     font-weight: 700;
     p {
       display: inline;
@@ -44,7 +43,7 @@ export const CartClearBtn = styled.button`
 
   &:hover {
     transition: all 0.5s;
-    color: ${({ theme }) => theme.colors.emerald};
+    color: var(--clr-emerald);
   }
 `;
 
@@ -56,8 +55,7 @@ export const Cart = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   scrollbar-width: thin !important;
-  scrollbar-color: ${({ theme }) => theme.colors.emerald}
-    ${({ theme }) => theme.colors.white};
+  scrollbar-color: var(--clr-emerald) var(--clr-white);
   &::-webkit-scrollbar {
     width: 2px;
     height: 1px;
@@ -65,11 +63,11 @@ export const Cart = styled.div`
   }
   &::-webkit-scrollbar-track {
     border-radius: 0.5rem;
-    box-shadow: inset 0 0 10px ${({ theme }) => theme.colors.bunker};
+    box-shadow: inset 0 0 10px var(--clr-bunker);
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 0.5rem;
-    background-color: ${({ theme }) => theme.colors.emerald};
+    background-color: var(--clr-emerald);
   }
 `;
 
@@ -93,7 +91,7 @@ export const CheckoutTotalItem = styled.div`
 
 export const CartDetail = styled.p`
   font-size: 1rem;
-  font-family: ${({ theme }) => theme.fonts.roboto};
+  font-family: 'Roboto';
   font-weight: 500;
   line-height: 1.5625rem;
 `;
@@ -119,9 +117,9 @@ export const ViewBagBtn = styled(NavLink)`
   cursor: pointer;
   opacity: 1;
   transition: opacity 250ms linear;
-  border: 1px solid ${({ theme }) => theme.colors.bunker};
-  color: ${({ theme }) => theme.colors.bunker};
-  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid var(--clr-bunker);
+  color: var(--clr-bunker);
+  background-color: var(--clr-white);
 `;
 
 export const CheckOutBtn = styled(NavLink)`
@@ -136,7 +134,7 @@ cursor: pointer;
 opacity: 1;
 transition: opacity 250ms linear;
 border: 1px solid transparent;
-color: ${({ theme }) => theme.colors.white};
-background-color: ${({ theme }) => theme.colors.emerald};
+color: var(--clr-white);
+background-color: var(--clr-emerald);
 }
 `;

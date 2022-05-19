@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CartPreview from './CartPreview.component';
 import { CartDispatcher } from 'Store/Cart/Cart.dispatcher';
@@ -13,6 +14,14 @@ export class CartPreviewContainer extends PureComponent {
   static propTypes = {
     products: CartItemsType.isRequired,
     selectedCurrency: CurrencyItemType.isRequired,
+    toggleCart: PropTypes.func.isRequired,
+    clearCart: PropTypes.func.isRequired,
+    isOpened: PropTypes.bool.isRequired,
+    totalCount: PropTypes.number.isRequired,
+    innerRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    ]),
   };
 
   containerProps() {

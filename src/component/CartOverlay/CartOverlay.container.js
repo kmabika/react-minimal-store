@@ -26,11 +26,11 @@ export class CartOverlayContainer extends PureComponent {
   }
 
   componentDidMount() {
-    document.addEventListener('click', this.handleClickOutside);
+    document.addEventListener('mousedown', this.handleClickOutside);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleClickOutside);
+    document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
   handleButtonClick = () => {
@@ -51,7 +51,9 @@ export class CartOverlayContainer extends PureComponent {
           this.handleButtonClick();
         }
       }
-    } catch (e) {}
+    } catch (e) {
+      throw new Error(e);
+    }
   };
 
   containerProps() {

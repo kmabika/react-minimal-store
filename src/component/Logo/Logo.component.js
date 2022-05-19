@@ -1,6 +1,12 @@
 import { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
+
 export class Logo extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.renderSvgLogo = this.renderSvgLogo.bind(this);
+  }
+
   renderSvgLogo() {
     return (
       <svg

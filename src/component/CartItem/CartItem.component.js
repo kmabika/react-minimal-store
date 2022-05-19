@@ -14,6 +14,7 @@ import {
   CartItemImgWrapper,
   CartItemImg,
 } from './styled';
+
 import { CartItemType } from 'Type/Cart.type';
 import { PriceItemType } from 'Type/Price.type';
 
@@ -22,6 +23,7 @@ export class CartItem extends PureComponent {
     updateProductAmount: PropTypes.func.isRequired,
     product: CartItemType.isRequired,
     price: PriceItemType.isRequired,
+    image: PropTypes.string.isRequired,
   };
 
   renderProductAttribute(item, attributeData) {
@@ -31,31 +33,37 @@ export class CartItem extends PureComponent {
     if (item.id === 'undefined') {
       return null;
     }
-    return (
-      <CartAttribute
-        key={item.id}
-        item={attributeItem}
-        attributeData={attributeData}
-      />
-    );
+    return <CartAttribute key={item.id} item={attributeItem} attributeData={attributeData} />;
   }
 
   renderAttributes() {
     const { attributes } = this.props.product;
 
     return Object.values(attributes)?.map((attribute) => {
-      const { id, items, type } = attribute;
-
+      const { id, items, type, name } = attribute;
       const attributeData = {
         type: type,
+        name: name,
       };
 
       return (
-        <AttributesItemsWrapper key={id}>
-          {items?.map((item) =>
-            this.renderProductAttribute(item, attributeData)
-          )}
-        </AttributesItemsWrapper>
+        <>
+          <>
+            {name && name.length > 10 ? (
+              <Paragraph
+                lineHeight={1.125}
+                fontFamily="Roboto Condensed"
+                marginTop={0.2}
+                children={`${name}:`}
+                fontSize={0.8}
+                fontWeight={500}
+              />
+            ) : null}
+          </>
+          <AttributesItemsWrapper key={id}>
+            {items?.map((item) => this.renderProductAttribute(item, attributeData))}
+          </AttributesItemsWrapper>
+        </>
       );
     });
   }
@@ -68,16 +76,18 @@ export class CartItem extends PureComponent {
           <Paragraph
             fontSize={1}
             fontWeight={300}
-            children={`${product.brand} ${product.name}`}
+            lineHeight={1.6}
+            children={`${product.brand} <br/> ${product.name}`}
+            marginBottom={0.8}
           />
           <Paragraph
             fontSize={1}
             fontWeight={500}
+            lineHeight={1.6}
+            marginBottom={1.6875}
             children={`${price.currency.symbol}${price.amount}`}
           />
-          <CartItemAttributesWrapper>
-            {this.renderAttributes()}
-          </CartItemAttributesWrapper>
+          <CartItemAttributesWrapper>{this.renderAttributes()}</CartItemAttributesWrapper>
         </CartItemContentWrapper>
         <CartItemCountersWrapper>
           <CartItemCounterUpBtn
@@ -97,12 +107,7 @@ export class CartItem extends PureComponent {
           </CartItemCounterDownBtn>
         </CartItemCountersWrapper>
         <CartItemImgWrapper>
-          <CartItemImg
-            src={`${image}`}
-            alt={product.name}
-            width={105}
-            height={137}
-          />
+          <CartItemImg src={`${image}`} alt={product.name} width={105} height={137} />
         </CartItemImgWrapper>
       </CartItemWrapper>
     );

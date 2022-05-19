@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const CartNumber = styled.div`
   width: 1.25rem;
   height: 1.25rem;
-  background-color: ${({ theme }) => theme.colors.bunker};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: var(--clr-bunker);
+  color: var(--clr-white);
   position: absolute;
   border-radius: 100%;
   border: none;
@@ -15,7 +15,7 @@ export const CartNumber = styled.div`
   z-index: 10;
 
   p {
-    font-family: ${({ theme }) => theme.fonts.roboto};
+    font-family: Roboto;
     font-size: 0.675rem;
     line-height: 0rem;
     font-weight: 700;

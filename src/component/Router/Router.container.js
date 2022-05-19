@@ -5,11 +5,9 @@ import { PageWrapper } from './styled';
 export class RouterContainer extends PureComponent {
   render() {
     return (
-      <>
-        <PageWrapper>
-          <Router />
-        </PageWrapper>
-      </>
+      <PageWrapper>
+        <Router />
+      </PageWrapper>
     );
   }
 }

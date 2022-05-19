@@ -3,7 +3,6 @@ import {
   selectAttribute,
   updateActiveProduct,
   resetProductAttributes,
-  resetProductsAttributes,
 } from './Product.action';
 
 export class ProductDispatcher {
@@ -21,10 +20,6 @@ export class ProductDispatcher {
 
   static resetProductAttributes(dispatch, product) {
     dispatch(resetProductAttributes(product));
-  }
-
-  static resetProductsAttributes(dispatch) {
-    dispatch(resetProductsAttributes());
   }
 }
 

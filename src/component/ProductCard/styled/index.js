@@ -15,6 +15,7 @@ export const ProductCardWrapper = styled.li`
 `;
 
 export const ProductLink = styled(NavLink)`
+  text-decoration: none;
   color: inherit;
   cursor: pointer;
 `;
@@ -34,7 +35,7 @@ export const ProductImg = styled.img`
 export const ProductImgOutOfStockText = styled.h1`
   font-size: 1.5rem;
   font-weight: 400;
-  color: #8d8f9a;
+  color: rgba(141, 143, 154, 1);
   text-align: center;
   position: absolute;
   top: 0;
@@ -61,7 +62,7 @@ export const ProductAddToCartBtn = styled.button`
   height: 52px;
   border: none;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.emerald};
+  background-color: var(--clr-emerald);
   cursor: pointer;
   ${ProductCardWrapper}:hover & {
     display: flex;
@@ -81,7 +82,7 @@ export const ProductSwatchBtn = styled.button`
   border: none;
   margin-right: 12px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.emerald};
+  background-color: var(--clr-emerald);
   cursor: pointer;
 `;
 

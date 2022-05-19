@@ -17,6 +17,7 @@ export class ProductAttribute extends PureComponent {
     type: PropTypes.string.isRequired,
     isSelected: PropTypes.bool.isRequired,
     onSelectAttributeHandler: PropTypes.func.isRequired,
+    selectedProduct: PropTypes.object.isRequired,
   };
 
   renderAttributeByType() {
@@ -41,15 +42,8 @@ export class ProductAttribute extends PureComponent {
   }
 
   renderLargeTextAttribute() {
-    const {
-      value,
-      name,
-      displayValue,
-      isSelected,
-      onSelectAttributeHandler,
-      id,
-      selectedProduct,
-    } = this.props;
+    const { value, name, displayValue, isSelected, onSelectAttributeHandler, id, selectedProduct } =
+      this.props;
     let selectedAttribute = null;
     if (selectedProduct !== undefined) {
       selectedAttribute = { name, value, id, selectedProduct };
@@ -80,15 +74,8 @@ export class ProductAttribute extends PureComponent {
   }
 
   renderSmallTextAttribute() {
-    const {
-      value,
-      name,
-      displayValue,
-      isSelected,
-      onSelectAttributeHandler,
-      id,
-      selectedProduct,
-    } = this.props;
+    const { value, name, displayValue, isSelected, onSelectAttributeHandler, id, selectedProduct } =
+      this.props;
     let selectedAttribute = null;
     if (selectedProduct !== undefined) {
       selectedAttribute = { name, value, id, selectedProduct };
@@ -141,14 +128,7 @@ export class ProductAttribute extends PureComponent {
   }
 
   renderSmallColorAttribute() {
-    const {
-      value,
-      name,
-      displayValue,
-      isSelected,
-      onSelectAttributeHandler,
-      id,
-    } = this.props;
+    const { value, name, displayValue, isSelected, onSelectAttributeHandler, id } = this.props;
     return (
       <ToolTip>
         <ProductColorAttribute
@@ -156,9 +136,7 @@ export class ProductAttribute extends PureComponent {
           color={value}
           isSelected={isSelected}
           inStock={true}
-          onClick={() =>
-            onSelectAttributeHandler({ name: name, value: value, id: id })
-          }>
+          onClick={() => onSelectAttributeHandler({ name: name, value: value, id: id })}>
           {isSelected &&
             (value === '#000000'
               ? this.rendercheckMarkIcon('#fff')
@@ -170,15 +148,8 @@ export class ProductAttribute extends PureComponent {
   }
 
   renderLargeColorAttribute() {
-    const {
-      value,
-      name,
-      displayValue,
-      isSelected,
-      onSelectAttributeHandler,
-      id,
-      selectedProduct,
-    } = this.props;
+    const { value, name, displayValue, isSelected, onSelectAttributeHandler, id, selectedProduct } =
+      this.props;
     const selectedAttribute = { name, value, id, selectedProduct };
     return (
       <>
@@ -211,11 +182,7 @@ export class ProductAttribute extends PureComponent {
   }
 
   render() {
-    return (
-      <ProductAttributeWrapper>
-        {this.renderAttributeByType()}
-      </ProductAttributeWrapper>
-    );
+    return <ProductAttributeWrapper>{this.renderAttributeByType()}</ProductAttributeWrapper>;
   }
 }
 

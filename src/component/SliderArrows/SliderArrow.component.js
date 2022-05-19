@@ -10,12 +10,7 @@ export class SliderArrow extends PureComponent {
 
   renderArrowRight() {
     return (
-      <svg
-        width="8"
-        height="14"
-        viewBox="0 0 8 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg">
+      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M7 13L1 7L7 1"
           stroke="#fff"
@@ -29,12 +24,7 @@ export class SliderArrow extends PureComponent {
 
   renderArrowLeft() {
     return (
-      <svg
-        width="8"
-        height="14"
-        viewBox="0 0 8 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg">
+      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M1 13L7 7L1 1"
           stroke="#fff"
@@ -50,9 +40,7 @@ export class SliderArrow extends PureComponent {
     const { handleClick, direction } = this.props;
     return (
       <ArrowComponent direction={direction} onClick={() => handleClick()}>
-        {direction === 'left'
-          ? this.renderArrowLeft()
-          : this.renderArrowRight()}
+        {direction === 'left' ? this.renderArrowLeft() : this.renderArrowRight()}
       </ArrowComponent>
     );
   }

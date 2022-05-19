@@ -4,8 +4,7 @@ export const HeadlineElement = styled.div`
   width: 100%;
 `;
 
-const tag = (props) =>
-  props.typeHeadline ? { as: props.typeHeadline } : { as: 'p' };
+const tag = (props) => (props.typeHeadline ? { as: props.typeHeadline } : { as: 'p' });
 
 const sizeHeadline = (type) => {
   switch (type) {
@@ -27,23 +26,12 @@ const sizeHeadline = (type) => {
 };
 
 export const HeadlineWrapper = styled(HeadlineElement).attrs(tag)`
-  color: ${({ theme }) => theme.colors.bunker};
-  line-height: ${(props) =>
-    props.typeHeadline === 'h6' ||
-    props.typeHeadline === 'h5' ||
-    props.typeHeadline === 'h4'
-      ? '140%'
-      : '150%'};
+  color: var(--clr-bunker);
+  line-height: ${(props) => (props.lineHeight ? `${props.lineHeight}rem` : '150%')};
   font-size: ${(props) =>
-    props.fontSize
-      ? `${props.fontSize}rem`
-      : `${sizeHeadline(props.typeHeadline).size}rem`};
+    props.fontSize ? `${props.fontSize}rem` : `${sizeHeadline(props.typeHeadline).size}rem`};
   font-weight: ${(props) =>
-    props.fontWeight
-      ? props.fontWeight
-      : sizeHeadline(props.typeHeadline).weight};
-  margin-top: ${(props) =>
-    props.marginTop ? `${props.marginTop}rem` : '0rem'};
-  margin-bottom: ${(props) =>
-    props.marginBottom ? `${props.marginBottom}rem` : '0rem'};
+    props.fontWeight ? props.fontWeight : sizeHeadline(props.typeHeadline).weight};
+  margin-top: ${(props) => (props.marginTop ? `${props.marginTop}rem` : '')};
+  margin-bottom: ${(props) => (props.marginBottom ? `${props.marginBottom}rem` : '')};
 `;

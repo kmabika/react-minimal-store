@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 import {
   CurrencySwitcherWrapper,
   CurrencySwitcherBtn,
@@ -14,6 +14,16 @@ export class CurrencySwitcher extends PureComponent {
     availableCurrencies: CurrenciesType.isRequired,
     selectedCurrency: CurrencyItemType.isRequired,
     updateSelectedCurrency: PropTypes.func.isRequired,
+    isMenuOpen: PropTypes.bool.isRequired,
+    buttonRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    ]),
+    toggleMenu: PropTypes.func.isRequired,
+    menuRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    ]),
   };
 
   render() {

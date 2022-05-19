@@ -16,6 +16,7 @@ import Headline from 'Component/Headline';
 import ProductAttributes from 'Component/ProductAttributes';
 import Slider from 'Component/Slider';
 import { Wrap } from 'Route/NotFoundPage/styled';
+import Paragraph from 'Component/Paragraph';
 
 export class CartPage extends PureComponent {
   static propTypes = {
@@ -58,25 +59,31 @@ export class CartPage extends PureComponent {
         return (
           <CartProductItemWrapper key={cartItem.cartItemId}>
             <ProductInfoWrapper>
-              <Headline typeHeadline="h1" fontSize={2} fontWeight={600}>
-                {cartItem.name}
-              </Headline>
-              <Headline typeHeadline="h1" fontSize={1.5} fontWeight={400}>
+              <Headline
+                typeHeadline="h1"
+                fontSize={1.875}
+                lineHeight={1.6875}
+                marginBottom={1}
+                fontWeight={600}>
                 {cartItem.brand}
+              </Headline>
+              <Headline
+                typeHeadline="h2"
+                fontSize={1.875}
+                lineHeight={1.6875}
+                fontWeight={400}
+                marginBottom={2}>
+                {cartItem.name}
               </Headline>
               <Headline
                 typeHeadline="h1"
                 fontWeight={700}
-                fontSize={1}
+                fontSize={1.5}
+                lineHeight={1.125}
                 marginBottom={1}>
-                {`${
-                  filteredPrice.currency.symbol
-                }${filteredPrice.amount.toFixed(2)}`}
+                {`${filteredPrice.currency.symbol}${filteredPrice.amount.toFixed(2)}`}
               </Headline>
-              <ProductAttributes
-                attributes={cartItem.attributes}
-                inStock={cartItem.inStock}
-              />
+              <ProductAttributes attributes={cartItem.attributes} inStock={cartItem.inStock} />
             </ProductInfoWrapper>
             <ProductCounterWrapper>
               <ProductCounterBtnWrapper>
@@ -88,7 +95,12 @@ export class CartPage extends PureComponent {
                   +
                 </ProductCounterBtn>
                 <ProductQuantityWrapper>
-                  {cartItem.amount}
+                  <Paragraph
+                    children={`${cartItem.amount}`}
+                    fontWeight={500}
+                    fontSize={1.5}
+                    lineHeight={2.4}
+                  />
                 </ProductQuantityWrapper>
                 <ProductCounterBtn
                   onClick={() => {
@@ -118,9 +130,7 @@ export class CartPage extends PureComponent {
             Cart
           </Headline>
         </CartPageHeader>
-        {cartItems && cartItems.length > 0
-          ? this.renderCartItems()
-          : this.renderEmptyCartPage()}
+        {cartItems && cartItems.length > 0 ? this.renderCartItems() : this.renderEmptyCartPage()}
       </CartPageWrapper>
     );
   }

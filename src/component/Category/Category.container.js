@@ -9,15 +9,15 @@ export const mapStateToProps = (state) => ({
 });
 
 export class CategoryContainer extends PureComponent {
+  static propTypes = {
+    availableCategories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    activeCategory: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = { category: true };
   }
-
-  static propTypes = {
-    availableCategories: PropTypes.arrayOf(PropTypes.string.isRequired)
-      .isRequired,
-  };
 
   containerProps() {
     const { availableCategories, activeCategory } = this.props;

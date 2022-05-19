@@ -4,58 +4,50 @@ export const ProductTextAttributeBtn = styled.button`
   min-width: 63px;
   height: 45px;
   padding: 13px;
-  border: 1px solid ${({ theme }) => theme.colors.bunker};
-  color: ${({ theme }) => theme.colors.nero};
-  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid var(--clr-bunker);
+  color: var(--clr-bunker);
+  background-color: var(--clr-white);
   font-size: 1rem;
-  font-family: ${({ theme }) => theme.fonts.sourceSans};
+  line-height: 1.125rem;
+  font-family: 'Source Sans Pro';
   font-weight: 400;
   opacity: 1;
   transition: opacity 250ms linear;
   cursor: pointer;
-  ${({ inStock, theme }) => {
-    return (
-      !inStock &&
-      css`
-        border: 1px solid #a6a6a6;
-        background-color: ${theme.colors.white};
-        color: #a6a6a6;
-      `
-    );
-  }};
-  ${({ isSelected, theme }) => {
-    return (
-      isSelected &&
-      css`
-        border: 1px solid ${theme.colors.bunker};
-        background-color: ${theme.colors.bunker};
-        color: ${theme.colors.white};
-      `
-    );
-  }};
+  ${({ inStock }) =>
+    !inStock &&
+    css`
+      border: 1px solid var(--clr-darkgray);
+      background-color: var(--clr-white);
+      color: var(--clr-darkgray);
+    `};
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      border: 1px solid var(--clr-bunker);
+      background-color: var(--clr-bunker);
+      color: var(--clr-white);
+    `};
 `;
 
 export const ProductColorAttribute = styled.span`
-  border-radius: 50%;
-  height: 24px;
-  width: 24px;
+  height: 45px;
+  width: 45px;
   display: inline-block;
   opacity: ${(props) => (!props.inStock ? '50%' : '100%')};
-  border: 1px solid ${({ theme }) => theme.colors.bunker};
+  border: 1px solid var(--clr-bunker);
   cursor: pointer;
-  background-color: ${(props) =>
-    props.color ? props.color : `${({ theme }) => theme.colors.white}`};
-  ${({ isSelected, theme }) => {
-    return (
-      isSelected &&
-      css`
-        border: 3px solid ${theme.colors.white};
-        box-shadow: 0 0 5px ${theme.colors.bunker};
-      `
-    );
-  }};
+  background-color: ${(props) => (props.color ? props.color : 'var(--clr-white)')};
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      border: 3px solid var(--clr-white);
+      box-shadow: 0 0 5px var(--clr-bunker);
+    `};
   svg {
-    margin-left: 2px;
+    font-size: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
   }
 `;
 
@@ -71,13 +63,13 @@ export const ProductAttributeWrapper = styled.span`
 export const ToolTipText = styled.span`
   visibility: hidden;
   width: 120px;
-  background-color: ${({ theme }) => theme.colors.bunker};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: var(--clr-bunker);
+  color: var(--clr-white);
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
-  z-index: 1;
+  z-index: 1000;
   bottom: 100%;
   left: 50%;
   margin-left: -60px;
@@ -98,5 +90,6 @@ export const ToolTip = styled.div`
   display: inline-block;
   &:hover ${ToolTipText} {
     visibility: visible;
+    z-index: 200;
   }
 `;

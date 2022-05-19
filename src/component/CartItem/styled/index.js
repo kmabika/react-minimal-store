@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const CartItemWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 41px;
 `;
 
@@ -37,15 +36,17 @@ export const AttributesItemsWrapper = styled.div`
 export const CartItemCountersWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-right: 10px;
+  font-size: 30px;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
 `;
 
 export const CartItemCounterUpBtn = styled.button`
   width: 24px;
   height: 24px;
-  border: 1px solid ${({ theme }) => theme.colors.bunker};
-  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid var(--clr-bunker);
+  background-color: var(--clr-white);
   opacity: 1;
   transition: opacity 250ms linear;
   cursor: pointer;
@@ -53,21 +54,23 @@ export const CartItemCounterUpBtn = styled.button`
 
   &:hover {
     transition: all 0.5s;
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.bunker};
+    color: var(--clr-white);
+    background-color: var(--clr-bunker);
   }
 `;
 
 export const CartItemCountAmount = styled.span`
+  margin: 0 auto;
   font-weight: 500;
   font-size: 1rem;
+  line-height: 1.6rem;
 `;
 
 export const CartItemCounterDownBtn = styled.button`
   width: 24px;
   height: 24px;
-  border: 1px solid ${({ theme }) => theme.colors.bunker};
-  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid var(--clr-bunker);
+  background-color: var(--clr-white);
   opacity: 1;
   transition: opacity 250ms linear;
   cursor: pointer;
@@ -75,8 +78,8 @@ export const CartItemCounterDownBtn = styled.button`
 
   &:hover {
     transition: all 0.5s;
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.bunker};
+    color: var(--clr-white);
+    background-color: var(--clr-bunker);
   }
 `;
 

@@ -28,6 +28,7 @@ export class ProductListPageContainer extends PureComponent {
       }),
     }),
     products: ProductsListType.isRequired,
+    updateSelectedCategory: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -49,11 +50,9 @@ export class ProductListPageContainer extends PureComponent {
   async handleFetchProducts() {
     const categoryName = this.props.match.params.category;
     const { handleFetchProductsData, updateSelectedCategory } = this.props;
-    const validProducts = await handleFetchProductsData(categoryName).finally(
-      () => {
-        updateSelectedCategory(categoryName);
-      }
-    );
+    const validProducts = await handleFetchProductsData(categoryName).finally(() => {
+      updateSelectedCategory(categoryName);
+    });
     if (validProducts) {
       this.setState({ hasError: false, isLoading: false });
     } else {
@@ -81,16 +80,8 @@ export class ProductListPageContainer extends PureComponent {
     if (this.state.hasError) {
       return <NotFoundPage />;
     }
-    return (
-      <>
-        {this.props.products !== undefined && (
-          <ProductListPage {...this.containerProps()} />
-        )}
-      </>
-    );
+    return this.props.products !== undefined && <ProductListPage {...this.containerProps()} />;
   }
 }
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ProductListPageContainer)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductListPageContainer));

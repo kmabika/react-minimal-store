@@ -9,7 +9,7 @@ export const CategoryWrap = styled.ul`
   list-style-type: none;
   .current {
     li {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid var(--clr-bunker);
     }
   }
 `;
@@ -20,15 +20,13 @@ export const CategoryItemWrap = styled.li`
 
 export const StyledLink = styled(NavLink)`
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.bunker};
+  text-decoration: none;
+  color: var(--clr-bunker);
   padding: 32px 16px;
-  ${({ isselected, theme }) => {
-    return (
-      isselected === 'true' &&
-      css`
-        color: ${theme.colors.emerald};
-        border-bottom: 2px solid ${theme.colors.emerald};
-      `
-    );
-  }};
+  ${({ isselected }) =>
+    isselected === 'true' &&
+    css`
+      color: var(--clr-emerald);
+      border-bottom: 2px solid var(--clr-emerald);
+    `};
 `;

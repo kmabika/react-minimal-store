@@ -22,8 +22,7 @@ export const OverlayContainer = styled.div`
 export const CartIconWrapper = styled.div`
   &:hover {
     svg {
-      filter: invert(79%) sepia(7%) saturate(2984%) hue-rotate(80deg)
-        brightness(92%) contrast(81%);
+      filter: invert(79%) sepia(7%) saturate(2984%) hue-rotate(80deg) brightness(92%) contrast(81%);
     }
   }
 `;

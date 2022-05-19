@@ -7,12 +7,10 @@ import {
   ProductThumb,
   ProductCardWrapper,
   ProductAddToCartBtn,
-  ProductAttributesWrapper,
   ProductImgOutOfStockText,
 } from './styled';
 
 import Headline from 'Component/Headline';
-import ProductAttributes from 'Component/ProductAttributes';
 import Paragraph from 'Component/Paragraph';
 import { PriceItemType } from 'Type/Price.type';
 import { AttributesType } from 'Type/ProductList.type';
@@ -25,6 +23,8 @@ export class ProductCard extends PureComponent {
     brand: PropTypes.string.isRequired,
     price: PriceItemType.isRequired,
     prices: PricesItem.isRequired,
+    category: PropTypes.string.isRequired,
+    gallery: PropTypes.array.isRequired,
     attributes: AttributesType.isRequired,
     inStock: PropTypes.bool.isRequired,
     image: PropTypes.string.isRequired,
@@ -61,9 +61,7 @@ export class ProductCard extends PureComponent {
       <ProductThumb>
         <ProductLink to={`/${category}/${id}`}>
           <ProductImg src={image} alt={id} width={354} height={330} />
-          {!inStock && (
-            <ProductImgOutOfStockText>OUT OF STOCK</ProductImgOutOfStockText>
-          )}
+          {!inStock && <ProductImgOutOfStockText>OUT OF STOCK</ProductImgOutOfStockText>}
         </ProductLink>
         {inStock && this.renderAddToCart()}
       </ProductThumb>
@@ -71,7 +69,7 @@ export class ProductCard extends PureComponent {
   }
 
   renderProductContent() {
-    const { name, category, price, attributes, inStock, brand } = this.props;
+    const { name, category, price, brand } = this.props;
 
     return (
       <ProductContent>
@@ -89,26 +87,12 @@ export class ProductCard extends PureComponent {
           fontSize={1.125}
           children={`${price.currency.symbol} ${price.amount}`}
         />
-        {inStock && (
-          <ProductAttributesWrapper>
-            <ProductAttributes attributes={attributes} />
-          </ProductAttributesWrapper>
-        )}
       </ProductContent>
     );
   }
 
   renderAddToCart() {
-    const {
-      handleAddToCart,
-      id,
-      name,
-      prices,
-      gallery,
-      image,
-      attributes,
-      brand,
-    } = this.props;
+    const { handleAddToCart, id, name, prices, gallery, image, attributes, brand } = this.props;
     const productCartInfo = {
       id: id,
       name: name,
@@ -133,11 +117,7 @@ export class ProductCard extends PureComponent {
 
   render() {
     const { inStock } = this.props;
-    return (
-      <ProductCardWrapper inStock={inStock}>
-        {this.renderProductCard()}
-      </ProductCardWrapper>
-    );
+    return <ProductCardWrapper inStock={inStock}>{this.renderProductCard()}</ProductCardWrapper>;
   }
 }
 

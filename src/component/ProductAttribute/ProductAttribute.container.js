@@ -14,6 +14,7 @@ export class ProductAttributeContainer extends PureComponent {
   static propTypes = {
     item: AttributeItemType.isRequired,
     updateSelectAttribute: PropTypes.func.isRequired,
+    selectedProduct: PropTypes.object.isRequired,
     attributeData: PropTypes.shape({
       name: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,

@@ -1,14 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
-import {
-  CartOverlayWrapper,
-  OverlayContainer,
-  CartIconWrapper,
-} from './styled';
+import { PureComponent } from 'react';
+import { CartOverlayWrapper, OverlayContainer, CartIconWrapper } from './styled';
 import CartIcon from 'Component/CartIcon';
 import CartPreview from 'Component/CartPreview';
 import { CartItemsType } from 'Type/Cart.type';
 import { CurrencyItemType } from 'Type/Currency.type';
+
 export class CartOverlay extends PureComponent {
   static propTypes = {
     toggleCart: PropTypes.func.isRequired,
@@ -16,18 +13,19 @@ export class CartOverlay extends PureComponent {
     products: CartItemsType.isRequired,
     selectedCurrency: CurrencyItemType.isRequired,
     totalCount: PropTypes.number.isRequired,
+    innerRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    ]),
+    buttonRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    ]),
   };
 
   render() {
-    const {
-      toggleCart,
-      isOpened,
-      products,
-      totalCount,
-      selectedCurrency,
-      innerRef,
-      buttonRef,
-    } = this.props;
+    const { toggleCart, isOpened, products, totalCount, selectedCurrency, innerRef, buttonRef } =
+      this.props;
     return (
       <CartOverlayWrapper>
         <CartIconWrapper

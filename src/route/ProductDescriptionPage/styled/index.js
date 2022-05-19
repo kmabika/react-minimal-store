@@ -29,7 +29,7 @@ export const ProductImg = styled.img`
   object-fit: cover;
   cursor: pointer;
   &:hover {
-    border: 2px solid ${({ theme }) => theme.colors.emerald};
+    border: 2px solid var(--clr-emerald);
     opacity: 0.6;
     transition: all 250ms linear;
   }
@@ -59,7 +59,7 @@ export const ProductAttributeWrapper = styled.div`
 
 export const ProductPriceHeaderWrapper = styled.div`
   margin-top: 2.5rem;
-  font-family: ${({ theme }) => theme.fonts.robotoCondensed};
+  font-family: 'Roboto Condensed';
   text-transform: uppercase;
 `;
 
@@ -67,12 +67,12 @@ export const ProductAttributeBtn = styled.button`
   min-width: 63px;
   height: 45px;
   padding: 13px;
-  border: 1px solid ${({ theme }) => theme.colors.bunker};
+  border: 1px solid var(--clr-bunker);
 
-  color: ${({ theme }) => theme.colors.nero};
-  background-color: ${({ theme }) => theme.colors.white};
+  color: var(--clr-nero);
+  background-color: var(--clr-white);
 
-  font-family: ${({ theme }) => theme.fonts.sourceSans};
+  font-family: 'Source Sans Pro';
   font-weight: 400;
 
   opacity: 1;
@@ -95,8 +95,8 @@ export const AddToCartBtnWrapper = styled.div`
 export const AddToCartBtn = styled.button`
   width: 292px;
   height: 52px;
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.emerald};
+  color: var(--clr-white);
+  background-color: var(--clr-emerald);
   border: none;
   font-weight: 600;
   line-height: 1.2;
@@ -108,22 +108,19 @@ export const AddToCartBtn = styled.button`
     opacity: 0.6;
     transition: opacity 250ms linear;
   }
-  ${({ inStock, theme }) => {
-    return (
-      !inStock &&
-      css`
-        color: ${theme.colors.white};
-        background-color: ${theme.colors.darkGray};
-      `
-    );
-  }};
+  ${({ inStock }) =>
+    !inStock &&
+    css`
+      color: var(--clr-white);
+      background-color: var(--clr-darkgray);
+    `};
 `;
 
 export const ShowMoreBtn = styled.button`
   width: 100px;
   height: 40px;
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.emerald};
+  color: var(--clr-white);
+  background-color: var(--clr-emerald);
   border: none;
   font-weight: 600;
   line-height: 1.2;
@@ -139,5 +136,5 @@ export const ShowMoreBtn = styled.button`
 
 export const ProductInfoDescriptionWrapper = styled.div`
   margin-top: 2.5rem;
-  font-family: ${({ theme }) => theme.fonts.roboto};
+  font-family: 'Roboto';
 `;

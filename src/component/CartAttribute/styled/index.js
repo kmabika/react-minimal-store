@@ -3,51 +3,46 @@ import styled, { css } from 'styled-components';
 export const CartItemAttributeBtn = styled.button`
   width: auto;
   height: 24px;
-  border: 1px solid ${({ theme }) => theme.colors.bunker};
-  background-color: ${({ theme }) => theme.colors.white};
-  color: ${({ theme }) => theme.fonts.bunker};
+  border: 1px solid var(--clr-bunker);
+  background-color: var(--clr-white);
+  color: var(--clr-bunker);
   opacity: 1;
   cursor: pointer;
-  font-family: ${({ theme }) => theme.fonts.sourceSans};
+  display: inline-block;
+  font-family: 'Source Sans Pro';
   font-weight: 400;
-  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.4rem;
+  align-items: center;
   &:not(last-child) {
     margin-right: 5px;
   }
-  ${({ isSelected, theme }) => {
-    return (
-      isSelected &&
-      css`
-        border: 1px solid ${theme.colors.darkGray};
-        background-color: ${theme.colors.lightGray};
-        color: ${theme.colors.darkGray};
-      `
-    );
-  }};
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      border: 1px solid var(--clr-darkgray);
+      background-color: var(--clr-lightgray);
+      color: var(--clr-darkgray);
+    `};
 `;
 
 export const CartItemColorAttribute = styled.span`
-  border-radius: 18px;
   margin-right: 5px;
   height: 20px;
   width: 20px;
   display: inline-block;
-  border: 1px solid ${({ theme }) => theme.colors.bunker};
+  border: 1px solid var(--clr-bunker);
   cursor: pointer;
-  background-color: ${(props) =>
-    props.color ? props.color : `${({ theme }) => theme.colors.white};`};
+  background-color: ${(props) => (props.color ? props.color : 'var(--clr-white)')};
   svg {
     font-size: 0.8rem;
     margin-left: 3px;
     margin-bottom: 3px;
   }
-  ${({ isSelected, theme }) => {
-    return (
-      isSelected &&
-      css`
-        border: 3px solid ${theme.colors.white};
-        box-shadow: 0 0 2px ${theme.colors.bunker};
-      `
-    );
-  }};
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      border: 3px solid var(--clr-white);
+      box-shadow: 0 0 2px var(--clr-bunker);
+    `};
 `;

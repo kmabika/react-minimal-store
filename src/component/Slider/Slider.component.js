@@ -25,13 +25,9 @@ export class Slider extends PureComponent {
     this.setState((state) => {
       return {
         activeSlide:
-          state.activeSlide < images.length - 1
-            ? state.activeSlide + 1
-            : images.length - 1,
+          state.activeSlide < images.length - 1 ? state.activeSlide + 1 : images.length - 1,
         translate:
-          state.translate < 100 - widthSlide
-            ? state.translate + widthSlide
-            : 100 - widthSlide,
+          state.translate < 100 - widthSlide ? state.translate + widthSlide : 100 - widthSlide,
       };
     });
   }
@@ -42,8 +38,7 @@ export class Slider extends PureComponent {
     this.setState((state) => {
       return {
         activeSlide: state.translate > widthSlide ? state.activeSlide - 1 : 0,
-        translate:
-          state.translate > widthSlide ? state.translate - widthSlide : 0,
+        translate: state.translate > widthSlide ? state.translate - widthSlide : 0,
       };
     });
   }
@@ -52,16 +47,10 @@ export class Slider extends PureComponent {
     const { images } = this.props;
     return (
       <SliderElement>
-        <SliderContent
-          cantSlides={images?.length}
-          translate={this.state.translate}>
+        <SliderContent cantSlides={images?.length} translate={this.state.translate}>
           {images && images.length > 0
             ? images?.map((image, i) => (
-                <SliderImage
-                  key={image + i}
-                  content={image}
-                  width={100 / images.length}
-                />
+                <SliderImage key={image + i} content={image} width={100 / images.length} />
               ))
             : 'No images to show'}
         </SliderContent>
@@ -76,14 +65,8 @@ export class Slider extends PureComponent {
         <SliderContent>{this.renderSlider()}</SliderContent>
         {images && images.length >= 2 && (
           <>
-            <SliderArrows
-              direction={'left'}
-              handleClick={this.handleNextSlide}
-            />
-            <SliderArrows
-              direction={'right'}
-              handleClick={this.handlePrevSlide}
-            />
+            <SliderArrows direction={'left'} handleClick={this.handleNextSlide} />
+            <SliderArrows direction={'right'} handleClick={this.handlePrevSlide} />
           </>
         )}
       </StyledSlider>

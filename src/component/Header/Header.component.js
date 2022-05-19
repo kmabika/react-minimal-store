@@ -1,4 +1,8 @@
 import { PureComponent } from 'react';
+import Category from 'Component/Category';
+import Logo from 'Component/Logo';
+import CurrencySwitcher from 'Component/CurrencySwitcher';
+import CartOverlay from 'Component/CartOverlay';
 import {
   Cart,
   TopRightNavBarWrap,
@@ -7,11 +11,6 @@ import {
   TopLeftNavBarWrap,
   HeaderWrap,
 } from './styled';
-
-import Category from 'Component/Category';
-import Logo from 'Component/Logo';
-import CurrencySwitcher from 'Component/CurrencySwitcher';
-import CartOverlay from 'Component/CartOverlay';
 
 export class Header extends PureComponent {
   render() {

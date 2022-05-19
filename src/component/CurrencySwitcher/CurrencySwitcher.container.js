@@ -56,8 +56,7 @@ export class CurrencySwitcherContainer extends PureComponent {
   }
 
   containerProps() {
-    const { selectedCurrency, availableCurrencies, updateSelectedCurrency } =
-      this.props;
+    const { selectedCurrency, availableCurrencies, updateSelectedCurrency } = this.props;
     const { isMenuOpen } = this.state;
     return {
       availableCurrencies,
@@ -75,7 +74,4 @@ export class CurrencySwitcherContainer extends PureComponent {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CurrencySwitcherContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencySwitcherContainer);

@@ -9,6 +9,7 @@ export class ProductAttributes extends PureComponent {
   static propTypes = {
     attributes: AttributesType.isRequired,
     inStock: PropTypes.bool,
+    selectedProduct: PropTypes.object,
   };
 
   renderProductAttribute(item, attributeData) {
@@ -49,10 +50,7 @@ export class ProductAttributes extends PureComponent {
           )}
 
           <div key={id} style={{ display: 'flex', width: '50%' }}>
-            {items &&
-              items?.map((item) =>
-                this.renderProductAttribute(item, attributeData)
-              )}
+            {items && items?.map((item) => this.renderProductAttribute(item, attributeData))}
           </div>
         </div>
       );

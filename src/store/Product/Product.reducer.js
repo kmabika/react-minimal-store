@@ -3,7 +3,6 @@ import {
   SELECT_ATTRIBUTE,
   UPDATE_ACTIVE_PRODUCT,
   RESET_PRODUCT_ATTRIBUTES,
-  RESET_PRODUCTS_ATTRIBUTES,
 } from './Product.action';
 
 export const getInitialState = () => ({
@@ -15,11 +14,11 @@ export const getProductsList = (action, state) => {
   const availableProducts = action.products;
   return {
     ...state,
-    products: availableProducts?.map((product) => ({
+    products: availableProducts.map((product) => ({
       ...product,
-      attributes: product.attributes?.map((attribute) => ({
+      attributes: product.attributes.map((attribute) => ({
         ...attribute,
-        items: attribute.items?.map((item) => ({
+        items: attribute.items.map((item) => ({
           ...item,
           isSelected: false,
         })),
@@ -29,18 +28,18 @@ export const getProductsList = (action, state) => {
 };
 
 export const selectAttribute = (action, state) => {
-  if (action.attribute?.selectedProduct !== undefined) {
+  if (action.attribute.selectedProduct !== undefined) {
     return {
       ...state,
       selectedProduct: {
         ...state.selectedProduct,
-        attributes: state.selectedProduct.attributes?.map((attribute) => {
+        attributes: state.selectedProduct.attributes.map((attribute) => {
           if (attribute.name !== action.attribute.name) {
             return { ...attribute };
           }
           return {
             ...attribute,
-            items: attribute.items?.map((item) => {
+            items: attribute.items.map((item) => {
               if (item.value !== action.attribute.value) {
                 return { ...item, isSelected: false };
               }
@@ -50,28 +49,27 @@ export const selectAttribute = (action, state) => {
         }),
       },
     };
-  } else {
-    return {
-      ...state,
-      products: state.products?.map((product) => ({
-        ...product,
-        attributes: product.attributes?.map((attribute) => {
-          if (attribute.name !== action.attribute.name) {
-            return { ...attribute };
-          }
-          return {
-            ...attribute,
-            items: attribute.items?.map((item) => {
-              if (item.value !== action.attribute.value) {
-                return { ...item, isSelected: false };
-              }
-              return { ...item, isSelected: true };
-            }),
-          };
-        }),
-      })),
-    };
   }
+  return {
+    ...state,
+    products: state.products.map((product) => ({
+      ...product,
+      attributes: product.attributes.map((attribute) => {
+        if (attribute.name !== action.attribute.name) {
+          return { ...attribute };
+        }
+        return {
+          ...attribute,
+          items: attribute.items.map((item) => {
+            if (item.value !== action.attribute.value) {
+              return { ...item, isSelected: false };
+            }
+            return { ...item, isSelected: true };
+          }),
+        };
+      }),
+    })),
+  };
 };
 
 export const updateActiveProduct = (action, state) => {
@@ -80,9 +78,9 @@ export const updateActiveProduct = (action, state) => {
     ...state,
     selectedProduct: {
       ...productToActivate,
-      attributes: productToActivate.attributes?.map((attribute) => ({
+      attributes: productToActivate.attributes.map((attribute) => ({
         ...attribute,
-        items: attribute.items?.map((option) => ({
+        items: attribute.items.map((option) => ({
           ...option,
           isSelected: false,
         })),
@@ -104,21 +102,6 @@ const ProductReducer = (state = getInitialState(), action) => {
     }
     case RESET_PRODUCT_ATTRIBUTES: {
       return updateActiveProduct(action, state);
-    }
-    case RESET_PRODUCTS_ATTRIBUTES: {
-      return {
-        ...state,
-        products: state.products?.map((product) => ({
-          ...product,
-          attributes: product.attributes?.map((attribute) => ({
-            ...attribute,
-            items: attribute.items?.map((item) => ({
-              ...item,
-              isSelected: false,
-            })),
-          })),
-        })),
-      };
     }
     default:
       return state;

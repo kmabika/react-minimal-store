@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import { CartItemAttributeBtn, CartItemColorAttribute } from './styled';
 import { AttributeItemType } from 'Type/ProductList.type';
+
 export class CartAttribute extends PureComponent {
   static propTypes = {
     attributeData: PropTypes.shape({
@@ -24,12 +25,8 @@ export class CartAttribute extends PureComponent {
 
   renderTextAttribute() {
     const { value, displayValue, isSelected } = this.props.item;
-
     return (
-      <CartItemAttributeBtn
-        name={displayValue}
-        isSelected={isSelected}
-        aria-label={displayValue}>
+      <CartItemAttributeBtn name={displayValue} isSelected={isSelected} aria-label={displayValue}>
         {value}
       </CartItemAttributeBtn>
     );
@@ -59,6 +56,7 @@ export class CartAttribute extends PureComponent {
 
   renderColorAttribute() {
     const { value, displayValue, isSelected } = this.props.item;
+    console.log('error');
     return (
       <CartItemColorAttribute
         name={displayValue}

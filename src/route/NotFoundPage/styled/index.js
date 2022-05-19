@@ -19,7 +19,7 @@ export const Wrap = styled.div`
 `;
 
 export const Header = styled.h1`
-  color: ${({ theme }) => theme.colors.emerald};
+  color: var(--clr-emerald);
   font-size: 10rem;
   line-height: 5rem;
 `;
@@ -35,13 +35,13 @@ export const Text = styled.p`
   flex-wrap: wrap;
   font-size: 0.9rem;
   a {
-    color: ${({ theme }) => theme.colors.emerald};
+    color: var(--clr-emerald);
     font-weight: 200;
     margin-left: 0.3rem;
     font-size: 0.9rem;
     &:hover {
       transition: all 0.5s;
-      color: ${({ theme }) => theme.colors.emerald};
+      color: var(--clr-emerald);
       text-decoration: underline;
     }
   }

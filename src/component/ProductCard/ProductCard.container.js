@@ -3,21 +3,15 @@ import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { CartDispatcher } from 'Store/Cart/Cart.dispatcher';
 import ProductCard from './ProductCard.component';
-import { toast } from 'react-toastify';
-import { toastAction } from 'Util/';
 import { ProductType } from 'Type/ProductList.type';
 import { CurrencyItemType } from 'Type/Currency.type';
-import { ProductDispatcher } from 'Store/Product/Product.dispatcher';
 
 export const mapStateToProps = (state) => ({
   selectedCurrency: state.CurrencyReducer.selectedCurrency,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  addProductToCart: (product) =>
-    CartDispatcher.addProductToCart(dispatch, product),
-  resetProductsAttributes: () =>
-    ProductDispatcher.resetProductsAttributes(dispatch),
+  addProductToCart: (product) => CartDispatcher.addProductToCart(dispatch, product),
 });
 
 export class ProductCardContainer extends PureComponent {
@@ -33,33 +27,12 @@ export class ProductCardContainer extends PureComponent {
   }
 
   async handleAddToCart(product) {
-    const { attributes } = product;
-    const { addProductToCart, resetProductsAttributes } = this.props;
-    let attributesSelected = '';
-
-    if (attributes.length) {
-      attributesSelected = attributes.every((attribute) =>
-        attribute.items.some((item) => item.isSelected === true)
-      );
-    } else {
-      attributesSelected = true;
-    }
-
-    if (!attributesSelected) {
-      toast.error(`Select attributes!`, toastAction);
-    } else {
-      addProductToCart(product);
-      resetProductsAttributes();
-      toast.success(
-        `${product.brand} ${product.name} added to cart`,
-        toastAction
-      );
-    }
+    const { addProductToCart } = this.props;
+    addProductToCart(product);
   }
 
   containerProps() {
-    const { name, id, prices, gallery, category, inStock, attributes, brand } =
-      this.props.product;
+    const { name, id, prices, gallery, category, inStock, attributes, brand } = this.props.product;
     const image = gallery[0];
     const filteredPrice = prices?.filter(
       (price) => price.currency.symbol === this.props.selectedCurrency.symbol
@@ -83,7 +56,4 @@ export class ProductCardContainer extends PureComponent {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductCardContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCardContainer);

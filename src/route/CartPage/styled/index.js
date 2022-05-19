@@ -6,7 +6,7 @@ export const CartPageWrapper = styled.section`
 `;
 
 export const CartPageHeader = styled.div`
-  margin-bottom: 80px;
+  margin-bottom: 59px;
   text-transform: uppercase;
 `;
 
@@ -14,7 +14,6 @@ export const CartProductItemWrapper = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding-top: 20px;
   padding-bottom: 20px;
   border-top: 1px solid #e5e5e5;
@@ -40,20 +39,19 @@ export const ProductCounterBtn = styled.button`
   align-items: center;
   width: 45px;
   height: 45px;
-  border: 1px solid ${({ theme }) => theme.colors.bunker};
-  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid var(--clr-bunker);
+  background-color: var(--clr-white);
   font-size: 25px;
   cursor: pointer;
   &:hover {
     transition: all 0.5s;
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.bunker};
+    color: var(--clr-white);
+    background-color: var(--clr-bunker);
   }
 `;
 
 export const ProductQuantityWrapper = styled.span`
-  font-weight: 500;
-  font-size: 1em;
+  margin: 0 auto;
 `;
 
 export const ProductCartImgSlideWrapper = styled.div`

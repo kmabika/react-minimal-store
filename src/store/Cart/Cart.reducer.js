@@ -1,10 +1,11 @@
+import { setCartItemId, setDefaultAttributes } from 'Util/Cart';
 import {
   ADD_PRODUCT_TO_CART,
   UPDATE_PRODUCT_AMOUNT,
   REMOVE_PRODUCT,
   CLEAR_CART,
 } from './Cart.action';
-import { setCartItemId } from 'Util/Cart';
+
 export const getInitialState = () => ({
   cartItems: [],
 });
@@ -12,14 +13,13 @@ export const getInitialState = () => ({
 export const addProductToCart = (action, state) => {
   let cartItemsList = state.cartItems;
 
-  const cartItemId = setCartItemId(action.product);
+  const defaultProduct = setDefaultAttributes(action.product);
+  const cartItemId = setCartItemId(defaultProduct);
 
-  const existingProductFound = cartItemsList.find(
-    (product) => product.cartItemId === cartItemId
-  );
+  const existingProductFound = cartItemsList.find((product) => product.cartItemId === cartItemId);
 
   if (existingProductFound) {
-    cartItemsList = state.cartItems?.map((product) => {
+    cartItemsList = state.cartItems.map((product) => {
       if (product.cartItemId !== cartItemId) {
         return product;
       }
@@ -33,7 +33,7 @@ export const addProductToCart = (action, state) => {
     cartItemsList = [
       ...cartItemsList,
       {
-        ...action.product,
+        ...defaultProduct,
         cartItemId,
         amount: 1,
       },
@@ -45,36 +45,29 @@ export const addProductToCart = (action, state) => {
   };
 };
 
-export const updateProductAmount = (action, state) => {
-  return {
-    ...state,
-    cartItems: state.cartItems?.map((product) => {
-      if (product.cartItemId !== action.product.cartItemId) {
-        return product;
-      }
-      return {
-        ...product,
-        amount: action.amount,
-      };
-    }),
-  };
-};
+export const updateProductAmount = (action, state) => ({
+  ...state,
+  cartItems: state.cartItems.map((product) => {
+    if (product.cartItemId !== action.product.cartItemId) {
+      return product;
+    }
+    return {
+      ...product,
+      amount: action.amount,
+    };
+  }),
+});
 
-export const removeProduct = (action, state) => {
-  return {
-    ...state,
-    cartItems: state.cartItems.filter(
-      (product) => product.cartItemId !== action.product.cartItemId
-    ),
-  };
-};
+export const removeProduct = (action, state) => ({
+  ...state,
+  cartItems: state.cartItems.filter((product) => product.cartItemId !== action.product.cartItemId),
+});
 
-export const clearCart = (state) => {
-  return {
-    ...state,
-    cartItems: [],
-  };
-};
+export const clearCart = (state) => ({
+  ...state,
+  cartItems: [],
+});
+
 const CartReducer = (state = getInitialState(), action) => {
   switch (action.type) {
     case ADD_PRODUCT_TO_CART:

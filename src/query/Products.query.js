@@ -11,53 +11,30 @@ export class ProductsQuery {
           .addField(
             new Field('attributes', true)
               .addFieldList(['id', 'type', 'name'])
-              .addField(
-                new Field('items', true).addFieldList([
-                  'id',
-                  'value',
-                  'displayValue',
-                ])
-              )
+              .addField(new Field('items', true).addFieldList(['id', 'value', 'displayValue']))
           )
           .addField(new Field('gallery', true))
           .addField(
             new Field('prices', true)
               .addField('amount')
-              .addField(
-                new Field('currency', true).addFieldList(['label', 'symbol'])
-              )
+              .addField(new Field('currency', true).addFieldList(['label', 'symbol']))
           )
       );
   }
 
   getProductQuery(id) {
     return new Query('product', true)
-      .addFieldList([
-        'id',
-        'category',
-        'name',
-        'brand',
-        'description',
-        'inStock',
-      ])
+      .addFieldList(['id', 'category', 'name', 'brand', 'description', 'inStock'])
       .addField(new Field('gallery', true))
       .addField(
         new Field('attributes', true)
           .addFieldList(['id', 'name', 'type'])
-          .addField(
-            new Field('items', true).addFieldList([
-              'id',
-              'displayValue',
-              'value',
-            ])
-          )
+          .addField(new Field('items', true).addFieldList(['id', 'displayValue', 'value']))
       )
       .addField(
         new Field('prices', true)
           .addField('amount')
-          .addField(
-            new Field('currency', true).addFieldList(['symbol', 'label'])
-          )
+          .addField(new Field('currency', true).addFieldList(['symbol', 'label']))
       )
       .addArgument('id', 'String!', id);
   }

@@ -5,15 +5,15 @@
   "dependencies": {
     "@craco/craco": "^6.4.3",
     "@tilework/opus": "^0.0.10",
+    "craco-alias": "^3.0.1",
+    "html-react-parser": "^1.4.12",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-helmet": "^6.1.0",
-    "react-loading-skeleton": "^3.1.0",
     "react-redux": "^7.2.8",
     "react-router-dom": "5.2.0",
     "react-scripts": "5.0.0",
-    "react-toastify": "^8.2.0",
     "redux": "^4.1.2",
     "redux-persist": "^6.0.0",
     "styled-components": "^5.3.5"
@@ -22,7 +22,14 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.json",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "eslintConfig": {
     "extends": [
@@ -43,7 +50,12 @@
     ]
   },
   "devDependencies": {
-    "craco-alias": "^3.0.1",
-    "prettier": "2.6.2"
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2"
   }
 }

@@ -10,17 +10,11 @@ export class CategoryProductList extends PureComponent {
 
   renderProducts() {
     const { products } = this.props;
-    return products?.map((product) => (
-      <ProductCard key={product.id} product={product} />
-    ));
+    return products?.map((product) => <ProductCard key={product.id} product={product} />);
   }
 
   render() {
-    return (
-      <CategoryProductListWrapper>
-        {this.renderProducts()}
-      </CategoryProductListWrapper>
-    );
+    return <CategoryProductListWrapper>{this.renderProducts()}</CategoryProductListWrapper>;
   }
 }
 

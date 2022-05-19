@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import { ParagraphWrapper } from './styled';
+import parse from 'html-react-parser';
 
 export class Paragraph extends PureComponent {
   static propTypes = {
@@ -8,6 +9,8 @@ export class Paragraph extends PureComponent {
     fontSize: PropTypes.number,
     fontFamily: PropTypes.string,
     marginBottom: PropTypes.number,
+    marginTop: PropTypes.number,
+    lineHeight: PropTypes.number,
     children: PropTypes.string.isRequired,
   };
 
@@ -19,8 +22,9 @@ export class Paragraph extends PureComponent {
         fontSize={this.props.fontSize}
         fontFamily={this.props.fontFamily}
         marginBottom={this.props.marginBottom}
-        dangerouslySetInnerHTML={{ __html: this.props.children }}
-      />
+        marginTop={this.props.marginTop}>
+        {parse(this.props.children)}
+      </ParagraphWrapper>
     );
   }
 }

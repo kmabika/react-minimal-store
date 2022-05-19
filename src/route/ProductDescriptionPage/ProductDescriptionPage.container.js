@@ -6,8 +6,7 @@ import ProductDescriptionPage from './ProductDescriptionPage.component';
 import { QueryDispatcher } from 'Util/QueryDispatcher/QueryDispatcher';
 import { CartDispatcher } from 'Store/Cart/Cart.dispatcher';
 import { CategoryDispatcher } from 'Store/Category/Category.dispatcher';
-import { toast } from 'react-toastify';
-import { toastAction } from 'Util/';
+
 import NotFoundPage from 'Route/NotFoundPage/NotFoundPage.component';
 import { ProductDispatcher } from 'Store/Product/Product.dispatcher';
 import { CurrencyItemType } from 'Type/Currency.type';
@@ -20,12 +19,10 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   handleFetchProductData: (productid) =>
     QueryDispatcher.handleFetchProductData(dispatch, productid),
-  addProductToCart: (product) =>
-    CartDispatcher.addProductToCart(dispatch, product),
+  addProductToCart: (product) => CartDispatcher.addProductToCart(dispatch, product),
   updateSelectedCategory: (category) =>
     CategoryDispatcher.updateSelectedCategory(dispatch, category),
-  resetProductAttributes: (product) =>
-    ProductDispatcher.resetProductAttributes(dispatch, product),
+  resetProductAttributes: (product) => ProductDispatcher.resetProductAttributes(dispatch, product),
 });
 
 export class ProductDescriptionPageContainer extends PureComponent {
@@ -51,8 +48,7 @@ export class ProductDescriptionPageContainer extends PureComponent {
   }
 
   handleAddToCart() {
-    const { addProductToCart, selectedProduct, resetProductAttributes } =
-      this.props;
+    const { addProductToCart, selectedProduct, resetProductAttributes } = this.props;
 
     const { attributes, name, id, prices, gallery, brand } = selectedProduct;
     const productCartInfo = {
@@ -75,14 +71,11 @@ export class ProductDescriptionPageContainer extends PureComponent {
     }
 
     if (!attributesSelected) {
-      toast.error(`Select attributes!`, toastAction);
+      alert('Product cannot be added to cart without attributes!, Select some attributes.');
     } else {
       addProductToCart(productCartInfo);
       resetProductAttributes(selectedProduct);
-      toast.success(
-        `${selectedProduct.brand} ${selectedProduct.name} added to cart`,
-        toastAction
-      );
+      alert(`${selectedProduct.brand} ${selectedProduct.name} added to cart`);
     }
   }
 
@@ -120,11 +113,7 @@ export class ProductDescriptionPageContainer extends PureComponent {
     }
 
     return (
-      <>
-        {selectedProduct !== undefined && (
-          <ProductDescriptionPage {...this.containerProps()} />
-        )}
-      </>
+      <>{selectedProduct !== undefined && <ProductDescriptionPage {...this.containerProps()} />}</>
     );
   }
 }
