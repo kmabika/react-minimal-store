@@ -12,7 +12,6 @@ export class ProductListPage extends PureComponent {
     categoryName: PropTypes.string.isRequired,
     isLoading: PropTypes.bool.isRequired,
     products: ProductsListType.isRequired,
-    
   };
 
   componentDidMount() {
