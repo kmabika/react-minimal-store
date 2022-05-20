@@ -19,7 +19,7 @@ export class Slider extends PureComponent {
     this.handlePrevSlide = this.handlePrevSlide.bind(this);
   }
 
-  handleNextSlide() {
+  handlePrevSlide() {
     const { images } = this.props;
     const widthSlide = 100 / images?.length;
     this.setState((state) => {
@@ -32,7 +32,7 @@ export class Slider extends PureComponent {
     });
   }
 
-  handlePrevSlide() {
+  handleNextSlide() {
     const { images } = this.props;
     const widthSlide = 100 / images?.length;
     this.setState((state) => {
@@ -60,13 +60,22 @@ export class Slider extends PureComponent {
 
   render() {
     const { images } = this.props;
+    const activeSlide = this.state.activeSlide;
     return (
       <StyledSlider>
         <SliderContent>{this.renderSlider()}</SliderContent>
         {images && images.length >= 2 && (
           <>
-            <SliderArrows direction={'left'} handleClick={this.handleNextSlide} />
-            <SliderArrows direction={'right'} handleClick={this.handlePrevSlide} />
+            <SliderArrows
+              direction={'right'}
+              opacity={activeSlide !== images.length - 1 ? 1 : 0}
+              handleClick={this.handlePrevSlide}
+            />
+            <SliderArrows
+              direction={'left'}
+              opacity={activeSlide !== 0 ? 1 : 0}
+              handleClick={this.handleNextSlide}
+            />
           </>
         )}
       </StyledSlider>

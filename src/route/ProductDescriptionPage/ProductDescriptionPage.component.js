@@ -134,10 +134,15 @@ export class ProductDescriptionPage extends PureComponent {
     )[0];
     return (
       <ProductInfoWrapper>
-        <Headline typeHeadline="h1" fontSize={1.875} fontWeight={600}>
+        <Headline
+          typeHeadline="h2"
+          fontSize={30}
+          lineHeight={27}
+          fontWeight={600}
+          marginBottom={16}>
           {selectedProduct.brand}
         </Headline>
-        <Headline typeHeadline="h1" fontSize={1.875} fontWeight={400}>
+        <Headline typeHeadline="h3" fontSize={30} lineHeight={27} fontWeight={400}>
           {selectedProduct.name}
         </Headline>
         <ProductAttributeWrapper>
@@ -150,16 +155,17 @@ export class ProductDescriptionPage extends PureComponent {
         <ProductPriceWrapper>
           <ProductPriceHeaderWrapper>
             <Paragraph
-              fontSize={1.125}
+              fontSize={18}
+              lineHeight={18}
               fontWeight={700}
               fontFamily="Roboto Condensed"
-              marginBottom={1}
+              marginBottom={16}
               children={'Price:'}
             />
           </ProductPriceHeaderWrapper>
           <Paragraph
-            lineHeight={1.125}
-            fontSize={1.5}
+            lineHeight={18}
+            fontSize={18}
             children={`${filteredPrice.currency.symbol}${filteredPrice.amount}`}
             fontWeight={700}
           />
@@ -200,9 +206,9 @@ export class ProductDescriptionPage extends PureComponent {
     return (
       <>
         <ProductDescriptionWrapper>
-          <div style={{ marginRight: '40px' }}>
+          <ProductImgCarouselWrapper>
             <div className="image-slider pulsate"></div>
-          </div>
+          </ProductImgCarouselWrapper>
           <ProductImgCoverWrapper>
             <div className="image-cover pulsate">
               <svg
@@ -242,44 +248,38 @@ export class ProductDescriptionPage extends PureComponent {
           </ProductImgCoverWrapper>
           <ProductInfoWrapper>
             <h1>
-              <div className="block2 pulsate" style={{ marginBottom: '10px' }}></div>
+              <div className="block2 pulsate mb-10"></div>
             </h1>
             <h1>
-              <div className="block3 pulsate" style={{ marginBottom: '43px' }}></div>
+              <div className="block3 pulsate mb-43"></div>
             </h1>
             <ProductAttributeWrapper>
               <ProductPriceHeaderWrapper>
-                <h1 style={{ marginBottom: '10px' }}>
-                  <div className="block2 pulsate"></div>
-                </h1>
+                <div className="block2 pulsate mb-10"></div>
               </ProductPriceHeaderWrapper>
               <ProductAttributeBtnWrapper>
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <div className="block5 pulsate"></div>
-                  <div className="block5 pulsate"></div>
-                  <div className="block5 pulsate"></div>
-                  <div className="block5 pulsate"></div>
-                </div>
+                <div className="block5 pulsate"></div>
+                <div className="block5 pulsate"></div>
+                <div className="block5 pulsate"></div>
+                <div className="block5 pulsate"></div>
               </ProductAttributeBtnWrapper>
             </ProductAttributeWrapper>
             <ProductPriceWrapper>
               <ProductPriceHeaderWrapper>
-                <h1 style={{ marginBottom: '10px' }}>
-                  <div className="block3 pulsate"></div>
-                </h1>
+                <div className="block3 pulsate mb-10"></div>
               </ProductPriceHeaderWrapper>
               <h1>
-                <div className="block2 pulsate" style={{ marginBottom: '30px' }}></div>
+                <div className="block2 pulsate mb-30"></div>
               </h1>
             </ProductPriceWrapper>
             <AddToCartBtnWrapper>
-              <div className="block4 pulsate" style={{ marginBottom: '20px' }}></div>
+              <div className="block4 pulsate mb-20"></div>
             </AddToCartBtnWrapper>
             <ProductInfoDescriptionWrapper>
-              <div className="block pulsate" style={{ marginBottom: '10px' }}></div>
-              <div className="block pulsate" style={{ marginBottom: '10px' }}></div>
-              <div className="block pulsate" style={{ marginBottom: '10px' }}></div>
-              <div className="block pulsate"></div>
+              <div className="block pulsate mb-10" />
+              <div className="block pulsate mb-10" />
+              <div className="block pulsate mb-10" />
+              <div className="block pulsate" />
             </ProductInfoDescriptionWrapper>
           </ProductInfoWrapper>
         </ProductDescriptionWrapper>

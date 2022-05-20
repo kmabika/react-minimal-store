@@ -1,10 +1,5 @@
 import { setCartItemId, setDefaultAttributes } from 'Util/Cart';
-import {
-  ADD_PRODUCT_TO_CART,
-  UPDATE_PRODUCT_AMOUNT,
-  REMOVE_PRODUCT,
-  CLEAR_CART,
-} from './Cart.action';
+import { ADD_PRODUCT_TO_CART, UPDATE_PRODUCT_AMOUNT, REMOVE_PRODUCT } from './Cart.action';
 
 export const getInitialState = () => ({
   cartItems: [],
@@ -63,11 +58,6 @@ export const removeProduct = (action, state) => ({
   cartItems: state.cartItems.filter((product) => product.cartItemId !== action.product.cartItemId),
 });
 
-export const clearCart = (state) => ({
-  ...state,
-  cartItems: [],
-});
-
 const CartReducer = (state = getInitialState(), action) => {
   switch (action.type) {
     case ADD_PRODUCT_TO_CART:
@@ -76,8 +66,6 @@ const CartReducer = (state = getInitialState(), action) => {
       return updateProductAmount(action, state);
     case REMOVE_PRODUCT:
       return removeProduct(action, state);
-    case CLEAR_CART:
-      return clearCart(state);
     default:
       return state;
   }

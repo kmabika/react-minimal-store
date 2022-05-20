@@ -6,7 +6,7 @@ export const SliderImageComponent = styled.div`
 `;
 
 export const SliderImgWrapper = styled.img`
-  width: 141px;
-  height: 181px;
+  width: 200px;
+  height: 288px;
   object-fit: contain;
 `;

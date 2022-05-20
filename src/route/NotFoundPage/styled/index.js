@@ -6,7 +6,7 @@ export const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 16px;
 `;
 
 export const Wrap = styled.div`
@@ -20,25 +20,25 @@ export const Wrap = styled.div`
 
 export const Header = styled.h1`
   color: var(--clr-emerald);
-  font-size: 10rem;
-  line-height: 5rem;
+  font-size: 160px;
+  line-height: 80px;
 `;
 export const SubHeader = styled.h2`
   text-transform: uppercase;
-  font-size: 2rem;
-  margin-top: 3.5rem;
+  font-size: 30px;
+  margin-top: 56px;
 `;
 
 export const Text = styled.p`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  font-size: 0.9rem;
+  font-size: 14.4px;
   a {
     color: var(--clr-emerald);
     font-weight: 200;
-    margin-left: 0.3rem;
-    font-size: 0.9rem;
+    margin-left: 4.8px;
+    font-size: 14.4px;
     &:hover {
       transition: all 0.5s;
       color: var(--clr-emerald);

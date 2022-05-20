@@ -1,21 +1,14 @@
-import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { PureComponent } from 'react';
 import CartPreview from './CartPreview.component';
-import { CartDispatcher } from 'Store/Cart/Cart.dispatcher';
 import { CartItemsType } from 'Type/Cart.type';
 import { CurrencyItemType } from 'Type/Currency.type';
-
-export const mapDispatchToProps = (dispatch) => ({
-  clearCart: () => CartDispatcher.clearCart(dispatch),
-});
 
 export class CartPreviewContainer extends PureComponent {
   static propTypes = {
     products: CartItemsType.isRequired,
     selectedCurrency: CurrencyItemType.isRequired,
     toggleCart: PropTypes.func.isRequired,
-    clearCart: PropTypes.func.isRequired,
     isOpened: PropTypes.bool.isRequired,
     totalCount: PropTypes.number.isRequired,
     innerRef: PropTypes.oneOfType([
@@ -25,7 +18,7 @@ export class CartPreviewContainer extends PureComponent {
   };
 
   containerProps() {
-    const { products, selectedCurrency, toggleCart, innerRef } = this.props;
+    const { products, selectedCurrency, toggleCart, innerRef, totalCount } = this.props;
     const total = products
       .reduce((accumulator, item) => {
         const filteredPrice = item.prices.filter(
@@ -39,10 +32,9 @@ export class CartPreviewContainer extends PureComponent {
       toggleCart,
       innerRef,
       selectedCurrency: selectedCurrency,
-      totalCount: this.props.totalCount,
+      totalCount: totalCount,
       totalAmount: total,
       isOpened: this.props.isOpened,
-      clearCart: this.props.clearCart,
     };
   }
 
@@ -51,4 +43,4 @@ export class CartPreviewContainer extends PureComponent {
   }
 }
 
-export default connect(null, mapDispatchToProps)(CartPreviewContainer);
+export default CartPreviewContainer;

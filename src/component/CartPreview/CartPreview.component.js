@@ -5,7 +5,6 @@ import {
   CartWrap,
   CartHeader,
   CartHeading,
-  CartClearBtn,
   Cart,
   CartInnerWrap,
   EmptyCart,
@@ -25,7 +24,6 @@ export class CartPreview extends PureComponent {
     products: CartItemsType.isRequired,
     totalCount: PropTypes.number.isRequired,
     selectedCurrency: PropTypes.object.isRequired,
-    clearCart: PropTypes.func.isRequired,
     totalAmount: PropTypes.string.isRequired,
     toggleCart: PropTypes.func.isRequired,
     innerRef: PropTypes.oneOfType([
@@ -46,7 +44,7 @@ export class CartPreview extends PureComponent {
   }
 
   render() {
-    const { products, totalCount, selectedCurrency, totalAmount, innerRef, toggleCart } =
+    const { products, selectedCurrency, totalCount, totalAmount, innerRef, toggleCart } =
       this.props;
     return (
       <>
@@ -57,17 +55,11 @@ export class CartPreview extends PureComponent {
                 <b>
                   My Bag,
                   <p>
+                    {' '}
                     {totalCount} {totalCount === 1 ? 'item' : 'items'}
                   </p>
                 </b>
               </CartHeading>
-              <CartClearBtn
-                onClick={() => {
-                  this.props.clearCart();
-                }}
-                aria-label="clear cart">
-                Clear Cart
-              </CartClearBtn>
             </CartHeader>
             <Cart>
               <CartInnerWrap aria-label="cart products">

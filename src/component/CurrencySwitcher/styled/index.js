@@ -36,12 +36,14 @@ export const CurrencyDropdown = styled.div`
 `;
 
 export const CurrencyItem = styled.li`
-  cursor: pointer;
-  padding: 20px 15px;
+  line-height: 50px;
+  display: block;
+  text-align: center;
   font-weight: 500;
   font-size: 18px;
+  height: 45px;
+  text-align: center;
   &:hover {
-    background-color: var(--clr-darkgray);
-    color: var(--clr-white);
+    background-color: var(--clr-gray);
   }
 `;

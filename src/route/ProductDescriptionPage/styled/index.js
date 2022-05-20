@@ -25,7 +25,7 @@ export const ProductImg = styled.img`
   height: 80px;
   width: 79px;
   transition: all 250ms linear;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   object-fit: cover;
   cursor: pointer;
   &:hover {
@@ -58,7 +58,7 @@ export const ProductAttributeWrapper = styled.div`
 `;
 
 export const ProductPriceHeaderWrapper = styled.div`
-  margin-top: 2.5rem;
+  margin-top: 40px;
   font-family: 'Roboto Condensed';
   text-transform: uppercase;
 `;
@@ -81,7 +81,8 @@ export const ProductAttributeBtn = styled.button`
 `;
 
 export const ProductAttributeBtnWrapper = styled.div`
-  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 5px;
 `;
 
 export const ProductPriceWrapper = styled.div`
@@ -89,7 +90,7 @@ export const ProductPriceWrapper = styled.div`
 `;
 
 export const AddToCartBtnWrapper = styled.div`
-  margin-top: 1.875rem;
+  margin-top: 30px;
 `;
 
 export const AddToCartBtn = styled.button`
@@ -135,6 +136,6 @@ export const ShowMoreBtn = styled.button`
 `;
 
 export const ProductInfoDescriptionWrapper = styled.div`
-  margin-top: 2.5rem;
+  margin-top: 40px;
   font-family: 'Roboto';
 `;

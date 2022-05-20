@@ -24,9 +24,22 @@ export class CartPageContainer extends PureComponent {
 
   containerProps() {
     const { cartItems, selectedCurrency, updateProductAmount } = this.props;
+    const total = cartItems
+      .reduce((accumulator, item) => {
+        const filteredPrice = item.prices.filter(
+          (price) => price.currency.symbol === selectedCurrency.symbol
+        )[0];
+        return accumulator + item.amount * filteredPrice.amount;
+      }, 0)
+      .toFixed(2);
+    const totalQuantity = this.props.cartItems.reduce((accumulator, object) => {
+      return accumulator + object.amount;
+    }, 0);
     return {
       cartItems,
       selectedCurrency,
+      total,
+      totalQuantity,
       updateProductAmount,
     };
   }

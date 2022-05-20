@@ -3,19 +3,23 @@ import { PureComponent } from 'react';
 import {
   CartPageWrapper,
   CartPageHeader,
-  CartProductItemWrapper,
   ProductInfoWrapper,
   ProductCounterWrapper,
   ProductCounterBtnWrapper,
   ProductCounterBtn,
   ProductQuantityWrapper,
   ProductCartImgSlideWrapper,
+  CartItemsWrapper,
+  CartItemWrapper,
+  CartOrderSectionWrapper,
+  OrderBtn,
+  CartOrderSectionHeader,
+  CartProductAttributesWrapper,
 } from './styled';
 import { Helmet } from 'react-helmet';
 import Headline from 'Component/Headline';
 import ProductAttributes from 'Component/ProductAttributes';
 import Slider from 'Component/Slider';
-import { Wrap } from 'Route/NotFoundPage/styled';
 import Paragraph from 'Component/Paragraph';
 
 export class CartPage extends PureComponent {
@@ -23,6 +27,8 @@ export class CartPage extends PureComponent {
     cartItems: PropTypes.array.isRequired,
     selectedCurrency: PropTypes.object.isRequired,
     updateProductAmount: PropTypes.func.isRequired,
+    total: PropTypes.string.isRequired,
+    totalQuantity: PropTypes.number.isRequired,
   };
 
   componentDidMount() {
@@ -40,11 +46,9 @@ export class CartPage extends PureComponent {
 
   renderEmptyCartPage() {
     return (
-      <Wrap>
-        <Headline typeHeadline="h1" fontSize={2}>
-          No Items Cart Is Empty
-        </Headline>
-      </Wrap>
+      <Headline typeHeadline="h1" fontSize={42}>
+        Your cart is empty!
+      </Headline>
     );
   }
 
@@ -57,33 +61,35 @@ export class CartPage extends PureComponent {
           (price) => price.currency.label === selectedCurrency.label
         )[0];
         return (
-          <CartProductItemWrapper key={cartItem.cartItemId}>
+          <CartItemWrapper key={cartItem.cartItemId}>
             <ProductInfoWrapper>
               <Headline
-                typeHeadline="h1"
-                fontSize={1.875}
-                lineHeight={1.6875}
-                marginBottom={1}
+                typeHeadline="h2"
+                fontSize={30}
+                lineHeight={27}
+                marginBottom={16}
                 fontWeight={600}>
                 {cartItem.brand}
               </Headline>
               <Headline
-                typeHeadline="h2"
-                fontSize={1.875}
-                lineHeight={1.6875}
+                typeHeadline="h3"
+                fontSize={30}
+                lineHeight={27}
                 fontWeight={400}
-                marginBottom={2}>
+                marginBottom={20}>
                 {cartItem.name}
               </Headline>
               <Headline
-                typeHeadline="h1"
+                typeHeadline="h3"
                 fontWeight={700}
-                fontSize={1.5}
-                lineHeight={1.125}
+                fontSize={24}
+                lineHeight={24}
                 marginBottom={1}>
                 {`${filteredPrice.currency.symbol}${filteredPrice.amount.toFixed(2)}`}
               </Headline>
-              <ProductAttributes attributes={cartItem.attributes} inStock={cartItem.inStock} />
+              <CartProductAttributesWrapper>
+                <ProductAttributes attributes={cartItem.attributes} inStock={cartItem.inStock} />
+              </CartProductAttributesWrapper>
             </ProductInfoWrapper>
             <ProductCounterWrapper>
               <ProductCounterBtnWrapper>
@@ -98,8 +104,8 @@ export class CartPage extends PureComponent {
                   <Paragraph
                     children={`${cartItem.amount}`}
                     fontWeight={500}
-                    fontSize={1.5}
-                    lineHeight={2.4}
+                    fontSize={24}
+                    lineHeight={38.4}
                   />
                 </ProductQuantityWrapper>
                 <ProductCounterBtn
@@ -114,9 +120,57 @@ export class CartPage extends PureComponent {
                 <Slider images={cartItem.images} />
               </ProductCartImgSlideWrapper>
             </ProductCounterWrapper>
-          </CartProductItemWrapper>
+          </CartItemWrapper>
         );
       })
+    );
+  }
+
+  renderOrderSection() {
+    const { totalQuantity, total, selectedCurrency } = this.props;
+    return (
+      <CartOrderSectionWrapper>
+        <CartOrderSectionHeader>
+          <Paragraph
+            children={'Tax 21%:'}
+            marginBottom={10}
+            fontWeight={400}
+            fontSize={24}
+            lineHeight={28}
+          />
+          <Paragraph
+            children={'Quantity:'}
+            marginBottom={10}
+            fontWeight={400}
+            fontSize={24}
+            lineHeight={28}
+          />
+          <Paragraph children={'Total:'} fontWeight={500} fontSize={24} lineHeight={28} />
+        </CartOrderSectionHeader>
+        <CartOrderSectionHeader>
+          <Paragraph
+            children={`${selectedCurrency.symbol}42.00`}
+            marginBottom={10}
+            fontWeight={700}
+            fontSize={24}
+            lineHeight={28}
+          />
+          <Paragraph
+            children={`${totalQuantity}`}
+            marginBottom={10}
+            fontWeight={700}
+            fontSize={24}
+            lineHeight={28}
+          />
+          <Paragraph
+            children={`${selectedCurrency.symbol}${total}`}
+            fontWeight={700}
+            fontSize={24}
+            lineHeight={28}
+          />
+        </CartOrderSectionHeader>
+        <OrderBtn>order</OrderBtn>
+      </CartOrderSectionWrapper>
     );
   }
 
@@ -126,11 +180,14 @@ export class CartPage extends PureComponent {
       <CartPageWrapper>
         {this.renderHemlet()}
         <CartPageHeader>
-          <Headline typeHeadline="h1" fontWeight={700} fontSize={2}>
+          <Headline typeHeadline="h1" fontWeight={700} fontSize={32} lineHeight={42}>
             Cart
           </Headline>
         </CartPageHeader>
-        {cartItems && cartItems.length > 0 ? this.renderCartItems() : this.renderEmptyCartPage()}
+        <CartItemsWrapper>
+          {cartItems && cartItems.length > 0 ? this.renderCartItems() : this.renderEmptyCartPage()}
+        </CartItemsWrapper>
+        {cartItems && cartItems.length > 0 && this.renderOrderSection()}
       </CartPageWrapper>
     );
   }

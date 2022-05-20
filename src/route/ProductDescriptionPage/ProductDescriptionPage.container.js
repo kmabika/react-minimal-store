@@ -71,7 +71,9 @@ export class ProductDescriptionPageContainer extends PureComponent {
     }
 
     if (!attributesSelected) {
-      alert('Product cannot be added to cart without attributes!, Select some attributes.');
+      alert(
+        `${selectedProduct.brand} ${selectedProduct.name} cannot be added to cart without attributes!, Select all attributes.`
+      );
     } else {
       addProductToCart(productCartInfo);
       resetProductAttributes(selectedProduct);

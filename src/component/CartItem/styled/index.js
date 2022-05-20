@@ -10,6 +10,7 @@ export const CartItemContentWrapper = styled.div`
   text-align: left;
   width: 136px;
   margin-right: 18px;
+  margin-left: 1px;
 `;
 
 export const CartItemAttributesWrapper = styled.div``;
@@ -35,23 +36,25 @@ export const AttributesItemsWrapper = styled.div`
 
 export const CartItemCountersWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  font-size: 30px;
-  line-height: 27px;
-  letter-spacing: 0em;
-  text-align: left;
 `;
 
-export const CartItemCounterUpBtn = styled.button`
+export const CounterBtnWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 12px;
+`;
+
+export const CartItemCounterBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 24px;
   height: 24px;
   border: 1px solid var(--clr-bunker);
   background-color: var(--clr-white);
-  opacity: 1;
-  transition: opacity 250ms linear;
   cursor: pointer;
-  margin-bottom: 40px;
-
   &:hover {
     transition: all 0.5s;
     color: var(--clr-white);
@@ -62,31 +65,11 @@ export const CartItemCounterUpBtn = styled.button`
 export const CartItemCountAmount = styled.span`
   margin: 0 auto;
   font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.6rem;
+  font-size: 16px;
+  line-height: 25.6px;
 `;
 
-export const CartItemCounterDownBtn = styled.button`
-  width: 24px;
-  height: 24px;
-  border: 1px solid var(--clr-bunker);
-  background-color: var(--clr-white);
-  opacity: 1;
-  transition: opacity 250ms linear;
-  cursor: pointer;
-  margin-top: 33px;
-
-  &:hover {
-    transition: all 0.5s;
-    color: var(--clr-white);
-    background-color: var(--clr-bunker);
-  }
-`;
-
-export const CartItemImgWrapper = styled.div`
-  width: 105px;
-  height: 137px;
-`;
+export const CartItemImgWrapper = styled.div``;
 
 export const CartItemImg = styled.img`
   max-width: 100%;

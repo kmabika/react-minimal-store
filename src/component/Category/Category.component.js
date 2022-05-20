@@ -11,9 +11,9 @@ class Category extends PureComponent {
   renderNavBarSkeleton() {
     return (
       <>
-        <div className="block2 pulsate" style={{ marginRight: '10px' }}></div>
-        <div className="block2 pulsate" style={{ marginRight: '10px' }}></div>
-        <div className="block2 pulsate" style={{ marginRight: '10px' }}></div>
+        <div className="block2 pulsate mr-10" />
+        <div className="block2 pulsate mr-10" />
+        <div className="block2 pulsate mr-10" />
       </>
     );
   }

@@ -42,17 +42,13 @@ export class CartOverlayContainer extends PureComponent {
   };
 
   handleClickOutside = (event) => {
-    try {
-      if (this.wrapperRef && this.buttonRef) {
-        if (
-          !this.wrapperRef.current.contains(event.target) &&
-          !this.buttonRef.current.contains(event.target)
-        ) {
-          this.handleButtonClick();
-        }
+    if (this.wrapperRef.current && this.buttonRef.current) {
+      if (
+        !this.wrapperRef.current.contains(event.target) &&
+        !this.buttonRef.current.contains(event.target)
+      ) {
+        this.handleButtonClick();
       }
-    } catch (e) {
-      throw new Error(e);
     }
   };
 

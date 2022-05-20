@@ -10,19 +10,18 @@ export const CartPageHeader = styled.div`
   text-transform: uppercase;
 `;
 
-export const CartProductItemWrapper = styled.li`
+export const ProductInfoWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-top: 1px solid #e5e5e5;
+  flex-direction: column;
 `;
-
-export const ProductInfoWrapper = styled.div``;
 
 export const ProductCounterWrapper = styled.div`
   display: flex;
+`;
+
+export const CartProductAttributesWrapper = styled.div`
+  margin-top: 20px;
+  text-transform: uppercase;
 `;
 
 export const ProductCounterBtnWrapper = styled.div`
@@ -30,7 +29,6 @@ export const ProductCounterBtnWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
   margin-right: 12px;
 `;
 export const ProductCounterBtn = styled.button`
@@ -55,8 +53,8 @@ export const ProductQuantityWrapper = styled.span`
 `;
 
 export const ProductCartImgSlideWrapper = styled.div`
-  height: 203px;
-  width: 141px;
+  height: 288px;
+  width: 200px;
 `;
 
 export const ProductCartImg = styled.img`
@@ -64,4 +62,55 @@ export const ProductCartImg = styled.img`
   height: 100%;
   object-fit: contain;
   object-position: center;
+`;
+
+export const CartItemsWrapper = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+export const CartItemWrapper = styled.li`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #e5e5e5;
+  width: 100%;
+`;
+
+export const CartItemContentWrapper = styled.div`
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  width: 100%;
+`;
+
+export const CartOrderSectionWrapper = styled.div`
+  padding-top: 32px;
+  border-top: 1px solid #e5e5e5;
+  display: grid;
+  grid-template-columns: 88px auto;
+  grid-gap: 20px;
+`;
+
+export const CartOrderSectionHeader = styled.div``;
+
+export const OrderBtn = styled.button`
+  width: 279px;
+  height: 43px;
+  color: var(--clr-white);
+  background-color: var(--clr-emerald);
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.8px;
+  text-transform: uppercase;
+  opacity: 1;
+  transition: opacity 250ms linear;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+    transition: opacity 250ms linear;
+  }
 `;

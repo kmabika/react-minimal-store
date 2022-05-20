@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import ProductAttribute from 'Component/ProductAttribute';
 import { AttributesType } from 'Type/ProductList.type';
-import { ProductPriceHeaderWrapper } from 'Route/ProductDescriptionPage/styled';
+import { ProductAttributesWrapper } from './styled';
 import Paragraph from 'Component/Paragraph';
 
 export class ProductAttributes extends PureComponent {
@@ -27,31 +27,25 @@ export class ProductAttributes extends PureComponent {
   }
 
   renderAttributes() {
-    const { attributes, selectedProduct } = this.props;
+    const { attributes } = this.props;
     return Object.values(attributes)?.map((attribute) => {
       const { id, items, name, type } = attribute;
-
       const attributeData = {
         name: name,
         type: type,
       };
       return (
         <div key={id}>
-          {selectedProduct && (
-            <ProductPriceHeaderWrapper>
-              <Paragraph
-                lineHeight={1.125}
-                fontFamily="Roboto Condensed"
-                children={`${name}:`}
-                fontSize={1.125}
-                fontWeight={700}
-              />
-            </ProductPriceHeaderWrapper>
-          )}
-
-          <div key={id} style={{ display: 'flex', width: '50%' }}>
+          <Paragraph
+            lineHeight={18}
+            fontFamily="Roboto Condensed"
+            children={`${name}:`}
+            fontSize={18}
+            fontWeight={700}
+          />
+          <ProductAttributesWrapper key={id}>
             {items && items?.map((item) => this.renderProductAttribute(item, attributeData))}
-          </div>
+          </ProductAttributesWrapper>
         </div>
       );
     });

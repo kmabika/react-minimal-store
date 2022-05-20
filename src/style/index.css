@@ -5,6 +5,7 @@
   --clr-nero: #292929;
   --clr-white: #fff;
   --clr-darkgray: #a6a6a6;
+  --clr-gray: #eeeeee;
   --clr-lightgray: rgba(166, 166, 166, 0.2);
 }
 html {
@@ -15,18 +16,6 @@ html {
   width: 0px;
   height: 0px;
 }
-
-/* *::-webkit-scrollbar-thumb {
-  background-color: var(--clr-emerald);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #43464e;
-}
-
-*::-webkit-scrollbar-track {
-  background-color: var(--clr-white);
-} */
 
 body {
   font-family: 'Raleway', sans-serif;
@@ -62,6 +51,7 @@ a {
   text-decoration: none;
 }
 
+/* skeleton animation css */
 .fpo {
   position: relative;
   margin: 25% auto;
@@ -106,7 +96,6 @@ a {
   border-radius: 50%;
   float: right;
 }
-
 .image-slider {
   display: block;
   color: var(--clr-bunker);
@@ -176,4 +165,20 @@ a {
   100% {
     background-position: 0% 50%;
   }
+}
+/* skeleton margins */
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-43 {
+  margin-bottom: 43px;
+}
+.mb-30{
+  margin-bottom: 30px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.mr-10{
+  margin-right: 10px;
 }

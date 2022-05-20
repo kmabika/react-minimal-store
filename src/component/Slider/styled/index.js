@@ -20,7 +20,7 @@ export const SliderContent = styled.div`
 export const StyledSlider = styled.div`
   position: relative;
   height: 100vh;
-  width: 141px;
+  width: 200px;
   margin: 0 auto;
   overflow: hidden;
   white-space: nowrap;

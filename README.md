@@ -80,8 +80,6 @@ Whilst making sure the webapp closely resembels the following [designs](<https:/
 
 Originally I wanted to build the web application with Apollo and depend on Apollo as a state management solution instead of redux since I'm familiar with Apollo. After some research, I found out that redux offers a more predictable state container, and looking at the ScandiPwa codebase I saw a benefit in using redux. I decided on using react, redux, and opus as my stack.
 
-One of the main challenges I ran into was displaying the attributes on the product list page before a product is selected. This lead me to spend a few days on a research spike into this implementation using Redux, the ScandiPwa demo app gave an idea of how to implement this into the design and it took me some time to figure out how to add this functionality into redux.
-
 I achieved all my goals and met the project specifications. This was a really interesting assignment, and I enjoyed working on the project.
 
 <p align="right">(<a href="#top">back to top</a>)</p>

@@ -1,4 +1,4 @@
-import { addProductToCart, removeProduct, updateProductAmount, clearCart } from './Cart.action';
+import { addProductToCart, removeProduct, updateProductAmount } from './Cart.action';
 
 export class CartDispatcher {
   static addProductToCart(dispatch, product) {
@@ -7,10 +7,6 @@ export class CartDispatcher {
 
   static updateProductAmount(dispatch, product, amount) {
     amount <= 0 ? dispatch(removeProduct(product)) : dispatch(updateProductAmount(product, amount));
-  }
-
-  static clearCart(dispatch) {
-    dispatch(clearCart());
   }
 }
 

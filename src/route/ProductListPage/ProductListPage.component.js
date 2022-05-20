@@ -12,7 +12,6 @@ export class ProductListPage extends PureComponent {
     categoryName: PropTypes.string.isRequired,
     isLoading: PropTypes.bool.isRequired,
     products: ProductsListType.isRequired,
-    
   };
 
   componentDidMount() {
@@ -58,9 +57,9 @@ export class ProductListPage extends PureComponent {
     return (
       <>
         <ProductListWrapper>
-          <div style={{ marginBottom: '200px', marginTop: '60px', width: '50%' }}>
+          <CategoryHeaderWrapper>
             <div className="block2 pulsate"></div>
-          </div>
+          </CategoryHeaderWrapper>
           <CategoryProductListWrapper>
             {[...Array(rowSekeletonProducts)]?.map((row, i) => (
               <div key={i} id="card">
@@ -117,7 +116,7 @@ export class ProductListPage extends PureComponent {
     return (
       <>
         <CategoryHeaderWrapper>
-          <Headline typeHeadline="h1" fontSize={2.625} fontWeight={400}>
+          <Headline typeHeadline="h1" fontSize={42} lineHeight={67.2} fontWeight={400}>
             {categoryName}
           </Headline>
         </CategoryHeaderWrapper>

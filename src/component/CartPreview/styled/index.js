@@ -2,20 +2,20 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const CartContainer = styled.section`
-  width: 20.3125rem;
+  width: 325px;
   background-color: var(--clr-white);
   position: absolute;
-  margin-top: 4.2rem;
+  margin-top: 70px;
   top: 0;
   right: 0;
-  padding: 1rem;
+  padding: 16px;
   box-sizing: border-box;
   z-index: 100;
 `;
 
 export const CartWrap = styled.div`
   max-width: 100%;
-  min-height: 5rem;
+  min-height: 80px;
 `;
 
 export const CartHeader = styled.div`
@@ -35,22 +35,11 @@ export const CartHeading = styled.h3`
     }
   }
 `;
-export const CartClearBtn = styled.button`
-  border: none;
-  background-color: transparent;
-  font-size: 0.9375rem;
-  letter-spacing: 0.05rem;
-
-  &:hover {
-    transition: all 0.5s;
-    color: var(--clr-emerald);
-  }
-`;
 
 export const Cart = styled.div`
-  height: 15rem;
+  height: 240px;
   width: 100%;
-  margin: 2rem 0rem;
+  margin: 32px 0px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -62,11 +51,11 @@ export const Cart = styled.div`
     width: thin;
   }
   &::-webkit-scrollbar-track {
-    border-radius: 0.5rem;
-    box-shadow: inset 0 0 10px var(--clr-bunker);
+    border-radius: 2px;
+    box-shadow: inset 0 0 10px var(--clr-white);
   }
   &::-webkit-scrollbar-thumb {
-    border-radius: 0.5rem;
+    border-radius: 2px;
     background-color: var(--clr-emerald);
   }
 `;
@@ -75,7 +64,7 @@ export const CartInnerWrap = styled.div``;
 
 export const EmptyCart = styled.div`
   width: 100%;
-  height: 15rem;
+  height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,18 +74,18 @@ export const CheckoutTotalItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 2rem;
-  margin-bottom: 1rem;
+  min-height: 30px;
+  margin-bottom: 16px;
 `;
 
 export const CartDetail = styled.p`
-  font-size: 1rem;
+  font-size: 16px;
   font-family: 'Roboto';
   font-weight: 500;
-  line-height: 1.5625rem;
+  line-height: 18px;
 `;
 export const CartAmount = styled.p`
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 700;
 `;
 export const CartButtonWrap = styled.div`
@@ -111,7 +100,7 @@ export const ViewBagBtn = styled(NavLink)`
   font-size: 14px;
   margin-right: 12px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 16.8px;
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
@@ -127,7 +116,7 @@ width: 140px;
 padding: 13px;
 font-size: 14px;
 font-weight: 600;
-line-height: 1.2;
+line-height: 16.8px;
 text-transform: uppercase;
 text-align: center;
 cursor: pointer;

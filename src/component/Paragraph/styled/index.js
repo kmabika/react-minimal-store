@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const ParagraphWrapper = styled.div`
   color: var(--clr-bunker);
-  line-height: ${(props) => (props.lineHeight ? `${props.lineHeight}rem` : '150%')};
-  font-size: ${(props) => (props.fontSize ? `${props.fontSize}rem` : '1rem')};
+  line-height: ${(props) => (props.lineHeight ? `${props.lineHeight}px` : '150%')};
+  font-size: ${(props) => (props.fontSize ? `${props.fontSize}px` : '16px')};
   font-family: ${(props) => (props.fontFamily ? `${props.fontFamily}` : 'Raleway')};
-  margin-bottom: ${(props) => (props.marginBottom ? `${props.marginBottom}rem` : '0rem')};
-  margin-top: ${(props) => (props.marginTop ? `${props.marginTop}rem` : '0rem')};
+  margin-bottom: ${(props) => (props.marginBottom ? `${props.marginBottom}px` : '')};
+  margin-top: ${(props) => (props.marginTop ? `${props.marginTop}px` : '')};
   width: 100%;
   font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}` : '400')};
   h1,
@@ -21,8 +21,8 @@ export const ParagraphWrapper = styled.div`
   .h4,
   .h5,
   .h6 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
   ,
   li {

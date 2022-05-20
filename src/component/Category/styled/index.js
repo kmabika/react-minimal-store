@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const CategoryWrap = styled.ul`
-  min-width: 13rem;
+  min-width: 208px;
   display: flex;
   align-items: center;
   justify-content: space-between;

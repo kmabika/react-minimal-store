@@ -8,11 +8,11 @@ import {
   CartItemAttributesWrapper,
   AttributesItemsWrapper,
   CartItemCountersWrapper,
-  CartItemCounterUpBtn,
+  CartItemCounterBtn,
   CartItemCountAmount,
-  CartItemCounterDownBtn,
   CartItemImgWrapper,
   CartItemImg,
+  CounterBtnWrapper,
 } from './styled';
 
 import { CartItemType } from 'Type/Cart.type';
@@ -47,23 +47,19 @@ export class CartItem extends PureComponent {
       };
 
       return (
-        <>
-          <>
-            {name && name.length > 10 ? (
-              <Paragraph
-                lineHeight={1.125}
-                fontFamily="Roboto Condensed"
-                marginTop={0.2}
-                children={`${name}:`}
-                fontSize={0.8}
-                fontWeight={500}
-              />
-            ) : null}
-          </>
-          <AttributesItemsWrapper key={id}>
+        <CartItemAttributesWrapper key={id}>
+          <Paragraph
+            lineHeight={16}
+            fontFamily="Raleway"
+            marginTop={2}
+            children={`${name}:`}
+            fontSize={14}
+            fontWeight={400}
+          />
+          <AttributesItemsWrapper>
             {items?.map((item) => this.renderProductAttribute(item, attributeData))}
           </AttributesItemsWrapper>
-        </>
+        </CartItemAttributesWrapper>
       );
     });
   }
@@ -74,37 +70,38 @@ export class CartItem extends PureComponent {
       <CartItemWrapper>
         <CartItemContentWrapper>
           <Paragraph
-            fontSize={1}
+            fontSize={16}
             fontWeight={300}
-            lineHeight={1.6}
+            lineHeight={25.6}
             children={`${product.brand} <br/> ${product.name}`}
-            marginBottom={0.8}
+            marginBottom={4}
           />
           <Paragraph
-            fontSize={1}
+            fontSize={16}
             fontWeight={500}
-            lineHeight={1.6}
-            marginBottom={1.6875}
+            lineHeight={25.6}
             children={`${price.currency.symbol}${price.amount}`}
           />
-          <CartItemAttributesWrapper>{this.renderAttributes()}</CartItemAttributesWrapper>
+          {this.renderAttributes()}
         </CartItemContentWrapper>
         <CartItemCountersWrapper>
-          <CartItemCounterUpBtn
-            onClick={() => {
-              updateProductAmount(product, product.amount + 1);
-            }}
-            aria-label="increase quantity">
-            +
-          </CartItemCounterUpBtn>
-          <CartItemCountAmount>{product.amount}</CartItemCountAmount>
-          <CartItemCounterDownBtn
-            onClick={() => {
-              updateProductAmount(product, product.amount - 1);
-            }}
-            aria-label="decrease quantity">
-            -
-          </CartItemCounterDownBtn>
+          <CounterBtnWrapper>
+            <CartItemCounterBtn
+              onClick={() => {
+                updateProductAmount(product, product.amount + 1);
+              }}
+              aria-label="increase quantity">
+              +
+            </CartItemCounterBtn>
+            <CartItemCountAmount>{product.amount}</CartItemCountAmount>
+            <CartItemCounterBtn
+              onClick={() => {
+                updateProductAmount(product, product.amount - 1);
+              }}
+              aria-label="decrease quantity">
+              -
+            </CartItemCounterBtn>
+          </CounterBtnWrapper>
         </CartItemCountersWrapper>
         <CartItemImgWrapper>
           <CartItemImg src={`${image}`} alt={product.name} width={105} height={137} />

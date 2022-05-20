@@ -33,7 +33,7 @@ export const ProductImg = styled.img`
 `;
 
 export const ProductImgOutOfStockText = styled.h1`
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 400;
   color: rgba(141, 143, 154, 1);
   text-align: center;

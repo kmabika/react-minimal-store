@@ -47,5 +47,5 @@ export const Cart = styled.div`
   border: none;
   background-color: transparent;
   position: relative;
-  min-width: 3rem;
+  min-width: 48px;
 `;

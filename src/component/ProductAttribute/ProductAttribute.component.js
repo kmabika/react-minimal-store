@@ -1,12 +1,6 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
-import {
-  ProductTextAttributeBtn,
-  ProductColorAttribute,
-  ProductAttributeWrapper,
-  ToolTip,
-  ToolTipText,
-} from './styled';
+import { ProductTextAttributeBtn, ProductColorAttribute, ProductAttributeWrapper } from './styled';
 
 export class ProductAttribute extends PureComponent {
   static propTypes = {
@@ -17,7 +11,7 @@ export class ProductAttribute extends PureComponent {
     type: PropTypes.string.isRequired,
     isSelected: PropTypes.bool.isRequired,
     onSelectAttributeHandler: PropTypes.func.isRequired,
-    selectedProduct: PropTypes.object.isRequired,
+    selectedProduct: PropTypes.object,
   };
 
   renderAttributeByType() {
@@ -74,25 +68,11 @@ export class ProductAttribute extends PureComponent {
   }
 
   renderSmallTextAttribute() {
-    const { value, name, displayValue, isSelected, onSelectAttributeHandler, id, selectedProduct } =
-      this.props;
-    let selectedAttribute = null;
-    if (selectedProduct !== undefined) {
-      selectedAttribute = { name, value, id, selectedProduct };
-    } else {
-      selectedAttribute = { name, value, id };
-    }
+    const { value, displayValue, isSelected } = this.props;
     return (
-      <ToolTip key={this.props.id}>
-        <ProductTextAttributeBtn
-          name={displayValue}
-          inStock={true}
-          isSelected={isSelected}
-          onClick={() => onSelectAttributeHandler(selectedAttribute)}>
-          {value}
-        </ProductTextAttributeBtn>
-        <ToolTipText>{name}</ToolTipText>
-      </ToolTip>
+      <ProductTextAttributeBtn name={displayValue} inStock={true} isSelected={isSelected}>
+        {value}
+      </ProductTextAttributeBtn>
     );
   }
 
@@ -105,45 +85,16 @@ export class ProductAttribute extends PureComponent {
     }
   }
 
-  rendercheckMarkIcon(color) {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-        role="img"
-        width="1em"
-        height="1em"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 24 24">
-        <path
-          fill="none"
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="m4 12l6 6L20 6"
-        />
-      </svg>
-    );
-  }
-
   renderSmallColorAttribute() {
     const { value, name, displayValue, isSelected, onSelectAttributeHandler, id } = this.props;
     return (
-      <ToolTip>
-        <ProductColorAttribute
-          name={displayValue}
-          color={value}
-          isSelected={isSelected}
-          inStock={true}
-          onClick={() => onSelectAttributeHandler({ name: name, value: value, id: id })}>
-          {isSelected &&
-            (value === '#000000'
-              ? this.rendercheckMarkIcon('#fff')
-              : this.rendercheckMarkIcon('#000'))}
-        </ProductColorAttribute>
-        <ToolTipText>{displayValue}</ToolTipText>
-      </ToolTip>
+      <ProductColorAttribute
+        name={displayValue}
+        color={value}
+        isSelected={isSelected}
+        inStock={true}
+        onClick={() => onSelectAttributeHandler({ name: name, value: value, id: id })}
+      />
     );
   }
 
@@ -159,19 +110,10 @@ export class ProductAttribute extends PureComponent {
             color={value}
             inStock={selectedProduct.inStock}
             isSelected={isSelected}
-            onClick={() => onSelectAttributeHandler(selectedAttribute)}>
-            {isSelected &&
-              (value === '#000000'
-                ? this.rendercheckMarkIcon('#fff')
-                : this.rendercheckMarkIcon('#000'))}
-          </ProductColorAttribute>
+            onClick={() => onSelectAttributeHandler(selectedAttribute)}
+          />
         ) : (
-          <ProductColorAttribute name={displayValue} color={value}>
-            {isSelected &&
-              (value === '#000000'
-                ? this.rendercheckMarkIcon('#fff')
-                : this.rendercheckMarkIcon('#000'))}
-          </ProductColorAttribute>
+          <ProductColorAttribute name={displayValue} color={value} />
         )}
       </>
     );

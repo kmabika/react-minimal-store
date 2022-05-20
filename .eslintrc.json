@@ -20,6 +20,7 @@
   "plugins": ["react"],
   "rules": {
     "prettier/prettier": "error",
+    "no-console": 1,
     "react/react-in-jsx-scope": "off",
     "react/no-children-prop": "off"
   }
