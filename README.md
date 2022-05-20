@@ -24,12 +24,14 @@ A webapp using React.js written as part of the Scandiweb Junior Developer test a
 - [graphql](https://graphql.org/)
 - [opus](https://github.com/tilework/opus)
 
-### Architecture 
- - Container Component
+### Architecture
+
+- Container Component
 
 ### Project Files
-- [figma files](https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=91580%3A2)
-- [graphql-endpoint](https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=91580%3A2)
+
+- [figma files](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=91580%3A2>)
+- [graphql-endpoint](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=91580%3A2>)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -72,5 +74,6 @@ Ensure the server is running and start the client.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Added Pages
+
 - Skeleton Loader
-<img src="./public/images/loader-demo.gif">
+  <img src="./public/images/loader-demo.gif">
