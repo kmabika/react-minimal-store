@@ -35,6 +35,7 @@ A webapp using React.js written as part of the Scandiweb Junior Developer test a
 - Container Component
 
 ### Project Files
+
 - [figma files](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=91580%3A2>)
 - [graphql-endpoint](https://github.com/kmabika/minimal-store-scandiweb)
 
