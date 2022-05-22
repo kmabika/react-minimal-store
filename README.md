@@ -4,6 +4,12 @@
 <div align="center">
   <h3 align="center">Kudzai Mabika | Scandiweb Junior React Test</h3>
 </div>
+  <p align="center">
+    An awesome README template to jumpstart your projects!
+    <br />
+    <a href="https://scribehow.com/shared/Junior_React_Test_Scandiweb_User_Guide__44-i9b39RYK1vLULP61_uA"><strong>View Guide »</strong></a>
+    <br />
+  </p>
 <br />
 
 ## Scandiweb x Kudzai Store
@@ -29,7 +35,7 @@ A webapp using React.js written as part of the Scandiweb Junior Developer test a
 
 ### Project Files
 - [figma files](https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=91580%3A2)
-- [graphql-endpoint](https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=91580%3A2)
+- [graphql-endpoint](https://github.com/kmabika/minimal-store-scandiweb)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

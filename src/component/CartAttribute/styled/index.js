@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const CartItemAttributeBtn = styled.button`
+  min-width: 24px;
   width: auto;
   height: 24px;
   border: 1px solid var(--clr-bunker);
