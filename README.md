@@ -5,8 +5,6 @@
   <h3 align="center">Minimal E-Commerce Store</h3>
 </div>
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
     <a href="https://scribehow.com/shared/Junior_React_Test_Scandiweb_User_Guide__44-i9b39RYK1vLULP61_uA"><strong>View Guide »</strong></a>
     <br />
   </p>
