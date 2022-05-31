@@ -2,7 +2,7 @@
 
 <br />
 <div align="center">
-  <h3 align="center">Kudzai Mabika | Scandiweb Junior React Test</h3>
+  <h3 align="center">Minimal E-Commerce Store</h3>
 </div>
   <p align="center">
     An awesome README template to jumpstart your projects!
@@ -18,8 +18,6 @@
 
 <img src="./public/images/demo.gif">
 
-A webapp using React.js written as part of the Scandiweb Junior Developer test assignment.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
@@ -29,15 +27,6 @@ A webapp using React.js written as part of the Scandiweb Junior Developer test a
 - [styled-components](https://styled-components.com/docs)
 - [graphql](https://graphql.org/)
 - [opus](https://github.com/tilework/opus)
-
-### Architecture
-
-- Container Component
-
-### Project Files
-
-- [figma files](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=91580%3A2>)
-- [graphql-endpoint](https://github.com/kmabika/minimal-store-scandiweb)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -49,7 +38,7 @@ Install the server and run the server.
 
 - npm
   ```sh
-  git clone https://github.com/scandiweb/junior-react-endpoint
+  cd graphql-endpoint
   ```
 - yarn
   ```sh
@@ -76,11 +65,3 @@ Ensure the server is running and start the client.
    ```sh
    yarn start
    ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Added Pages
-
-- Skeleton Loader
-  <br />
-  <img src="./public/images/loader-demo.gif">

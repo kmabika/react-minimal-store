@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-./graphql-endpoint
+./graphql-endpoint/node_modules
 # testing
 /coverage
 
