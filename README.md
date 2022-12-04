@@ -8,12 +8,6 @@
     <a href="https://scribehow.com/shared/Junior_React_Test_Scandiweb_User_Guide__44-i9b39RYK1vLULP61_uA"><strong>View Guide »</strong></a>
     <br />
   </p>
-<br />
-
-## Scandiweb x Kudzai Store
-
-<br/>
-
 <img src="./public/images/demo.gif">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
